@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var cam : Camera3D
 
 @onready var interaction_ray: RayCast3D = $Camera3D/InteractionRay
+@onready var hand_signal_sprite: HandSignalSprite = $HandSignal
 
 var run_speed = 4.5
 var speed = run_speed
@@ -50,6 +51,19 @@ func _input(event: InputEvent) -> void:
 		cam.rotation_degrees.x = clamp(cam.rotation_degrees.x, -90, 90)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("signal_ready"):
+		hand_signal_sprite._set_hand_signal(hand_signal_sprite.SIGNAL.SWAP)
+	elif event.is_action_pressed("signal_stop"):
+		hand_signal_sprite._set_hand_signal(hand_signal_sprite.SIGNAL.STOP)
+	elif event.is_action_pressed("signal_1"):
+		hand_signal_sprite._set_hand_signal(hand_signal_sprite.SIGNAL.ONE)
+	elif event.is_action_pressed("signal_2"):
+		hand_signal_sprite._set_hand_signal(hand_signal_sprite.SIGNAL.TWO)
+	elif event.is_action_pressed("signal_3"):
+		hand_signal_sprite._set_hand_signal(hand_signal_sprite.SIGNAL.THREE)
+	elif event.is_action_pressed("signal_4"):
+		hand_signal_sprite._set_hand_signal(hand_signal_sprite.SIGNAL.FOUR)
+	
 	#if event.is_action_pressed("pc_interact") and !_mounted_object and !is_mouse_free:
 		#var interactable := get_faced_interactable()
 		#if interactable:

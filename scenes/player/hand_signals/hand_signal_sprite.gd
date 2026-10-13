@@ -1,4 +1,5 @@
 @tool
+class_name HandSignalSprite
 extends Sprite3D
 
 @export var current_signal := SIGNAL.NONE: set = _set_hand_signal

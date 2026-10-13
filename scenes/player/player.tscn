@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bxc4ceq66ael3"]
 
 [ext_resource type="Script" uid="uid://cdd6f34xkdh8s" path="res://scenes/player/player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://fa8m66313tj1" path="res://scenes/player/hand_signals/hand_signal_sprite.tscn" id="2_dovo2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0o143"]
 radius = 0.25
@@ -40,3 +41,6 @@ mesh = SubResource("PrismMesh_obbxu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 shape = SubResource("CapsuleShape3D_h45xw")
+
+[node name="HandSignal" parent="." unique_id=597502183 instance=ExtResource("2_dovo2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
