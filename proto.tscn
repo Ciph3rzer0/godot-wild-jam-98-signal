@@ -180,11 +180,11 @@ mesh = SubResource("BoxMesh_uhg71")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_uhg71")
 
-[node name="AI Teammate" parent="." unique_id=289776472 node_paths=PackedStringArray("nav_mesh", "patrol_markers") instance=ExtResource("3_ubfyf")]
+[node name="AI Teammate" parent="." unique_id=289776472 node_paths=PackedStringArray("player", "patrol_markers") instance=ExtResource("3_ubfyf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4066544, 4.7683716e-07, -7.1306643)
-movement_speed = 1000.0
-nav_mesh = NodePath("../NavigationRegion3D")
+player = NodePath("../Player")
 patrol_markers = [NodePath("../Marker3D"), NodePath("../Marker3D2"), NodePath("../Marker3D3"), NodePath("../Marker3D4")]
+movement_speed = 1000.0
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1277906579]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6939402, -4.7683716e-07, -6.446275)

@@ -26,6 +26,8 @@ var is_mouse_free := false
 #func _exit_tree() -> void:
 	#GameManager.clear_player(self)
 
+var active_signal := HandSignalSprite.SIGNAL.NONE
+
 
 func _ready() -> void:
 	set_mouse_free(false)
@@ -99,20 +101,21 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("signal_ready"):
-		hand_signal_sprite._set_hand_signal(hand_signal_sprite.SIGNAL.SWAP)
+		active_signal = hand_signal_sprite.SIGNAL.SWAP
 	elif Input.is_action_pressed("signal_stop"):
-		hand_signal_sprite._set_hand_signal(hand_signal_sprite.SIGNAL.STOP)
+		active_signal = hand_signal_sprite.SIGNAL.STOP
 	elif Input.is_action_pressed("signal_1"):
-		hand_signal_sprite._set_hand_signal(hand_signal_sprite.SIGNAL.ONE)
+		active_signal = hand_signal_sprite.SIGNAL.ONE
 	elif Input.is_action_pressed("signal_2"):
-		hand_signal_sprite._set_hand_signal(hand_signal_sprite.SIGNAL.TWO)
+		active_signal = hand_signal_sprite.SIGNAL.TWO
 	elif Input.is_action_pressed("signal_3"):
-		hand_signal_sprite._set_hand_signal(hand_signal_sprite.SIGNAL.THREE)
+		active_signal = hand_signal_sprite.SIGNAL.THREE
 	elif Input.is_action_pressed("signal_4"):
-		hand_signal_sprite._set_hand_signal(hand_signal_sprite.SIGNAL.FOUR)
+		active_signal = hand_signal_sprite.SIGNAL.FOUR
 	else:
-		hand_signal_sprite._set_hand_signal(hand_signal_sprite.SIGNAL.NONE)
+		active_signal = hand_signal_sprite.SIGNAL.NONE
 	
+	hand_signal_sprite._set_hand_signal(active_signal)
 	
 	
 	var raw_input := Input.get_vector("pc_left", "pc_right", "pc_forward", "pc_back")	
