@@ -1,6 +1,52 @@
 [gd_scene format=3 uid="uid://ct87i30v13l0i"]
 
-[node name="Node3D" type="Node3D" unique_id=1527916753]
+[ext_resource type="Texture2D" uid="uid://2lpufdmde2uc" path="res://addons/godot-prototype-texture/PNG/grid_512x512/grid_blue_512x512.png" id="1_fl4k8"]
+[ext_resource type="PackedScene" uid="uid://dgaexk2mqn6j8" path="res://addons/srcoder_thirdperson_controller/player.tscn" id="2_icttm"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=71096409]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_icttm"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ubfyf"]
+sky_material = SubResource("ProceduralSkyMaterial_icttm")
+
+[sub_resource type="Environment" id="Environment_7trdo"]
+background_mode = 2
+sky = SubResource("Sky_ubfyf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icttm"]
+albedo_texture = ExtResource("1_fl4k8")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_uhg71"]
+
+[node name="Prototype Level" type="Node3D" unique_id=1527916753]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=451367747]
+environment = SubResource("Environment_7trdo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=242535334]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGFloor" type="CSGBox3D" parent="." unique_id=71096409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_icttm")
+use_collision = true
 size = Vector3(100, 1, 100)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGFloor" unique_id=1556127036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.5275039, -0.5)
+operation = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1355070278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.44999993, 0.5)
+mesh = SubResource("BoxMesh_uhg71")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1248761547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.44999993, 0.5)
+mesh = SubResource("BoxMesh_uhg71")
+
+[node name="Player" parent="." unique_id=1281257727 instance=ExtResource("2_icttm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4422423, 2.9802322e-08, 1.2424834)

@@ -31,14 +31,14 @@ func _physics_process(delta: float) -> void:
 		
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("pc_jump") and is_on_floor():
 		velocity.y = jump_velocity
 		#player_animation_state = animation_state.JUMPING
 		
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("left", "right", "up", "down")
+	var input_dir := Input.get_vector("pc_left", "pc_right", "pc_forward", "pc_back")
 	var direction = (camera_pivot.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * speed
