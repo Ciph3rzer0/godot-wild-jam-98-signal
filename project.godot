@@ -24,6 +24,10 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/log/plugin.cfg", "res://addons/reload_current_scene/plugin.cfg")
 
+[global_group]
+
+signal_targets=""
+
 [input]
 
 ui_cancel={

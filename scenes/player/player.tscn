@@ -15,6 +15,8 @@ radius = 0.25
 collision_layer = 3
 script = ExtResource("1_4flbx")
 cam = NodePath("Camera3D")
+max_signal_distance = 100.0
+max_screen_radius = 0.15
 
 [node name="HeadPosition" type="Node3D" parent="." unique_id=692060840]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9875141, 0)
@@ -44,3 +46,4 @@ shape = SubResource("CapsuleShape3D_h45xw")
 
 [node name="HandSignal" parent="." unique_id=597502183 instance=ExtResource("2_dovo2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
+visible = false

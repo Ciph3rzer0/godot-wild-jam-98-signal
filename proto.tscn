@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://2lpufdmde2uc" path="res://addons/godot-prototype-texture/PNG/grid_512x512/grid_blue_512x512.png" id="1_fl4k8"]
 [ext_resource type="PackedScene" uid="uid://bxc4ceq66ael3" path="res://scenes/player/player.tscn" id="2_icttm"]
 [ext_resource type="PackedScene" uid="uid://dbgkrrjvkd87e" path="res://scenes/ai_teammate/ai_teammate.tscn" id="3_ubfyf"]
+[ext_resource type="Texture2D" uid="uid://jjcd7kbg6ve5" path="res://addons/godot-prototype-texture/PNG/logo_512x512/logo_orange_512x512.png" id="4_7trdo"]
+[ext_resource type="Script" uid="uid://7tt7istu1p8r" path="res://signal_target.gd" id="4_ekw8u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_icttm"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -33,6 +35,16 @@ size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uhg71"]
 size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekw8u"]
+albedo_texture = ExtResource("4_7trdo")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1whnq"]
+size = Vector3(0.25, 0.5, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_32ncx"]
+size = Vector3(0.25, 0.5, 0.1)
 
 [node name="Prototype Level" type="Node3D" unique_id=1527916753]
 
@@ -186,6 +198,50 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7909951, 0, 1.5322638)
 [node name="Marker3D4" type="Marker3D" parent="." unique_id=1947050683]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3439517, 0, 1.0686582)
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=877799338]
-transform = Transform3D(0.3566793, 0.61778694, -0.700799, 0, 0.75013787, 0.66128147, 0.93422693, -0.2358654, 0.26755863, -9.963574, 7.47549, 0.671504)
-current = true
+[node name="Interactable" type="StaticBody3D" parent="." unique_id=1420347998 node_paths=PackedStringArray("highlight_meshes") groups=["signal_targets"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.5429094, 0.91873366, 0)
+script = ExtResource("4_ekw8u")
+highlight_meshes = [NodePath("MeshInstance3D")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactable" unique_id=1763558543]
+material_override = SubResource("StandardMaterial3D_ekw8u")
+mesh = SubResource("BoxMesh_1whnq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" unique_id=1316358407]
+shape = SubResource("BoxShape3D_32ncx")
+
+[node name="Interactable2" type="StaticBody3D" parent="." unique_id=2107294388 node_paths=PackedStringArray("highlight_meshes") groups=["signal_targets"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.5429094, 0.91873366, -2)
+script = ExtResource("4_ekw8u")
+highlight_meshes = [NodePath("MeshInstance3D")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactable2" unique_id=122449154]
+material_override = SubResource("StandardMaterial3D_ekw8u")
+mesh = SubResource("BoxMesh_1whnq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable2" unique_id=878800859]
+shape = SubResource("BoxShape3D_32ncx")
+
+[node name="Interactable3" type="StaticBody3D" parent="." unique_id=2056597464 node_paths=PackedStringArray("highlight_meshes") groups=["signal_targets"]]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.05709064, 0.91873366, -1.5777705)
+script = ExtResource("4_ekw8u")
+highlight_meshes = [NodePath("MeshInstance3D")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactable3" unique_id=2100310932]
+material_override = SubResource("StandardMaterial3D_ekw8u")
+mesh = SubResource("BoxMesh_1whnq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable3" unique_id=877676125]
+shape = SubResource("BoxShape3D_32ncx")
+
+[node name="Interactable4" type="StaticBody3D" parent="." unique_id=1605388945 node_paths=PackedStringArray("highlight_meshes") groups=["signal_targets"]]
+transform = Transform3D(1.2665987e-07, 0, -1, 0, 1, 0, 1, 0, 1.2665987e-07, 0.51925254, 0.91873366, -0.05539584)
+script = ExtResource("4_ekw8u")
+highlight_meshes = [NodePath("MeshInstance3D")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactable4" unique_id=1906875489]
+material_override = SubResource("StandardMaterial3D_ekw8u")
+mesh = SubResource("BoxMesh_1whnq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable4" unique_id=404354511]
+shape = SubResource("BoxShape3D_32ncx")

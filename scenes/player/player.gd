@@ -105,6 +105,9 @@ func _process(delta: float) -> void:
 			get_tree().quit()
 	else:
 		exit_button_held_timer = 0
+	
+	focused_target = find_signal_target()
+
 
 func _physics_process(delta: float) -> void:
 	var raw_input := Input.get_vector("pc_left", "pc_right", "pc_forward", "pc_back")	
@@ -148,3 +151,70 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	move_and_slide()
+	
+	
+# Add to player.gd
+
+@export var max_signal_distance := 15.0
+## Fraction of screen height from the crosshair.
+@export var max_screen_radius := 0.25
+## Score bonus for the current target, to stop flicker.
+@export var focus_stickiness := 0.03
+
+var focused_target: SignalTarget:
+	set(value):
+		if value == focused_target:
+			return
+		if is_instance_valid(focused_target):
+			focused_target.set_highlighted(false)
+		focused_target = value
+		if focused_target:
+			focused_target.set_highlighted(true)
+
+
+
+func perform_signal(sig: int) -> void:
+	if focused_target:
+		focused_target.receive_signal(sig, self)
+
+
+func find_signal_target() -> SignalTarget:
+	var vp_size := get_viewport().get_visible_rect().size
+	var center := vp_size * 0.5
+	var cam_pos := cam.global_position
+	var best: SignalTarget
+	var best_score := INF
+
+	for node in get_tree().get_nodes_in_group(&"signal_targets"):
+		var target := node as SignalTarget
+		if not target or not target.is_visible_in_tree():
+			continue
+		var pos := target.get_aim_position()
+		var world_dist := cam_pos.distance_to(pos)
+
+		if world_dist > max_signal_distance or cam.is_position_behind(pos):
+			continue
+
+		var screen_dist := ((cam.unproject_position(pos) - center) / vp_size.y).length()
+		if screen_dist > max_screen_radius:
+			continue
+
+		var score := screen_dist + world_dist * 0.002
+		if target == focused_target:
+			score -= focus_stickiness
+
+		if score < best_score and _has_line_of_sight(cam_pos, pos, target):
+			best_score = score
+			best = target
+
+	return best
+
+
+func _has_line_of_sight(from: Vector3, to: Vector3, target: Node) -> bool:
+	var query := PhysicsRayQueryParameters3D.create(from, to)
+	query.exclude = [get_rid()]
+	var hit := get_world_3d().direct_space_state.intersect_ray(query)
+	if hit.is_empty():
+		return true
+	var collider: Node = hit.collider
+	return collider == target or target.is_ancestor_of(collider) or collider.is_ancestor_of(target)

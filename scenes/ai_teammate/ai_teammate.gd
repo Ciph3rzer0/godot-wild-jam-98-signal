@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 	if nav_agent.is_target_reached():
 		set_patrol_index(_patrol_index + 1)
 	else:
-		print("navigating: ", nav_agent.distance_to_target())
 		# https://www.youtube.com/watch?v=cx49GTfLwZU
 		var nav_point_direction = to_local(nav_agent.get_next_path_position()).normalized()
 	
