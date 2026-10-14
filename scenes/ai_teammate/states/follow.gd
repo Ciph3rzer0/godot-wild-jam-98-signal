@@ -55,7 +55,7 @@ func physics_update(delta: float) -> void:
 	if _ai.nav_agent.is_navigation_finished():
 		return
 
-	var dir := _ai.nav_agent.get_next_path_position() - _ai.global_position
+	var dir: Vector3 = _ai.nav_agent.get_next_path_position() - _ai.global_position
 	dir.y = 0.0
 	if dir.length_squared() < 0.0001:
 		return

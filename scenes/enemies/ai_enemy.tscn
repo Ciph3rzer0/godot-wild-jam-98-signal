@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://c824qy2qut6m1"]
 
+[ext_resource type="Script" uid="uid://bo5y5sur160r6" path="res://addons/state_machine/StateMachine.gd" id="1_i7rso"]
+[ext_resource type="Script" uid="uid://xli2vv232yy1" path="res://scenes/enemies/ai_enemy.gd" id="1_wg236"]
+[ext_resource type="Script" uid="uid://ds8kjwjfaggds" path="res://scenes/enemies/states/scanning.gd" id="2_i7rso"]
 [ext_resource type="Material" uid="uid://c5wxuhvhhuoo8" path="res://scenes/radar/hostile_radar_dot.tres" id="2_il1v2"]
 [ext_resource type="Texture2D" uid="uid://jjcd7kbg6ve5" path="res://addons/godot-prototype-texture/PNG/logo_512x512/logo_orange_512x512.png" id="2_pce36"]
+[ext_resource type="Script" uid="uid://cal2x1hpac871" path="res://scenes/enemies/states/alerted.gd" id="3_wg236"]
+[ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/enemies/states/shooting.gd" id="4_oaelh"]
+[ext_resource type="Script" uid="uid://mytkvrlqyl4a" path="res://scenes/enemies/debug_fov.gd" id="8_wg236"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0o143"]
 radius = 0.25
@@ -29,8 +35,28 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_uhg71"]
 
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_wg236"]
+
 [node name="Enemy" type="CharacterBody3D" unique_id=289776472]
-collision_layer = 3
+collision_layer = 64
+collision_mask = 55
+script = ExtResource("1_wg236")
+sight_range = 30.0
+fov_deg = 90.0
+occluder_mask = 7
+
+[node name="EnemyState" type="Node" parent="." unique_id=1242890481 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_i7rso")
+initial_state = NodePath("Scanning")
+
+[node name="Scanning" type="Node" parent="EnemyState" unique_id=1037994982]
+script = ExtResource("2_i7rso")
+
+[node name="Alerted" type="Node" parent="EnemyState" unique_id=6266319]
+script = ExtResource("3_wg236")
+
+[node name="Shooting" type="Node" parent="EnemyState" unique_id=1721875290]
+script = ExtResource("4_oaelh")
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=426961026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -78,3 +104,12 @@ mesh = SubResource("BoxMesh_uhg71")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, 0, 0.5)
 operation = 2
 mesh = SubResource("BoxMesh_uhg71")
+
+[node name="Eyes" type="MeshInstance3D" parent="Face" unique_id=521000194]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("ImmediateMesh_wg236")
+script = ExtResource("8_wg236")
+arc_angle = 90.0
+radius = 3.0
+segments = 10

@@ -108,6 +108,12 @@ signal_follow={
 3d_render/layer_17="RadarStructures"
 3d_render/layer_18="RadarAllies"
 3d_render/layer_19="RadarEnemies"
+3d_physics/layer_1="General"
+3d_physics/layer_2="Terrain"
+3d_physics/layer_3="Structures"
+3d_physics/layer_5="Player"
+3d_physics/layer_6="Teammates"
+3d_physics/layer_7="Enemies"
 3d_physics/layer_9="BulletBlockers"
 
 [physics]

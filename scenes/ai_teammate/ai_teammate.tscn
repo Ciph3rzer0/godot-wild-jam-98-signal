@@ -36,7 +36,8 @@ height = 0.4
 [sub_resource type="BoxMesh" id="BoxMesh_cw6eu"]
 
 [node name="AI Teammate" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent")]
-collision_layer = 3
+collision_layer = 64
+collision_mask = 71
 script = ExtResource("1_5yhte")
 nav_agent = NodePath("NavigationAgent3D")
 

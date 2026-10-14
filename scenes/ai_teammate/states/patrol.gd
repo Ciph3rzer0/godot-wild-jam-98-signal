@@ -24,7 +24,7 @@ func physics_update(delta: float) -> void:
 		_ai.set_patrol_index(_ai._patrol_index + 1)
 		return
 
-	var dir := _ai.nav_agent.get_next_path_position() - _ai.global_position
+	var dir: Vector3 = _ai.nav_agent.get_next_path_position() - _ai.global_position
 	dir.y = 0.0
 	if dir.length_squared() < 0.0001:
 		return
