@@ -3,13 +3,12 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://khpoplyx84ca"
-path="res://.godot/imported/GodotWild_Oct2026_Signals.blend-ffa4947efdc975208634dd47b7c5f7fa.scn"
+uid="uid://c2rccdt5nqkle"
+valid=false
 
 [deps]
 
-source_file="res://assets/GodotWild_Oct2026_Signals.blend"
-dest_files=["res://.godot/imported/GodotWild_Oct2026_Signals.blend-ffa4947efdc975208634dd47b7c5f7fa.scn"]
+source_file="res://assets/blender/assets.blend"
 
 [params]
 
