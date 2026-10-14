@@ -2,7 +2,7 @@ class_name AIEnemy
 extends CharacterBody3D
 
 @export var player: Player
-@export var good_guys: Array[AITeammate]
+@export var opponents: Array[CharacterBody3D]
 
 @export var movement_speed := 3.0
 @export var turn_speed := 5.0
@@ -22,13 +22,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	var ray := can_see_shoot(player)
-	if ray.can_shoot:
-		print("Can shoot")
-	elif ray.can_see:
-		print("Can see")
-	else:
-		print("-----------")
+	pass
 	#match player.active_signal:
 		#HandSignalSprite.SIGNAL.STOP:
 			#$MovementState.transition_to($MovementState/Wait)
@@ -59,7 +53,8 @@ func can_see_shoot(target: Node3D) -> RayTest:
 		debug_line_3d(from, target.global_position+ Vector3.UP * 0.9, Color.YELLOW)
 	
 	return ray
-	
+
+#AI
 func debug_line_3d(start: Vector3, end: Vector3, color: Color = Color.RED):
 	var mesh_instance = MeshInstance3D.new()
 	var immediate_mesh = ImmediateMesh.new()

@@ -37,7 +37,7 @@ height = 0.4
 
 [node name="AI Teammate" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent")]
 collision_layer = 64
-collision_mask = 71
+collision_mask = 583
 script = ExtResource("1_5yhte")
 nav_agent = NodePath("NavigationAgent3D")
 
