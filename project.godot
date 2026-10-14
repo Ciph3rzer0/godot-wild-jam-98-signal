@@ -111,6 +111,7 @@ signal_follow={
 3d_physics/layer_1="General"
 3d_physics/layer_2="Terrain"
 3d_physics/layer_3="Structures"
+3d_physics/layer_4="Interactable"
 3d_physics/layer_5="Player"
 3d_physics/layer_6="Teammates"
 3d_physics/layer_7="Enemies"

@@ -43,7 +43,8 @@ collision_mask = 55
 script = ExtResource("1_wg236")
 sight_range = 30.0
 fov_deg = 90.0
-occluder_mask = 7
+visual_occluder_mask = 6
+attack_occluder_mask = 262
 
 [node name="EnemyState" type="Node" parent="." unique_id=1242890481 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_i7rso")

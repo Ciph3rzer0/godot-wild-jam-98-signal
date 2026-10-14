@@ -35,7 +35,7 @@ height = 4.0
 size = Vector3(2, 4, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_32ncx"]
-size = Vector3(1.525, 4, 0.4)
+size = Vector3(1.6, 8, 0.6)
 
 [node name="Player" type="CharacterBody3D" unique_id=1865119778 node_paths=PackedStringArray("cam")]
 collision_layer = 16
@@ -105,11 +105,9 @@ transform = Transform3D(0.86602545, 0, 0.5, 0, 1, 0, -0.5, 0, 0.86602545, -0.003
 operation = 2
 mesh = SubResource("BoxMesh_0owmy")
 
-[node name="ShieldCollision" type="Area3D" parent="Shield" unique_id=1617434247]
+[node name="ShieldCollision" type="CharacterBody3D" parent="Shield" unique_id=1020015070]
 collision_layer = 256
 collision_mask = 0
-monitoring = false
-monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shield/ShieldCollision" unique_id=1274009135]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.46970782, 0, -0.46970782)
