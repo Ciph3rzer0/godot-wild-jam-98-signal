@@ -1,3 +1,4 @@
+class_name AITeammate
 extends CharacterBody3D
 
 @export var player: Player
@@ -22,25 +23,25 @@ func set_patrol_index(next: int):
 	nav_agent.target_position = _target.global_position
 	$MoveTargetIndicator.global_position = _target.global_position
 
-func _process(delta: float) -> void:
-	if player.active_signal == HandSignalSprite.SIGNAL.STOP:
-		return
-	
-	if nav_agent.is_navigation_finished():
-		set_patrol_index(_patrol_index + 1)
-		return
-	
-	
-	# https://www.youutube.com/watch?v=cx49GTfLwZU
-	var dir := nav_agent.get_next_path_position() - global_position
-	dir.y = 0.0
-	if dir.length_squared() < 0.0001:
-		return
-	dir = dir.normalized()
-	
-	velocity = dir * movement_speed
-	move_and_slide()
-	
-	# Model faces -Z (Godot default). If it faces +Z, use atan2(dir.x, dir.z).
-	var target_yaw := atan2(-dir.x, -dir.z)
-	rotation.y = rotate_toward(rotation.y, target_yaw, turn_speed * delta)		
+#func _process(delta: float) -> void:
+	#if player.active_signal == HandSignalSprite.SIGNAL.STOP:
+		#return
+	#
+	#if nav_agent.is_navigation_finished():
+		#set_patrol_index(_patrol_index + 1)
+		#return
+	#
+	#
+	## https://www.youutube.com/watch?v=cx49GTfLwZU
+	#var dir := nav_agent.get_next_path_position() - global_position
+	#dir.y = 0.0
+	#if dir.length_squared() < 0.0001:
+		#return
+	#dir = dir.normalized()
+	#
+	#velocity = dir * movement_speed
+	#move_and_slide()
+	#
+	## Model faces -Z (Godot default). If it faces +Z, use atan2(dir.x, dir.z).
+	#var target_yaw := atan2(-dir.x, -dir.z)
+	#rotation.y = rotate_toward(rotation.y, target_yaw, turn_speed * delta)
