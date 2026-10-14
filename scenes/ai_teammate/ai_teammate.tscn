@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dbgkrrjvkd87e"]
 
 [ext_resource type="Script" uid="uid://cx8wmlulxtdkk" path="res://scenes/ai_teammate/ai_teammate.gd" id="1_5yhte"]
+[ext_resource type="Material" uid="uid://b1ax5sjyd2bx5" path="res://scenes/radar/ally_radar_dot.tres" id="2_wsott"]
+[ext_resource type="Texture2D" uid="uid://csucxwl38he0t" path="res://addons/godot-prototype-texture/PNG/logo_512x512/logo_lime_512x512.png" id="3_sl17d"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0o143"]
 radius = 0.25
@@ -13,6 +15,21 @@ radius = 0.25
 [sub_resource type="PrismMesh" id="PrismMesh_uhg71"]
 size = Vector3(0.5, 1, 0.5)
 
+[sub_resource type="SphereMesh" id="SphereMesh_sl17d"]
+radius = 0.4
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5vkb"]
+albedo_texture = ExtResource("3_sl17d")
+uv1_scale = Vector3(4, 2, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3bo10"]
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_cw6eu"]
+
 [node name="AI Teammate" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent")]
 collision_layer = 3
 script = ExtResource("1_5yhte")
@@ -20,7 +37,6 @@ nav_agent = NodePath("NavigationAgent3D")
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=426961026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-layers = 32768
 mesh = SubResource("CapsuleMesh_0o143")
 
 [node name="FacingIndicator" type="MeshInstance3D" parent="." unique_id=1655915331]
@@ -42,3 +58,24 @@ top_level = true
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MoveTargetIndicator" unique_id=1147002]
 transform = Transform3D(0.3, 0, 0, 0, -0.3, 4.5298744e-08, 0, -4.5298744e-08, -0.3, 0, 1, 0)
 mesh = SubResource("PrismMesh_uhg71")
+
+[node name="RadarDot" type="MeshInstance3D" parent="." unique_id=1186292314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
+layers = 131072
+material_override = ExtResource("2_wsott")
+mesh = SubResource("SphereMesh_sl17d")
+
+[node name="Face" type="CSGMesh3D" parent="." unique_id=644895727]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 1.6, 0)
+material_override = SubResource("StandardMaterial3D_g5vkb")
+mesh = SubResource("CylinderMesh_3bo10")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Face" unique_id=318463011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+operation = 2
+mesh = SubResource("BoxMesh_cw6eu")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Face" unique_id=514774610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, 0, 0.5)
+operation = 2
+mesh = SubResource("BoxMesh_cw6eu")

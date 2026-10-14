@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dbgkrrjvkd87e" path="res://scenes/ai_teammate/ai_teammate.tscn" id="3_ubfyf"]
 [ext_resource type="Texture2D" uid="uid://jjcd7kbg6ve5" path="res://addons/godot-prototype-texture/PNG/logo_512x512/logo_orange_512x512.png" id="4_7trdo"]
 [ext_resource type="Script" uid="uid://7tt7istu1p8r" path="res://signal_target.gd" id="4_ekw8u"]
+[ext_resource type="PackedScene" uid="uid://c824qy2qut6m1" path="res://scenes/enemies/ai_enemy.tscn" id="6_lrm5r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_icttm"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -46,6 +47,18 @@ size = Vector3(0.25, 0.5, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_32ncx"]
 size = Vector3(0.25, 0.5, 0.1)
 
+[sub_resource type="Gradient" id="Gradient_lrm5r"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.7096774)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uhg71"]
+gradient = SubResource("Gradient_lrm5r")
+width = 160
+height = 160
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Prototype Level" type="Node3D" unique_id=1527916753]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=451367747]
@@ -58,11 +71,16 @@ shadow_enabled = true
 [node name="Player" parent="." unique_id=1865119778 instance=ExtResource("2_icttm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.980579, 0, -1.5851059)
 
+[node name="RemoteTransformRadarCamera" type="RemoteTransform3D" parent="Player" unique_id=1321901750]
+remote_path = NodePath("../../UI/MarginContainer/CircleMask/SubViewportContainer/SubViewport/RadarCameraRig")
+update_scale = false
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=794356930]
 navigation_mesh = SubResource("NavigationMesh_uhg71")
 
 [node name="CSGFloor" type="CSGBox3D" parent="NavigationRegion3D" unique_id=71096409]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+layers = 32769
 material_override = SubResource("StandardMaterial3D_icttm")
 use_collision = true
 size = Vector3(100, 1, 100)
@@ -78,6 +96,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Walls/Wall" unique_id=1355070278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 65537
 mesh = SubResource("BoxMesh_uhg71")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Walls/Wall" unique_id=201774688]
@@ -90,6 +109,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Walls/Wall2" unique_id=684176213]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 65537
 mesh = SubResource("BoxMesh_uhg71")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Walls/Wall2" unique_id=2035394550]
@@ -102,6 +122,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Walls/Wall3" unique_id=267178676]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 65537
 mesh = SubResource("BoxMesh_uhg71")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Walls/Wall3" unique_id=1463285022]
@@ -114,6 +135,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Walls/Wall4" unique_id=366089701]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 65537
 mesh = SubResource("BoxMesh_uhg71")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Walls/Wall4" unique_id=1241927802]
@@ -126,6 +148,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Walls/Wall5" unique_id=445375666]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 65537
 mesh = SubResource("BoxMesh_uhg71")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Walls/Wall5" unique_id=516699259]
@@ -138,6 +161,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Walls/Wall6" unique_id=1508280795]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 65537
 mesh = SubResource("BoxMesh_uhg71")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Walls/Wall6" unique_id=1100197694]
@@ -150,6 +174,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Walls/Wall7" unique_id=532124636]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 65537
 mesh = SubResource("BoxMesh_uhg71")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Walls/Wall7" unique_id=1807169459]
@@ -162,6 +187,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Walls/Wall8" unique_id=1449535701]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 65537
 mesh = SubResource("BoxMesh_uhg71")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Walls/Wall8" unique_id=727291046]
@@ -174,6 +200,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Walls/Wall9" unique_id=888378169]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 65537
 mesh = SubResource("BoxMesh_uhg71")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Walls/Wall9" unique_id=1186399252]
@@ -184,7 +211,6 @@ shape = SubResource("BoxShape3D_uhg71")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4066544, 4.7683716e-07, -7.1306643)
 player = NodePath("../Player")
 patrol_markers = [NodePath("../Marker3D"), NodePath("../Marker3D2"), NodePath("../Marker3D3"), NodePath("../Marker3D4")]
-movement_speed = 1000.0
 
 [node name="Marker3D" type="Marker3D" parent="." unique_id=1277906579]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6939402, -4.7683716e-07, -6.446275)
@@ -245,3 +271,57 @@ mesh = SubResource("BoxMesh_1whnq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable4" unique_id=404354511]
 shape = SubResource("BoxShape3D_32ncx")
+
+[node name="Enemy" parent="." unique_id=1232124323 instance=ExtResource("6_lrm5r")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.380542, 0, 0)
+
+[node name="UI" type="Control" parent="." unique_id=2041766851]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=3320397]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -160.0
+offset_right = 160.0
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+metadata/_edit_group_ = true
+
+[node name="CircleMask" type="TextureRect" parent="UI/MarginContainer" unique_id=812534556]
+clip_children = 1
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("GradientTexture2D_uhg71")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="UI/MarginContainer/CircleMask" unique_id=89717868]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="UI/MarginContainer/CircleMask/SubViewportContainer" unique_id=1747511697]
+handle_input_locally = false
+size = Vector2i(160, 160)
+render_target_update_mode = 4
+
+[node name="RadarCameraRig" type="Node3D" parent="UI/MarginContainer/CircleMask/SubViewportContainer/SubViewport" unique_id=1503955098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.980579, 0, -1.5851059)
+
+[node name="RadarCamera" type="Camera3D" parent="UI/MarginContainer/CircleMask/SubViewportContainer/SubViewport/RadarCameraRig" unique_id=697681248]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 100, 0)
+cull_mask = 1015808
+projection = 1
+size = 20.0

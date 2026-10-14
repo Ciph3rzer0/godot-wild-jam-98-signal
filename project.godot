@@ -97,6 +97,13 @@ signal_4={
 ]
 }
 
+[layer_names]
+
+3d_render/layer_16="RadarTerrain"
+3d_render/layer_17="RadarStructures"
+3d_render/layer_18="RadarAllies"
+3d_render/layer_19="RadarEnemies"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
