@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://c824qy2qut6m1"]
+
+[ext_resource type="Material" uid="uid://c5wxuhvhhuoo8" path="res://scenes/radar/hostile_radar_dot.tres" id="2_il1v2"]
+[ext_resource type="Texture2D" uid="uid://jjcd7kbg6ve5" path="res://addons/godot-prototype-texture/PNG/logo_512x512/logo_orange_512x512.png" id="2_pce36"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0o143"]
+radius = 0.25
+
+[sub_resource type="PrismMesh" id="PrismMesh_obbxu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h45xw"]
+radius = 0.25
+
+[sub_resource type="PrismMesh" id="PrismMesh_uhg71"]
+size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="SphereMesh" id="SphereMesh_sl17d"]
+radius = 0.4
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwexf"]
+albedo_texture = ExtResource("2_pce36")
+uv1_scale = Vector3(4, 2, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uhg71"]
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_uhg71"]
+
+[node name="Enemy" type="CharacterBody3D" unique_id=289776472]
+collision_layer = 3
+
+[node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=426961026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_0o143")
+
+[node name="FacingIndicator" type="MeshInstance3D" parent="." unique_id=1655915331]
+transform = Transform3D(0.3, 0, 0, 0, -1.3113416e-08, 0.05885305, 0, -0.29999998, -2.5725484e-09, 0, 2.2002637, -0.045395434)
+visible = false
+layers = 32768
+mesh = SubResource("PrismMesh_obbxu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=830640399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+shape = SubResource("CapsuleShape3D_h45xw")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1009275116]
+
+[node name="MoveTargetIndicator" type="Node3D" parent="." unique_id=330278994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+top_level = true
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MoveTargetIndicator" unique_id=1147002]
+transform = Transform3D(0.3, 0, 0, 0, -0.3, 4.5298744e-08, 0, -4.5298744e-08, -0.3, 0, 1, 0)
+mesh = SubResource("PrismMesh_uhg71")
+
+[node name="RadarDot" type="MeshInstance3D" parent="." unique_id=1186292314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
+layers = 262144
+material_override = ExtResource("2_il1v2")
+mesh = SubResource("SphereMesh_sl17d")
+
+[node name="Face" type="CSGMesh3D" parent="." unique_id=933804409]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 1.6, 0)
+material_override = SubResource("StandardMaterial3D_hwexf")
+mesh = SubResource("CylinderMesh_uhg71")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Face" unique_id=1996121552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+operation = 2
+mesh = SubResource("BoxMesh_uhg71")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Face" unique_id=906733731]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, 0, 0.5)
+operation = 2
+mesh = SubResource("BoxMesh_uhg71")

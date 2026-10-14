@@ -104,6 +104,8 @@ func _physics_process(delta: float) -> void:
 		active_signal = hand_signal_sprite.SIGNAL.SWAP
 	elif Input.is_action_pressed("signal_stop"):
 		active_signal = hand_signal_sprite.SIGNAL.STOP
+	elif Input.is_action_pressed("signal_follow"):
+		active_signal = hand_signal_sprite.SIGNAL.HOLD
 	elif Input.is_action_pressed("signal_1"):
 		active_signal = hand_signal_sprite.SIGNAL.ONE
 	elif Input.is_action_pressed("signal_2"):
