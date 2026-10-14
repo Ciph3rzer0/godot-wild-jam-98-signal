@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bjopuuaqydblu"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h45xw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_h45xw"]
+size = Vector3(2.2728271, 0.5653076, 0.018066406)
+
+[sub_resource type="BoxMesh" id="BoxMesh_83ld5"]
+size = Vector3(2.1305542, 0.5653076, 0.018066406)
+
+[node name="Level1" type="Node3D" unique_id=746100761]
+
+[node name="floor" type="MeshInstance3D" parent="." unique_id=1930176101]
+transform = Transform3D(3.7309895, 0, 0, 0, 1, 0, 0, 0, 2.916337, 0, 0, 0)
+mesh = SubResource("PlaneMesh_h45xw")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=687455070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0070813894, 0.26252818, -1.1707348)
+mesh = SubResource("BoxMesh_h45xw")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=1534894328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0070813894, 0.26252818, 1.1073991)
+mesh = SubResource("BoxMesh_h45xw")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=104179598]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.1140251, 0.26252818, -0.09776795)
+mesh = SubResource("BoxMesh_83ld5")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=647450236]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.1299025, 0.26252818, -0.020344853)
+mesh = SubResource("BoxMesh_h45xw")
