@@ -26,11 +26,11 @@ func set_patrol_index(next: int):
 func _process(delta: float) -> void:
 	match player.active_signal:
 		HandSignalSprite.SIGNAL.STOP:
-			$"State Machine".transition_to($"State Machine/Wait")
+			$MovementState.transition_to($MovementState/Wait)
 		HandSignalSprite.SIGNAL.SWAP:
-			$"State Machine".transition_to($"State Machine/Patrol")
+			$MovementState.transition_to($MovementState/Patrol)
 		HandSignalSprite.SIGNAL.HOLD:
-			$"State Machine".transition_to($"State Machine/Follow")
+			$MovementState.transition_to($MovementState/Follow)
 	
 	#
 	#if nav_agent.is_navigation_finished():

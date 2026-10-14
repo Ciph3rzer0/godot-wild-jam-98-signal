@@ -40,20 +40,20 @@ collision_layer = 3
 script = ExtResource("1_5yhte")
 nav_agent = NodePath("NavigationAgent3D")
 
-[node name="State Machine" type="Node" parent="." unique_id=868495536 node_paths=PackedStringArray("initial_state")]
+[node name="MovementState" type="Node" parent="." unique_id=868495536 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_3bo10")
 initial_state = NodePath("Patrol")
 
-[node name="Wait" type="Node" parent="State Machine" unique_id=358590127]
+[node name="Wait" type="Node" parent="MovementState" unique_id=358590127]
 script = ExtResource("3_cw6eu")
 
-[node name="Move" type="Node" parent="State Machine" unique_id=2043242049]
+[node name="Move" type="Node" parent="MovementState" unique_id=2043242049]
 script = ExtResource("4_viqr6")
 
-[node name="Follow" type="Node" parent="State Machine" unique_id=578789615]
+[node name="Follow" type="Node" parent="MovementState" unique_id=578789615]
 script = ExtResource("5_yhyk5")
 
-[node name="Patrol" type="Node" parent="State Machine" unique_id=721397245]
+[node name="Patrol" type="Node" parent="MovementState" unique_id=721397245]
 script = ExtResource("6_4ffhm")
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=426961026]
