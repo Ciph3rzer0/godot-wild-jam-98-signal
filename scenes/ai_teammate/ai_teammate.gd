@@ -23,9 +23,15 @@ func set_patrol_index(next: int):
 	nav_agent.target_position = _target.global_position
 	$MoveTargetIndicator.global_position = _target.global_position
 
-#func _process(delta: float) -> void:
-	#if player.active_signal == HandSignalSprite.SIGNAL.STOP:
-		#return
+func _process(delta: float) -> void:
+	match player.active_signal:
+		HandSignalSprite.SIGNAL.STOP:
+			$"State Machine".transition_to($"State Machine/Wait")
+		HandSignalSprite.SIGNAL.SWAP:
+			$"State Machine".transition_to($"State Machine/Patrol")
+		HandSignalSprite.SIGNAL.HOLD:
+			$"State Machine".transition_to($"State Machine/Follow")
+	
 	#
 	#if nav_agent.is_navigation_finished():
 		#set_patrol_index(_patrol_index + 1)
