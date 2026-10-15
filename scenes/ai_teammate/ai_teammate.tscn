@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cws6qxdbyesrx" path="res://scenes/ai_teammate/states/follow.gd" id="5_yhyk5"]
 [ext_resource type="Script" uid="uid://bav6agln5erbr" path="res://scenes/ai_teammate/states/patrol.gd" id="6_4ffhm"]
 [ext_resource type="Script" uid="uid://ds8kjwjfaggds" path="res://scenes/enemies/states/scanning.gd" id="7_4ffhm"]
+[ext_resource type="Script" uid="uid://fi3eyjs2i4wt" path="res://scenes/enemies/states/hold_fire.gd" id="8_empyl"]
 [ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/enemies/states/engaging.gd" id="8_y7xsm"]
 [ext_resource type="Script" uid="uid://cal2x1hpac871" path="res://scenes/enemies/states/alerted.gd" id="9_sknpd"]
 [ext_resource type="Script" uid="uid://mytkvrlqyl4a" path="res://scenes/enemies/debug_fov.gd" id="9_yhyk5"]
@@ -40,7 +41,7 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_cw6eu"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_4ffhm"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_sknpd"]
 
 [node name="AI Teammate" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip") groups=["team_0"]]
 collision_layer = 64
@@ -71,7 +72,10 @@ script = ExtResource("6_4ffhm")
 
 [node name="CombatState" type="Node" parent="." unique_id=2105040461 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_3bo10")
-initial_state = NodePath("Scanning")
+initial_state = NodePath("HoldFire")
+
+[node name="HoldFire" type="Node" parent="CombatState" unique_id=1749604475]
+script = ExtResource("8_empyl")
 
 [node name="Scanning" type="Node" parent="CombatState" unique_id=1058996374]
 script = ExtResource("7_4ffhm")
@@ -131,7 +135,7 @@ mesh = SubResource("BoxMesh_cw6eu")
 [node name="Eyes" type="MeshInstance3D" parent="Face" unique_id=122483706]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 cast_shadow = 0
-mesh = SubResource("ImmediateMesh_4ffhm")
+mesh = SubResource("ImmediateMesh_sknpd")
 script = ExtResource("9_yhyk5")
 arc_angle = 90.0
 radius = 3.0
