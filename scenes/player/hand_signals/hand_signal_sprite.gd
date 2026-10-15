@@ -21,9 +21,9 @@ enum SIGNAL {
 	NO,
 	# Directions
 	UP,
-	DOWN,
+	FOLLOW, #DOWN,
 	LEFT,
-	RIGHT,
+	MOVE, #RIGHT,
 	# Counts
 	ONE,
 	TWO,
@@ -33,6 +33,6 @@ enum SIGNAL {
 	DANGER,
 	QUIET,
 	SWAP,
-	SLOW_DOWN,
+	PATROL, #SLOW_DOWN,
 	NONE = -1,
 }

@@ -2,10 +2,15 @@
 class_name Player
 extends CharacterBody3D
 
+@export var teammates: Array[AITeammate]
+var actively_signaled_teammate: AITeammate
+
 @export var cam : Camera3D
 
 @onready var interaction_ray: RayCast3D = $Camera3D/InteractionRay
 @onready var hand_signal_sprite: HandSignalSprite = $HandSignal
+
+@export_flags_3d_physics var interactable_occlusion_flags := 1
 
 var run_speed = 4.5
 var speed = run_speed
@@ -101,19 +106,41 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("signal_ready"):
-		active_signal = hand_signal_sprite.SIGNAL.SWAP
+		active_signal = hand_signal_sprite.SIGNAL.PATROL
 	elif Input.is_action_pressed("signal_stop"):
 		active_signal = hand_signal_sprite.SIGNAL.STOP
 	elif Input.is_action_pressed("signal_follow"):
-		active_signal = hand_signal_sprite.SIGNAL.HOLD
+		active_signal = hand_signal_sprite.SIGNAL.FOLLOW
 	elif Input.is_action_pressed("signal_1"):
-		active_signal = hand_signal_sprite.SIGNAL.ONE
+		if teammates.size() > 0:
+			active_signal = hand_signal_sprite.SIGNAL.ONE
+			actively_signaled_teammate = teammates[0]
+		else:
+			print("no teammate 1")
 	elif Input.is_action_pressed("signal_2"):
-		active_signal = hand_signal_sprite.SIGNAL.TWO
+		if teammates.size() > 1:
+			active_signal = hand_signal_sprite.SIGNAL.TWO
+			actively_signaled_teammate = teammates[1]
+		else:
+			print("no teammate 2")
 	elif Input.is_action_pressed("signal_3"):
-		active_signal = hand_signal_sprite.SIGNAL.THREE
+		if teammates.size() > 2:
+			active_signal = hand_signal_sprite.SIGNAL.THREE
+			actively_signaled_teammate = teammates[2]
+		else:
+			print("no teammate 3")
 	elif Input.is_action_pressed("signal_4"):
-		active_signal = hand_signal_sprite.SIGNAL.FOUR
+		if teammates.size() > 3:
+			active_signal = hand_signal_sprite.SIGNAL.FOUR
+			actively_signaled_teammate = teammates[3]
+		else:
+			print("no teammate 4")
+	elif Input.is_action_pressed("signal_move"):
+		if focused_target:
+			print(" Move to ", focused_target.name)
+			active_signal = hand_signal_sprite.SIGNAL.MOVE
+		else:
+			print("no focused target")
 	else:
 		active_signal = hand_signal_sprite.SIGNAL.NONE
 	
@@ -223,6 +250,7 @@ func find_signal_target() -> SignalTarget:
 func _has_line_of_sight(from: Vector3, to: Vector3, target: Node) -> bool:
 	var query := PhysicsRayQueryParameters3D.create(from, to)
 	query.exclude = [get_rid()]
+	query.collision_mask = interactable_occlusion_flags
 	var hit := get_world_3d().direct_space_state.intersect_ray(query)
 	if hit.is_empty():
 		return true

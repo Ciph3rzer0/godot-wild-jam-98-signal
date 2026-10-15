@@ -1,5 +1,7 @@
 extends State
 
+@export var avg_act_chance_per_second := 0.4
+
 var _ai: AIEnemy
 
 ## Called once when the state becomes active.
@@ -17,9 +19,19 @@ func exit() -> void:
 func update(_delta: float) -> void:
 	pass
 
+var act_chance := -1.0
+
 ## Called every physics frame while active.
-func physics_update(_delta: float) -> void:	
+func physics_update(_delta: float) -> void:
+	#if Engine.get_physics_frames()
+	act_chance += avg_act_chance_per_second * _delta
+	
+	if randf() > act_chance: return
+	act_chance -= 1 / avg_act_chance_per_second
+	
 	var opponent = _ai._primary_engagement_target
+	shoot_at(opponent.global_position)
+	return
 	
 	var ray := _ai.can_see_shoot(opponent)
 	if ray.can_shoot:
@@ -29,3 +41,13 @@ func physics_update(_delta: float) -> void:
 	else:
 		print("Engaging:: -----------")
 	
+
+
+func shoot_at(target: Vector3):
+	print( "SHOOTING")
+	var new_bullet := _ai.bullet.instantiate()
+	get_tree().root.add_child(new_bullet)
+	new_bullet.global_position = _ai.get_node("GunTip").global_position
+	new_bullet.set_target(target + Vector3.UP * 0.9)
+	print(" [TRANS] ENGAGING -> SCAN")
+	get_parent().transition_to($"../Scanning")

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://xli2vv232yy1" path="res://scenes/enemies/ai_enemy.gd" id="1_wg236"]
 [ext_resource type="Script" uid="uid://ds8kjwjfaggds" path="res://scenes/enemies/states/scanning.gd" id="2_i7rso"]
 [ext_resource type="Material" uid="uid://c5wxuhvhhuoo8" path="res://scenes/radar/hostile_radar_dot.tres" id="2_il1v2"]
+[ext_resource type="PackedScene" uid="uid://de6hjfimvduja" path="res://scenes/objects/bullet/bullet.tscn" id="2_oaelh"]
 [ext_resource type="Script" uid="uid://cal2x1hpac871" path="res://scenes/enemies/states/alerted.gd" id="3_wg236"]
 [ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/enemies/states/engaging.gd" id="4_oaelh"]
 [ext_resource type="Material" uid="uid://dx4vk1urlamo4" path="res://scenes/enemies/scanning_face_material.tres" id="7_wg236"]
@@ -40,7 +41,8 @@ script = ExtResource("1_wg236")
 sight_range = 30.0
 fov_deg = 90.0
 visual_occluder_mask = 6
-attack_occluder_mask = 775
+attack_occluder_mask = 7
+bullet = ExtResource("2_oaelh")
 
 [node name="EnemyState" type="Node" parent="." unique_id=1242890481 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_i7rso")
@@ -54,6 +56,7 @@ script = ExtResource("3_wg236")
 
 [node name="Engaging" type="Node" parent="EnemyState" unique_id=1721875290]
 script = ExtResource("4_oaelh")
+avg_act_chance_per_second = 2.0
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=426961026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -110,3 +113,7 @@ script = ExtResource("8_wg236")
 arc_angle = 90.0
 radius = 3.0
 segments = 10
+
+[node name="GunTip" type="Marker3D" parent="." unique_id=695593966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000001, -0.5)
+gizmo_extents = 0.1
