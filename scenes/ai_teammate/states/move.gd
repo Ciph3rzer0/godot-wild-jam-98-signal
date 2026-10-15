@@ -13,7 +13,7 @@ func enter() -> void:
 	_ai = actor as AIActor
 	assert(_ai != null, "Move requires an AIActor actor")
 	
-	move_target = _ai.player.focused_target as SignalTarget
+	move_target = _ai.move_target as SignalTarget
 	assert(move_target != null, "Move requries a move_target")
 	
 	_arrived = false

@@ -11,7 +11,7 @@ outer_radius = 0.2
 
 [node name="Bullet" type="RigidBody3D" unique_id=191630342]
 collision_layer = 65536
-collision_mask = 4294967295
+collision_mask = 4294901759
 mass = 0.1
 gravity_scale = 0.0
 contact_monitor = true
