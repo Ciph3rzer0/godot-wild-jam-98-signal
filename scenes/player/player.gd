@@ -2,6 +2,9 @@
 class_name Player
 extends CharacterBody3D
 
+@export var teammates: Array[AITeammate]
+var actively_signaled_teammate: AITeammate
+
 @export var cam : Camera3D
 
 @onready var interaction_ray: RayCast3D = $Camera3D/InteractionRay
@@ -109,13 +112,35 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_pressed("signal_follow"):
 		active_signal = hand_signal_sprite.SIGNAL.HOLD
 	elif Input.is_action_pressed("signal_1"):
-		active_signal = hand_signal_sprite.SIGNAL.ONE
+		if teammates.size() > 0:
+			active_signal = hand_signal_sprite.SIGNAL.ONE
+			actively_signaled_teammate = teammates[0]
+		else:
+			print("no teammate 1")
 	elif Input.is_action_pressed("signal_2"):
-		active_signal = hand_signal_sprite.SIGNAL.TWO
+		if teammates.size() > 1:
+			active_signal = hand_signal_sprite.SIGNAL.TWO
+			actively_signaled_teammate = teammates[1]
+		else:
+			print("no teammate 2")
 	elif Input.is_action_pressed("signal_3"):
-		active_signal = hand_signal_sprite.SIGNAL.THREE
+		if teammates.size() > 2:
+			active_signal = hand_signal_sprite.SIGNAL.THREE
+			actively_signaled_teammate = teammates[2]
+		else:
+			print("no teammate 3")
 	elif Input.is_action_pressed("signal_4"):
-		active_signal = hand_signal_sprite.SIGNAL.FOUR
+		if teammates.size() > 3:
+			active_signal = hand_signal_sprite.SIGNAL.FOUR
+			actively_signaled_teammate = teammates[3]
+		else:
+			print("no teammate 4")
+	elif Input.is_action_pressed("signal_move"):
+		if focused_target:
+			print(" Move to ", focused_target.name)
+			active_signal = hand_signal_sprite.SIGNAL.DANGER
+		else:
+			print("no focused target")
 	else:
 		active_signal = hand_signal_sprite.SIGNAL.NONE
 	
