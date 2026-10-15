@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://c5wxuhvhhuoo8" path="res://scenes/radar/hostile_radar_dot.tres" id="2_il1v2"]
 [ext_resource type="PackedScene" uid="uid://de6hjfimvduja" path="res://scenes/objects/bullet/bullet.tscn" id="2_oaelh"]
 [ext_resource type="Script" uid="uid://cal2x1hpac871" path="res://scenes/enemies/states/alerted.gd" id="3_wg236"]
+[ext_resource type="Script" uid="uid://fi3eyjs2i4wt" path="res://scenes/enemies/states/hold_fire.gd" id="4_00pgs"]
 [ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/enemies/states/engaging.gd" id="4_oaelh"]
 [ext_resource type="Script" uid="uid://dxi8ymorv1mmv" path="res://scenes/ai_teammate/states/wait.gd" id="6_oaelh"]
 [ext_resource type="Material" uid="uid://dx4vk1urlamo4" path="res://scenes/enemies/scanning_face_material.tres" id="7_wg236"]
@@ -33,7 +34,7 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_uhg71"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_oaelh"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_er8ly"]
 
 [node name="Enemy" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
 collision_layer = 64
@@ -55,6 +56,9 @@ bullet = ExtResource("2_oaelh")
 [node name="CombatState" type="Node" parent="." unique_id=1242890481 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_i7rso")
 initial_state = NodePath("Scanning")
+
+[node name="HoldFire" type="Node" parent="CombatState" unique_id=294304791]
+script = ExtResource("4_00pgs")
 
 [node name="Scanning" type="Node" parent="CombatState" unique_id=1037994982]
 script = ExtResource("2_i7rso")
@@ -123,7 +127,7 @@ mesh = SubResource("BoxMesh_uhg71")
 [node name="Eyes" type="MeshInstance3D" parent="Face" unique_id=521000194]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 cast_shadow = 0
-mesh = SubResource("ImmediateMesh_oaelh")
+mesh = SubResource("ImmediateMesh_er8ly")
 script = ExtResource("8_wg236")
 arc_angle = 90.0
 radius = 3.0
