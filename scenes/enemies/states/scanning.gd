@@ -32,6 +32,6 @@ func physics_update(_delta: float) -> void:
 		
 		if ray.can_shoot:
 			if randf() < 0.04:
-				print(" [TRANS] SCAN -> ENGAGING")
+				#print(" [TRANS] SCAN -> ENGAGING")
 				_ai._primary_engagement_target = opponent
 				(get_parent() as StateMachine).transition_to($"../Engaging")

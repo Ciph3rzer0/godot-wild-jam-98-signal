@@ -44,10 +44,9 @@ func physics_update(_delta: float) -> void:
 
 
 func shoot_at(target: Vector3):
-	print( "SHOOTING")
 	var new_bullet := _ai.bullet.instantiate()
 	get_tree().root.add_child(new_bullet)
 	new_bullet.global_position = _ai.get_node("GunTip").global_position
 	new_bullet.set_target(target + Vector3.UP * 0.9)
-	print(" [TRANS] ENGAGING -> SCAN")
-	get_parent().transition_to($"../Scanning")
+	#print(" [TRANS] ENGAGING -> SCAN")
+	(get_parent() as StateMachine).transition_to($"../Scanning")
