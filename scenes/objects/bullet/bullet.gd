@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-@export var speed := 10.0
+@export var speed := 27.0
 
 var target : Vector3
 

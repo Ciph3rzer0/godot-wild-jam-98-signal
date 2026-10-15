@@ -19,7 +19,7 @@ func exit() -> void:
 func update(_delta: float) -> void:
 	pass
 
-var act_chance := 0.0
+var act_chance := -1.0
 
 ## Called every physics frame while active.
 func physics_update(_delta: float) -> void:
@@ -27,7 +27,7 @@ func physics_update(_delta: float) -> void:
 	act_chance += avg_act_chance_per_second * _delta
 	
 	if randf() > act_chance: return
-	act_chance -= avg_act_chance_per_second
+	act_chance -= 1 / avg_act_chance_per_second
 	
 	var opponent = _ai._primary_engagement_target
 	shoot_at(opponent.global_position)

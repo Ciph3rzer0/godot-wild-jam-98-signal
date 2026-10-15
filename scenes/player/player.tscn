@@ -48,6 +48,7 @@ collision_layer = 16
 collision_mask = 66119
 script = ExtResource("1_4flbx")
 cam = NodePath("Camera3D")
+interactable_occlusion_flags = 14
 max_signal_distance = 100.0
 max_screen_radius = 0.15
 
@@ -97,7 +98,6 @@ mesh = SubResource("BoxMesh_75vfm")
 
 [node name="Shield" type="CSGMesh3D" parent="." unique_id=397986650]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0.90000004, 0.19999996)
-visible = false
 material_override = SubResource("StandardMaterial3D_p47bc")
 mesh = SubResource("CylinderMesh_75vfm")
 
@@ -126,6 +126,5 @@ collision_layer = 256
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shield/ShieldCollision" unique_id=1274009135]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.46970782, 0, -0.46970782)
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.6171407, 0, -0.6171407)
 shape = SubResource("BoxShape3D_32ncx")
-disabled = true

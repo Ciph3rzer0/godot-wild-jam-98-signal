@@ -56,6 +56,7 @@ script = ExtResource("3_wg236")
 
 [node name="Engaging" type="Node" parent="EnemyState" unique_id=1721875290]
 script = ExtResource("4_oaelh")
+avg_act_chance_per_second = 2.0
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=426961026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

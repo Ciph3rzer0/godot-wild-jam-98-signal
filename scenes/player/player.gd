@@ -7,6 +7,8 @@ extends CharacterBody3D
 @onready var interaction_ray: RayCast3D = $Camera3D/InteractionRay
 @onready var hand_signal_sprite: HandSignalSprite = $HandSignal
 
+@export_flags_3d_physics var interactable_occlusion_flags := 1
+
 var run_speed = 4.5
 var speed = run_speed
 var walk_speed = 3
@@ -223,6 +225,7 @@ func find_signal_target() -> SignalTarget:
 func _has_line_of_sight(from: Vector3, to: Vector3, target: Node) -> bool:
 	var query := PhysicsRayQueryParameters3D.create(from, to)
 	query.exclude = [get_rid()]
+	query.collision_mask = interactable_occlusion_flags
 	var hit := get_world_3d().direct_space_state.intersect_ray(query)
 	if hit.is_empty():
 		return true
