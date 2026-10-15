@@ -31,6 +31,7 @@ enabled=PackedStringArray("res://addons/log/plugin.cfg", "res://addons/reload_cu
 [global_group]
 
 signal_targets=""
+team_0=""
 
 [input]
 

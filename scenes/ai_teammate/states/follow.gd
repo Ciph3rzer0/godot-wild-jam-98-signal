@@ -7,13 +7,13 @@ extends State
 ## How far the player must move before the path is recalculated.
 @export var repath_distance := 0.5
 
-var _ai: AITeammate
+var _ai: AIActor
 var _holding := false
 
 ## Called once when the state becomes active.
 func enter() -> void:
-	_ai = actor as AITeammate
-	assert(_ai != null, "FollowPlayer requires an AITeammate actor")
+	_ai = actor as AIActor
+	assert(_ai != null, "FollowPlayer requires an AIActor actor")
 	_holding = false
 	_ai.nav_agent.target_position = _ai.player.global_position
 

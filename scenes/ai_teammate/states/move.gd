@@ -5,13 +5,13 @@ signal arrived
 
 var move_target: SignalTarget
 
-var _ai: AITeammate
+var _ai: AIActor
 var _arrived := false
 
 ## Called once when the state becomes active.
 func enter() -> void:
-	_ai = actor as AITeammate
-	assert(_ai != null, "Move requires an AITeammate actor")
+	_ai = actor as AIActor
+	assert(_ai != null, "Move requires an AIActor actor")
 	
 	move_target = _ai.player.focused_target as SignalTarget
 	assert(move_target != null, "Move requries a move_target")

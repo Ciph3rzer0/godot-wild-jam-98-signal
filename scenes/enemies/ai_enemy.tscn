@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://c824qy2qut6m1"]
 
 [ext_resource type="Script" uid="uid://bo5y5sur160r6" path="res://addons/state_machine/StateMachine.gd" id="1_i7rso"]
-[ext_resource type="Script" uid="uid://xli2vv232yy1" path="res://scenes/enemies/ai_enemy.gd" id="1_wg236"]
+[ext_resource type="Script" uid="uid://blku3cixk7iij" path="res://scenes/units/ai_actor.gd" id="1_wg236"]
 [ext_resource type="Script" uid="uid://ds8kjwjfaggds" path="res://scenes/enemies/states/scanning.gd" id="2_i7rso"]
 [ext_resource type="Material" uid="uid://c5wxuhvhhuoo8" path="res://scenes/radar/hostile_radar_dot.tres" id="2_il1v2"]
 [ext_resource type="PackedScene" uid="uid://de6hjfimvduja" path="res://scenes/objects/bullet/bullet.tscn" id="2_oaelh"]
 [ext_resource type="Script" uid="uid://cal2x1hpac871" path="res://scenes/enemies/states/alerted.gd" id="3_wg236"]
 [ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/enemies/states/engaging.gd" id="4_oaelh"]
+[ext_resource type="Script" uid="uid://dxi8ymorv1mmv" path="res://scenes/ai_teammate/states/wait.gd" id="6_oaelh"]
 [ext_resource type="Material" uid="uid://dx4vk1urlamo4" path="res://scenes/enemies/scanning_face_material.tres" id="7_wg236"]
 [ext_resource type="Script" uid="uid://mytkvrlqyl4a" path="res://scenes/enemies/debug_fov.gd" id="8_wg236"]
 
@@ -34,29 +35,43 @@ height = 0.4
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_oaelh"]
 
-[node name="Enemy" type="CharacterBody3D" unique_id=289776472]
+[node name="Enemy" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
 collision_layer = 64
 collision_mask = 55
 script = ExtResource("1_wg236")
+nav_agent = NodePath("NavigationAgent3D")
+face = NodePath("Face")
+aim_pivot = NodePath("Face")
+eyes = NodePath("Face/Eyes")
 sight_range = 30.0
 fov_deg = 90.0
 visual_occluder_mask = 6
 attack_occluder_mask = 7
+debug_sight_lines = true
+team = 1
+gun_tip = NodePath("GunTip")
 bullet = ExtResource("2_oaelh")
 
-[node name="EnemyState" type="Node" parent="." unique_id=1242890481 node_paths=PackedStringArray("initial_state")]
+[node name="CombatState" type="Node" parent="." unique_id=1242890481 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_i7rso")
 initial_state = NodePath("Scanning")
 
-[node name="Scanning" type="Node" parent="EnemyState" unique_id=1037994982]
+[node name="Scanning" type="Node" parent="CombatState" unique_id=1037994982]
 script = ExtResource("2_i7rso")
 
-[node name="Alerted" type="Node" parent="EnemyState" unique_id=6266319]
+[node name="Alerted" type="Node" parent="CombatState" unique_id=6266319]
 script = ExtResource("3_wg236")
 
-[node name="Engaging" type="Node" parent="EnemyState" unique_id=1721875290]
+[node name="Engaging" type="Node" parent="CombatState" unique_id=1721875290]
 script = ExtResource("4_oaelh")
 avg_act_chance_per_second = 2.0
+
+[node name="MovementState" type="Node" parent="." unique_id=2122641983 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_i7rso")
+initial_state = NodePath("Wait")
+
+[node name="Wait" type="Node" parent="MovementState" unique_id=165580122]
+script = ExtResource("6_oaelh")
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=426961026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -1,9 +1,9 @@
 #https://github.com/Linko-3D/Godot-Simple-First-Person-Controller/blob/main/player/player.gd
 class_name Player
-extends CharacterBody3D
+extends Unit
 
-@export var teammates: Array[AITeammate]
-var actively_signaled_teammate: AITeammate
+@export var teammates: Array[AIActor]
+var actively_signaled_teammate: AIActor
 
 @export var cam : Camera3D
 
@@ -33,8 +33,16 @@ var is_mouse_free := false
 
 var active_signal := HandSignalSprite.SIGNAL.NONE
 
+func get_target_points() -> Array[Vector3]:
+	var shape_node: CollisionShape3D = $CollisionShape3D
+	var half := (shape_node.shape as CapsuleShape3D).height * 0.5
+	return [
+		shape_node.global_position + Vector3.UP * (half - 0.15),  # head
+		shape_node.global_position,                               # chest
+	]
 
 func _ready() -> void:
+	super()
 	set_mouse_free(false)
 
 func set_mouse_free(val: bool):
