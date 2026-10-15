@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bxc4ceq66ael3"]
 
 [ext_resource type="Script" uid="uid://cdd6f34xkdh8s" path="res://scenes/player/player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://de6hjfimvduja" path="res://scenes/objects/bullet/bullet.tscn" id="2_75vfm"]
 [ext_resource type="PackedScene" uid="uid://fa8m66313tj1" path="res://scenes/player/hand_signals/hand_signal_sprite.tscn" id="2_dovo2"]
 [ext_resource type="Material" uid="uid://c8biv4nwhdgbw" path="res://scenes/radar/player_radar_dot.tres" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://csucxwl38he0t" path="res://addons/godot-prototype-texture/PNG/logo_512x512/logo_lime_512x512.png" id="4_lvxji"]
@@ -43,7 +44,7 @@ size = Vector3(2, 4, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_32ncx"]
 size = Vector3(1.6, 4, 0.6)
 
-[node name="Player" type="CharacterBody3D" unique_id=1865119778 node_paths=PackedStringArray("cam")]
+[node name="Player" type="CharacterBody3D" unique_id=1865119778 node_paths=PackedStringArray("cam", "gun_tip") groups=["team_0"]]
 collision_layer = 16
 collision_mask = 66119
 script = ExtResource("1_4flbx")
@@ -51,6 +52,8 @@ cam = NodePath("Camera3D")
 interactable_occlusion_flags = 14
 max_signal_distance = 100.0
 max_screen_radius = 0.15
+gun_tip = NodePath("GunTip")
+bullet = ExtResource("2_75vfm")
 
 [node name="HeadPosition" type="Node3D" parent="." unique_id=692060840]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9875141, 0)
@@ -128,3 +131,7 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shield/ShieldCollision" unique_id=1274009135]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.6171407, 0, -0.6171407)
 shape = SubResource("BoxShape3D_32ncx")
+
+[node name="GunTip" type="Marker3D" parent="." unique_id=100533823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000001, -0.5)
+gizmo_extents = 0.1

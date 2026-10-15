@@ -1,14 +1,16 @@
 extends State
 
-var _ai: AITeammate
+var _ai: AIActor
+var _patrol_index: int
+var _move_target: Node3D
 
 ## Called once when the state becomes active.
 func enter() -> void:
-	_ai = actor as AITeammate
+	_ai = actor as AIActor
 	assert(_ai != null, "Patrol requires an AITeammate actor")
 	# Re-apply the current waypoint so the agent drops whatever target the
 	# previous state left behind (e.g. the player's position from Follow).
-	_ai.set_patrol_index(_ai._patrol_index)
+	set_patrol_index(_patrol_index)
 
 ## Called once when the state stops being active.
 func exit() -> void:
@@ -21,7 +23,7 @@ func update(_delta: float) -> void:
 ## Called every physics frame while active.
 func physics_update(delta: float) -> void:
 	if _ai.nav_agent.is_navigation_finished():
-		_ai.set_patrol_index(_ai._patrol_index + 1)
+		set_patrol_index(_patrol_index + 1)
 		return
 
 	var dir: Vector3 = _ai.nav_agent.get_next_path_position() - _ai.global_position
@@ -38,3 +40,12 @@ func physics_update(delta: float) -> void:
 func _face(dir: Vector3, delta: float) -> void:
 	var target_yaw := atan2(-dir.x, -dir.z)
 	_ai.rotation.y = rotate_toward(_ai.rotation.y, target_yaw, _ai.turn_speed * delta)
+
+func set_patrol_index(next: int):
+	if !_ai.patrol_markers or !_ai.patrol_markers.size() > 0:
+		return
+	
+	_patrol_index = next % _ai.patrol_markers.size()
+	_move_target = _ai.patrol_markers[_patrol_index]
+	_ai.nav_agent.target_position = _move_target.global_position
+	_ai.get_node("MoveTargetIndicator").global_position = _move_target.global_position

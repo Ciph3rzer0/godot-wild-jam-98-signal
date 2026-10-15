@@ -7,15 +7,15 @@ extends State
 ## How far the player must move before the path is recalculated.
 @export var repath_distance := 0.5
 
-var _ai: AITeammate
+var _ai: AIActor
 var _holding := false
 
 ## Called once when the state becomes active.
 func enter() -> void:
-	_ai = actor as AITeammate
-	assert(_ai != null, "FollowPlayer requires an AITeammate actor")
+	_ai = actor as AIActor
+	assert(_ai != null, "FollowPlayer requires an AIActor actor")
 	_holding = false
-	_ai.nav_agent.target_position = _ai.player.global_position
+	_ai.nav_agent.target_position = _ai.follow_target.global_position
 
 ## Called once when the state stops being active.
 func exit() -> void:
@@ -27,12 +27,8 @@ func update(_delta: float) -> void:
 
 ## Called every physics frame while active.
 func physics_update(delta: float) -> void:
-	if _ai.player.active_signal == HandSignalSprite.SIGNAL.STOP:
-		_ai.velocity = Vector3.ZERO
-		return
-
-	var player_pos: Vector3 = _ai.player.global_position
-	var to_player := player_pos - _ai.global_position
+	var target_pos: Vector3 = _ai.follow_target.global_position
+	var to_player := target_pos - _ai.global_position
 	to_player.y = 0.0
 	var dist := to_player.length()
 
@@ -49,8 +45,8 @@ func physics_update(delta: float) -> void:
 		return
 
 	# Only re-path when the player has actually moved.
-	if _ai.nav_agent.target_position.distance_to(player_pos) > repath_distance:
-		_ai.nav_agent.target_position = player_pos
+	if _ai.nav_agent.target_position.distance_to(target_pos) > repath_distance:
+		_ai.nav_agent.target_position = target_pos
 
 	if _ai.nav_agent.is_navigation_finished():
 		return

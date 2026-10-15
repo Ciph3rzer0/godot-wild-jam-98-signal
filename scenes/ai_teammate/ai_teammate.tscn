@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://dbgkrrjvkd87e"]
 
-[ext_resource type="Script" uid="uid://cx8wmlulxtdkk" path="res://scenes/ai_teammate/ai_teammate.gd" id="1_5yhte"]
+[ext_resource type="Script" uid="uid://blku3cixk7iij" path="res://scenes/units/ai_actor.gd" id="1_viqr6"]
 [ext_resource type="Script" uid="uid://bo5y5sur160r6" path="res://addons/state_machine/StateMachine.gd" id="2_3bo10"]
 [ext_resource type="Material" uid="uid://b1ax5sjyd2bx5" path="res://scenes/radar/ally_radar_dot.tres" id="2_wsott"]
+[ext_resource type="PackedScene" uid="uid://de6hjfimvduja" path="res://scenes/objects/bullet/bullet.tscn" id="2_yhyk5"]
 [ext_resource type="Script" uid="uid://dxi8ymorv1mmv" path="res://scenes/ai_teammate/states/wait.gd" id="3_cw6eu"]
 [ext_resource type="Texture2D" uid="uid://csucxwl38he0t" path="res://addons/godot-prototype-texture/PNG/logo_512x512/logo_lime_512x512.png" id="3_sl17d"]
 [ext_resource type="Script" uid="uid://q4puqaj3nmbx" path="res://scenes/ai_teammate/states/move.gd" id="4_viqr6"]
 [ext_resource type="Script" uid="uid://cws6qxdbyesrx" path="res://scenes/ai_teammate/states/follow.gd" id="5_yhyk5"]
 [ext_resource type="Script" uid="uid://bav6agln5erbr" path="res://scenes/ai_teammate/states/patrol.gd" id="6_4ffhm"]
+[ext_resource type="Script" uid="uid://ds8kjwjfaggds" path="res://scenes/enemies/states/scanning.gd" id="7_4ffhm"]
+[ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/enemies/states/engaging.gd" id="8_y7xsm"]
+[ext_resource type="Script" uid="uid://cal2x1hpac871" path="res://scenes/enemies/states/alerted.gd" id="9_sknpd"]
+[ext_resource type="Script" uid="uid://mytkvrlqyl4a" path="res://scenes/enemies/debug_fov.gd" id="9_yhyk5"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0o143"]
 radius = 0.25
@@ -35,13 +40,18 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_cw6eu"]
 
-[node name="AI Teammate" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent")]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_4ffhm"]
+
+[node name="AI Teammate" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip") groups=["team_0"]]
 collision_layer = 64
 collision_mask = 583
-script = ExtResource("1_5yhte")
+script = ExtResource("1_viqr6")
 nav_agent = NodePath("NavigationAgent3D")
-movement_speed = null
-turn_speed = null
+face = NodePath("Face")
+aim_pivot = NodePath("Face")
+eyes = NodePath("Face/Eyes")
+gun_tip = NodePath("GunTip")
+bullet = ExtResource("2_yhyk5")
 
 [node name="MovementState" type="Node" parent="." unique_id=868495536 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_3bo10")
@@ -58,6 +68,20 @@ script = ExtResource("5_yhyk5")
 
 [node name="Patrol" type="Node" parent="MovementState" unique_id=721397245]
 script = ExtResource("6_4ffhm")
+
+[node name="CombatState" type="Node" parent="." unique_id=2105040461 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_3bo10")
+initial_state = NodePath("Scanning")
+
+[node name="Scanning" type="Node" parent="CombatState" unique_id=1058996374]
+script = ExtResource("7_4ffhm")
+
+[node name="Alerted" type="Node" parent="CombatState" unique_id=1743336902]
+script = ExtResource("9_sknpd")
+
+[node name="Engaging" type="Node" parent="CombatState" unique_id=1198638309]
+script = ExtResource("8_y7xsm")
+avg_act_chance_per_second = 2.0
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=426961026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -103,3 +127,16 @@ mesh = SubResource("BoxMesh_cw6eu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19999999, 0, 0.5)
 operation = 2
 mesh = SubResource("BoxMesh_cw6eu")
+
+[node name="Eyes" type="MeshInstance3D" parent="Face" unique_id=122483706]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("ImmediateMesh_4ffhm")
+script = ExtResource("9_yhyk5")
+arc_angle = 90.0
+radius = 3.0
+segments = 10
+
+[node name="GunTip" type="Marker3D" parent="." unique_id=1754596449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000001, -0.5)
+gizmo_extents = 0.1

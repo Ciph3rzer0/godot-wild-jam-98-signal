@@ -1,9 +1,9 @@
 #https://github.com/Linko-3D/Godot-Simple-First-Person-Controller/blob/main/player/player.gd
 class_name Player
-extends CharacterBody3D
+extends Unit
 
-@export var teammates: Array[AITeammate]
-var actively_signaled_teammate: AITeammate
+@export var teammates: Array[AIActor]
+var actively_signaled_teammate: AIActor
 
 @export var cam : Camera3D
 
@@ -33,8 +33,16 @@ var is_mouse_free := false
 
 var active_signal := HandSignalSprite.SIGNAL.NONE
 
+func get_target_points() -> Array[Vector3]:
+	var shape_node: CollisionShape3D = $CollisionShape3D
+	var half := (shape_node.shape as CapsuleShape3D).height * 0.5
+	return [
+		shape_node.global_position + Vector3.UP * (half - 0.15),  # head
+		shape_node.global_position,                               # chest
+	]
 
 func _ready() -> void:
+	super()
 	set_mouse_free(false)
 
 func set_mouse_free(val: bool):
@@ -104,7 +112,7 @@ func _process(delta: float) -> void:
 	focused_target = find_signal_target()
 
 
-func _physics_process(delta: float) -> void:
+func _handle_signals():
 	if Input.is_action_pressed("signal_ready"):
 		active_signal = hand_signal_sprite.SIGNAL.PATROL
 	elif Input.is_action_pressed("signal_stop"):
@@ -146,6 +154,27 @@ func _physics_process(delta: float) -> void:
 	
 	hand_signal_sprite._set_hand_signal(active_signal)
 	
+	var _last_signal := HandSignalSprite.SIGNAL.NONE
+
+# in _physics_process, after active_signal is set:
+	if active_signal != _last_signal:
+		_last_signal = active_signal
+		_send_command(active_signal)
+
+func _send_command(sig: HandSignalSprite.SIGNAL) -> void:
+	match sig:
+		HandSignalSprite.SIGNAL.NONE, \
+		HandSignalSprite.SIGNAL.ONE, HandSignalSprite.SIGNAL.TWO, \
+		HandSignalSprite.SIGNAL.THREE, HandSignalSprite.SIGNAL.FOUR:
+			return  # selection signals and released keys aren't commands
+	if not is_instance_valid(actively_signaled_teammate):
+		print("no teammate selected")
+		return
+	actively_signaled_teammate.receive_command(sig, self, focused_target)
+
+
+func _physics_process(delta: float) -> void:
+	_handle_signals()
 	
 	var raw_input := Input.get_vector("pc_left", "pc_right", "pc_forward", "pc_back")	
 	

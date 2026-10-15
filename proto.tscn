@@ -252,9 +252,8 @@ mesh = SubResource("BoxMesh_uhg71")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_uhg71")
 
-[node name="AI Teammate" parent="." unique_id=289776472 node_paths=PackedStringArray("player", "patrol_markers") instance=ExtResource("3_ubfyf")]
+[node name="AI Teammate" parent="." unique_id=289776472 node_paths=PackedStringArray("patrol_markers") instance=ExtResource("3_ubfyf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4066544, 4.7683716e-07, -7.1306643)
-player = NodePath("../Player")
 patrol_markers = [NodePath("Marker3D"), NodePath("Marker3D2"), NodePath("Marker3D3"), NodePath("Marker3D4")]
 
 [node name="Marker3D" type="Marker3D" parent="AI Teammate" unique_id=1277906579]
@@ -269,13 +268,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.197649, -4.7683716e-07, 8.6
 [node name="Marker3D4" type="Marker3D" parent="AI Teammate" unique_id=1947050683]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0627027, -4.7683716e-07, 8.199323)
 
-[node name="AI Teammate2" parent="." unique_id=1336614232 node_paths=PackedStringArray("player") instance=ExtResource("3_ubfyf")]
+[node name="AI Teammate2" parent="." unique_id=1336614232 instance=ExtResource("3_ubfyf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.03668, 4.7683716e-07, 1.1231427)
-player = NodePath("../Player")
 
-[node name="AI Teammate3" parent="." unique_id=421837549 node_paths=PackedStringArray("player", "patrol_markers") instance=ExtResource("3_ubfyf")]
+[node name="AI Teammate3" parent="." unique_id=421837549 node_paths=PackedStringArray("patrol_markers") instance=ExtResource("3_ubfyf")]
 transform = Transform3D(-0.7887695, 0, -0.6146891, 0, 1, 0, 0.6146891, 0, -0.7887695, 2.0662103, 4.7683716e-07, -5.6939344)
-player = NodePath("../Player")
 patrol_markers = [NodePath("Marker3D"), NodePath("Marker3D2"), NodePath("Marker3D3"), NodePath("Marker3D4")]
 
 [node name="Marker3D" type="Marker3D" parent="AI Teammate3" unique_id=1009798034]
@@ -346,10 +343,8 @@ mesh = SubResource("BoxMesh_1whnq")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable4" unique_id=404354511]
 shape = SubResource("BoxShape3D_32ncx")
 
-[node name="Enemy" parent="." unique_id=1232124323 node_paths=PackedStringArray("player", "opponents") instance=ExtResource("6_lrm5r")]
+[node name="Enemy" parent="." unique_id=1232124323 instance=ExtResource("6_lrm5r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.619458, 0, 4)
-player = NodePath("../Player")
-opponents = [NodePath("../Player"), NodePath("../AI Teammate")]
 
 [node name="UI" type="Control" parent="." unique_id=2041766851]
 layout_mode = 3
