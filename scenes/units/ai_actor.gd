@@ -49,9 +49,11 @@ func receive_command(command: HandSignalSprite.SIGNAL, sender: Node3D, target: V
 		HandSignalSprite.SIGNAL.PATROL:
 			movement.transition_to($MovementState/Patrol)
 		HandSignalSprite.SIGNAL.FOLLOW:
+			if !sender: return
 			follow_target = sender
 			movement.transition_to($MovementState/Follow)
 		HandSignalSprite.SIGNAL.MOVE:
+			if !target: return
 			move_target = target
 			movement.transition_to($MovementState/Move)
 		HandSignalSprite.SIGNAL.ENGAGE:
