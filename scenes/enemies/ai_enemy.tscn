@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://xli2vv232yy1" path="res://scenes/enemies/ai_enemy.gd" id="1_wg236"]
 [ext_resource type="Script" uid="uid://ds8kjwjfaggds" path="res://scenes/enemies/states/scanning.gd" id="2_i7rso"]
 [ext_resource type="Material" uid="uid://c5wxuhvhhuoo8" path="res://scenes/radar/hostile_radar_dot.tres" id="2_il1v2"]
-[ext_resource type="Texture2D" uid="uid://jjcd7kbg6ve5" path="res://addons/godot-prototype-texture/PNG/logo_512x512/logo_orange_512x512.png" id="2_pce36"]
 [ext_resource type="Script" uid="uid://cal2x1hpac871" path="res://scenes/enemies/states/alerted.gd" id="3_wg236"]
-[ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/enemies/states/shooting.gd" id="4_oaelh"]
+[ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/enemies/states/engaging.gd" id="4_oaelh"]
+[ext_resource type="Material" uid="uid://dx4vk1urlamo4" path="res://scenes/enemies/scanning_face_material.tres" id="7_wg236"]
 [ext_resource type="Script" uid="uid://mytkvrlqyl4a" path="res://scenes/enemies/debug_fov.gd" id="8_wg236"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0o143"]
@@ -24,10 +24,6 @@ size = Vector3(0.5, 1, 0.5)
 radius = 0.4
 height = 0.2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwexf"]
-albedo_texture = ExtResource("2_pce36")
-uv1_scale = Vector3(4, 2, 1)
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_uhg71"]
 top_radius = 0.3
 bottom_radius = 0.3
@@ -43,7 +39,8 @@ collision_mask = 55
 script = ExtResource("1_wg236")
 sight_range = 30.0
 fov_deg = 90.0
-occluder_mask = 7
+visual_occluder_mask = 6
+attack_occluder_mask = 775
 
 [node name="EnemyState" type="Node" parent="." unique_id=1242890481 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_i7rso")
@@ -55,7 +52,7 @@ script = ExtResource("2_i7rso")
 [node name="Alerted" type="Node" parent="EnemyState" unique_id=6266319]
 script = ExtResource("3_wg236")
 
-[node name="Shooting" type="Node" parent="EnemyState" unique_id=1721875290]
+[node name="Engaging" type="Node" parent="EnemyState" unique_id=1721875290]
 script = ExtResource("4_oaelh")
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=426961026]
@@ -92,7 +89,7 @@ mesh = SubResource("SphereMesh_sl17d")
 
 [node name="Face" type="CSGMesh3D" parent="." unique_id=933804409]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 1.6, 0)
-material_override = SubResource("StandardMaterial3D_hwexf")
+material_override = ExtResource("7_wg236")
 mesh = SubResource("CylinderMesh_uhg71")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="Face" unique_id=1996121552]
