@@ -106,11 +106,11 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("signal_ready"):
-		active_signal = hand_signal_sprite.SIGNAL.SWAP
+		active_signal = hand_signal_sprite.SIGNAL.PATROL
 	elif Input.is_action_pressed("signal_stop"):
 		active_signal = hand_signal_sprite.SIGNAL.STOP
 	elif Input.is_action_pressed("signal_follow"):
-		active_signal = hand_signal_sprite.SIGNAL.HOLD
+		active_signal = hand_signal_sprite.SIGNAL.FOLLOW
 	elif Input.is_action_pressed("signal_1"):
 		if teammates.size() > 0:
 			active_signal = hand_signal_sprite.SIGNAL.ONE
@@ -138,7 +138,7 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_pressed("signal_move"):
 		if focused_target:
 			print(" Move to ", focused_target.name)
-			active_signal = hand_signal_sprite.SIGNAL.DANGER
+			active_signal = hand_signal_sprite.SIGNAL.MOVE
 		else:
 			print("no focused target")
 	else:

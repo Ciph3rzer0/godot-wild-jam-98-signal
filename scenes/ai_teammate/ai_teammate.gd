@@ -35,10 +35,9 @@ func process_player_signals():
 	match player.active_signal:
 		HandSignalSprite.SIGNAL.STOP:
 			$MovementState.transition_to($MovementState/Wait)
-		HandSignalSprite.SIGNAL.SWAP:
+		HandSignalSprite.SIGNAL.PATROL:
 			$MovementState.transition_to($MovementState/Patrol)
-		HandSignalSprite.SIGNAL.HOLD:
+		HandSignalSprite.SIGNAL.FOLLOW:
 			$MovementState.transition_to($MovementState/Follow)
-		HandSignalSprite.SIGNAL.DANGER:
+		HandSignalSprite.SIGNAL.MOVE:
 			$MovementState.transition_to($MovementState/Move)
-
