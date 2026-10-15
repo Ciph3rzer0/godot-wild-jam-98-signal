@@ -54,6 +54,8 @@ func receive_command(command: HandSignalSprite.SIGNAL, sender: Node3D, target: V
 		HandSignalSprite.SIGNAL.MOVE:
 			move_target = target
 			movement.transition_to($MovementState/Move)
+		HandSignalSprite.SIGNAL.ENGAGE:
+			combat.transition_to($CombatState/Scanning)
 
 
 ## Turns the body toward a flat direction. Model faces -Z.

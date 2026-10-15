@@ -41,7 +41,7 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_cw6eu"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_sknpd"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_empyl"]
 
 [node name="AI Teammate" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip") groups=["team_0"]]
 collision_layer = 64
@@ -135,7 +135,7 @@ mesh = SubResource("BoxMesh_cw6eu")
 [node name="Eyes" type="MeshInstance3D" parent="Face" unique_id=122483706]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 cast_shadow = 0
-mesh = SubResource("ImmediateMesh_sknpd")
+mesh = SubResource("ImmediateMesh_empyl")
 script = ExtResource("9_yhyk5")
 arc_angle = 90.0
 radius = 3.0

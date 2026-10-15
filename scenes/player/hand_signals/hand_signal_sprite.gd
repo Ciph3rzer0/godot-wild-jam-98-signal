@@ -30,7 +30,7 @@ enum SIGNAL {
 	THREE,
 	FOUR,
 	# Extras
-	DANGER,
+	ENGAGE, #DaNGER,
 	QUIET,
 	SWAP,
 	PATROL, #SLOW_DOWN,

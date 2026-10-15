@@ -149,6 +149,8 @@ func _handle_signals():
 			active_signal = hand_signal_sprite.SIGNAL.MOVE
 		else:
 			print("no focused target")
+	elif Input.is_action_pressed("signal_engage"):
+		active_signal = hand_signal_sprite.SIGNAL.ENGAGE
 	else:
 		active_signal = hand_signal_sprite.SIGNAL.NONE
 	
