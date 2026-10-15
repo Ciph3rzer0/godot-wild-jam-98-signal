@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://cqjwn7gq2golt"]
 
 [ext_resource type="PackedScene" uid="uid://dfh26oihpdhsn" path="res://assets/models/characters/SWAT.glb" id="1_o6kju"]
+[ext_resource type="AnimationLibrary" uid="uid://cgsl7ywecgmii" path="res://assets/models/characters/animations.glb" id="2_aal20"]
 
 [node name="Squadmate" type="Node3D" unique_id=807645156]
 
 [node name="SWAT" parent="." unique_id=589813887 instance=ExtResource("1_o6kju")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0023417473, 4.7683716e-07, 0.0066497326)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1833460906]
+libraries/animations = ExtResource("2_aal20")
 
 [editable path="SWAT"]
