@@ -1,17 +1,11 @@
 [gd_scene format=3 uid="uid://bjopuuaqydblu"]
 
 [ext_resource type="PackedScene" uid="uid://dykvknbluafhw" path="res://scenes/levels/base_level.tscn" id="1_x6ivy"]
-[ext_resource type="PackedScene" uid="uid://douhqhlm1yt3n" path="res://scenes/levels/blockout_1.tscn" id="2_4tcl0"]
-[ext_resource type="Texture2D" uid="uid://2lpufdmde2uc" path="res://addons/godot-prototype-texture/PNG/grid_512x512/grid_blue_512x512.png" id="3_dd0lh"]
 [ext_resource type="NavigationMesh" uid="uid://b2q4qiu77p4ie" path="res://scenes/units/ai_nav_mesh.tres" id="4_2r1tl"]
 [ext_resource type="PackedScene" uid="uid://c824qy2qut6m1" path="res://scenes/enemies/ai_enemy.tscn" id="4_bfxgj"]
+[ext_resource type="PackedScene" uid="uid://c83u4mtw7i7uu" path="res://scenes/levels/blockout_1 (2).tscn" id="5_2r1tl"]
 [ext_resource type="PackedScene" uid="uid://dbgkrrjvkd87e" path="res://scenes/ai_teammate/ai_teammate.tscn" id="5_dywbp"]
 [ext_resource type="Script" uid="uid://7tt7istu1p8r" path="res://signal_target.gd" id="6_2r1tl"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3rriw"]
-albedo_texture = ExtResource("3_dd0lh")
-uv1_triplanar = true
-uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r1tl"]
 transparency = 1
@@ -25,53 +19,98 @@ size = Vector3(0.18037109, 0.9389038, 1.3805542)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nfihu"]
 height = 1.6
 
+[sub_resource type="BoxMesh" id="BoxMesh_2r1tl"]
+flip_faces = true
+size = Vector3(0.5, 0.1, 0.5)
+
 [node name="Prototype Level" unique_id=1527916753 instance=ExtResource("1_x6ivy")]
 
 [node name="RadarCameraRig" parent="UI/MarginContainer/CircleMask/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(1747511697) index="0" unique_id=1503955098]
-transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, -4.14536, 0.5, 12.618736)
+transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, -1.6445713, 0.5, 12.641313)
 
 [node name="Player" parent="." index="3" unique_id=1865119778 node_paths=PackedStringArray("teammates")]
-transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, -4.14536, 0.5, 12.618736)
+transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, -1.6445713, 0.5, 12.641313)
 teammates = [NodePath("../AITeammate")]
 
 [node name="AITeammate" parent="." index="4" unique_id=933410074 instance=ExtResource("5_dywbp")]
-transform = Transform3D(0.8601651, 0, -0.51001555, 0, 1, 0, 0.51001555, 0, 0.8601651, 1.042553, 0.50000095, 11.935216)
+transform = Transform3D(0.8601651, 0, -0.51001555, 0, 1, 0, 0.51001555, 0, 0.8601651, 3.5433416, 0.50000095, 11.957792)
 
-[node name="CSGFloor2" type="CSGBox3D" parent="." index="6" unique_id=1240761388]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-visible = false
-layers = 32768
-material_override = SubResource("StandardMaterial3D_3rriw")
-use_collision = true
-size = Vector3(100, 1, 100)
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="7" unique_id=1116788572]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="6" unique_id=1116788572]
 navigation_mesh = ExtResource("4_2r1tl")
 
-[node name="blockout_1" parent="." index="8" unique_id=129721134 groups=["navigation_mesh_source_group"] instance=ExtResource("2_4tcl0")]
+[node name="blockout_1 (2)" parent="." index="7" unique_id=2018022391 groups=["navigation_mesh_source_group"] instance=ExtResource("5_2r1tl")]
 
-[node name="Enemy" parent="." index="9" unique_id=289776472 instance=ExtResource("4_bfxgj")]
-transform = Transform3D(0.7501361, 0, -0.6612835, 0, 1, 0, 0.6612835, 0, 0.7501361, 1.4895766, 0, -7.1646786)
+[node name="Enemy" parent="." index="8" unique_id=289776472 instance=ExtResource("4_bfxgj")]
+transform = Transform3D(0.7501361, 0, -0.6612835, 0, 1, 0, 0.6612835, 0, 0.7501361, 3.9172142, 0.4, -6.9692426)
 
-[node name="Enemy2" parent="." index="10" unique_id=1553773145 instance=ExtResource("4_bfxgj")]
-transform = Transform3D(0.8179001, 0, -0.5753602, 0, 1, 0, 0.5753602, 0, 0.8179001, 3.2196963, 0, -6.2455525)
+[node name="Enemy2" parent="." index="9" unique_id=1553773145 instance=ExtResource("4_bfxgj")]
+transform = Transform3D(0.8179001, 0, -0.5753602, 0, 1, 0, 0.5753602, 0, 0.8179001, 5.7204847, 0.4, -6.222976)
 
-[node name="Enemy3" parent="." index="11" unique_id=774387382 instance=ExtResource("4_bfxgj")]
-transform = Transform3D(-0.81790006, 0, 0.57536024, 0, 1, 0, -0.57536024, 0, -0.81790006, -2.105829, 0, -6.515884)
+[node name="Enemy3" parent="." index="10" unique_id=774387382 instance=ExtResource("4_bfxgj")]
+transform = Transform3D(-0.81790006, 0, 0.57536024, 0, 1, 0, -0.57536024, 0, -0.81790006, 0.3949597, 0.4, -6.4933076)
 
-[node name="Interactable" type="StaticBody3D" parent="." index="12" unique_id=939045752 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.112, 0, 9.84)
+[node name="InteractableWindow" type="StaticBody3D" parent="." index="11" unique_id=939045752 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.611212, 0, 9.8625765)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("6_2r1tl")
 aim_point = NodePath("MeshInstance3D")
 highlight_meshes = [NodePath("MeshInstance3D")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactable" index="0" unique_id=1601739307]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InteractableWindow" index="0" unique_id=1601739307]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65043926, 1.6175354, -0.03414917)
 material_override = SubResource("StandardMaterial3D_2r1tl")
 mesh = SubResource("BoxMesh_1seuy")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" index="1" unique_id=851689365]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableWindow" index="1" unique_id=851689365]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000002, 0)
+shape = SubResource("CylinderShape3D_nfihu")
+
+[node name="InteractableWindow2" type="StaticBody3D" parent="." index="12" unique_id=2039574482 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.5163407, -4.7683716e-07, -8.200917)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("6_2r1tl")
+aim_point = NodePath("MeshInstance3D")
+highlight_meshes = [NodePath("MeshInstance3D")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InteractableWindow2" index="0" unique_id=58993514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65043926, 1.6175354, -0.03414917)
+material_override = SubResource("StandardMaterial3D_2r1tl")
+mesh = SubResource("BoxMesh_1seuy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableWindow2" index="1" unique_id=668899738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000002, 0)
+shape = SubResource("CylinderShape3D_nfihu")
+
+[node name="InteractableFloor" type="StaticBody3D" parent="." index="13" unique_id=1695278063 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.6064669, 0.4002834, 9.8625765)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("6_2r1tl")
+aim_point = NodePath("MeshInstance3D")
+highlight_meshes = [NodePath("MeshInstance3D")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InteractableFloor" index="0" unique_id=1457160675]
+material_override = SubResource("StandardMaterial3D_2r1tl")
+mesh = SubResource("BoxMesh_2r1tl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableFloor" index="1" unique_id=1858145346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7000001, 0)
+shape = SubResource("CylinderShape3D_nfihu")
+
+[node name="InteractableFloor2" type="StaticBody3D" parent="." index="14" unique_id=65826097 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3935331, 0.4002834, -1.6985998)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("6_2r1tl")
+aim_point = NodePath("MeshInstance3D")
+highlight_meshes = [NodePath("MeshInstance3D")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InteractableFloor2" index="0" unique_id=331382186]
+material_override = SubResource("StandardMaterial3D_2r1tl")
+mesh = SubResource("BoxMesh_2r1tl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableFloor2" index="1" unique_id=1744388757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7000001, 0)
 shape = SubResource("CylinderShape3D_nfihu")
