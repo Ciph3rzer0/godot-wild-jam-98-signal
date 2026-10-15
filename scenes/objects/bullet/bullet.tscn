@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://de6hjfimvduja"]
+
+[ext_resource type="Script" uid="uid://okpvdy4i0ffn" path="res://scenes/objects/bullet/bullet.gd" id="1_rcpd2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ds4j2"]
+radius = 0.2
+
+[sub_resource type="TorusMesh" id="TorusMesh_uhg71"]
+inner_radius = 0.1
+outer_radius = 0.2
+
+[node name="Bullet" type="RigidBody3D" unique_id=191630342]
+collision_layer = 65536
+collision_mask = 4294967295
+mass = 0.1
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_rcpd2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1923304962]
+shape = SubResource("SphereShape3D_ds4j2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1003677766]
+mesh = SubResource("TorusMesh_uhg71")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

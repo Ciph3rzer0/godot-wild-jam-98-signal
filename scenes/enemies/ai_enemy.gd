@@ -14,6 +14,8 @@ extends CharacterBody3D
 @export_flags_3d_physics var visual_occluder_mask := 1
 @export_flags_3d_physics var attack_occluder_mask := 1
 
+@export var bullet: PackedScene #RigidBody3D
+
 @onready var face: CSGMesh3D = $Face 
 @onready var eyes: MeshInstance3D = $Face/Eyes  # Marker3D at head height, facing -Z
 
@@ -21,6 +23,11 @@ var _primary_engagement_target: CharacterBody3D
 
 func _ready() -> void:
 	assert(player)
+	assert(opponents)
+	assert(opponents.size() > 0)
+	assert(bullet)
+	assert(face)
+	assert(eyes)
 
 
 func _process(delta: float) -> void:
