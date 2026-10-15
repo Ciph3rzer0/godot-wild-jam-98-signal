@@ -15,6 +15,10 @@ run/main_scene="uid://ct87i30v13l0i"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[debug]
+
+shapes/navigation/3d/geometry_face_color=Color(0.91764706, 0.9411765, 0.5058824, 1)
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -123,6 +127,11 @@ signal_move={
 3d_physics/layer_9="RiotShield"
 3d_physics/layer_10="Glass"
 3d_physics/layer_17="Bullets"
+
+[navigation]
+
+3d/default_cell_size=0.1
+3d/default_cell_height=0.1
 
 [physics]
 
