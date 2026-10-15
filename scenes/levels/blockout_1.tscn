@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://douhqhlm1yt3n"]
+
+[ext_resource type="PackedScene" uid="uid://dhb6s3gymblj2" path="res://assets/models/blockouts/blockout_1.glb" id="1_8w27k"]
+
+[node name="blockout_1" unique_id=129721134 instance=ExtResource("1_8w27k")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Cube_002" parent="." index="0" unique_id=622812388]
+layers = 65537
+
+[node name="Cube_007" parent="." index="1" unique_id=1762289488]
+layers = 65537
+
+[node name="Cube_010" parent="." index="2" unique_id=567819982]
+layers = 65537
+
+[node name="enemy_002" parent="." index="3" unique_id=860100163]
+layers = 65537
+
+[node name="gun_pistol_003" parent="enemy_002" index="0" unique_id=915906791]
+layers = 65537
+
+[node name="enemy_004" parent="." index="4" unique_id=660603366]
+layers = 65537
+
+[node name="gun_pistol_004" parent="enemy_004" index="0" unique_id=42195844]
+layers = 65537
+
+[node name="enemy_012" parent="." index="5" unique_id=1509036210]
+layers = 65537
+
+[node name="gun_pistol_002" parent="enemy_012" index="0" unique_id=279339679]
+layers = 65537
+
+[node name="hostage_001" parent="." index="6" unique_id=108992287]
+layers = 65537
+
+[node name="Plane_008" parent="." index="8" unique_id=961412851]
+layers = 65537
+
+[node name="Plane_009" parent="." index="9" unique_id=2123183953]
+layers = 65537
+
+[node name="Plane_010" parent="." index="10" unique_id=919575188]
+layers = 65537
+
+[node name="Plane_011" parent="." index="11" unique_id=445799087]
+layers = 65537
+
+[node name="policewoman_001" parent="." index="12" unique_id=707644102]
+layers = 65537
+
+[node name="Cube_008" parent="policewoman_001" index="0" unique_id=1684975813]
+layers = 65537
+
+[node name="Cube_009" parent="policewoman_001" index="1" unique_id=20019352]
+layers = 65537
+
+[node name="SWAT_001" parent="." index="13" unique_id=1174996805]
+layers = 65537
+
+[node name="Cube_001" parent="SWAT_001" index="0" unique_id=1347379366]
+layers = 65537
+
+[node name="Text_001" parent="." index="14" unique_id=1495760900]
+layers = 65537

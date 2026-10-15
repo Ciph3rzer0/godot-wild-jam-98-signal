@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://dykvknbluafhw"]
+
+[ext_resource type="PackedScene" uid="uid://bxc4ceq66ael3" path="res://scenes/player/player.tscn" id="1_u2wky"]
+[ext_resource type="Texture2D" uid="uid://2lpufdmde2uc" path="res://addons/godot-prototype-texture/PNG/grid_512x512/grid_blue_512x512.png" id="2_2elnx"]
+
+[sub_resource type="Gradient" id="Gradient_lrm5r"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.7096774)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uhg71"]
+gradient = SubResource("Gradient_lrm5r")
+width = 160
+height = 160
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_icttm"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ubfyf"]
+sky_material = SubResource("ProceduralSkyMaterial_icttm")
+
+[sub_resource type="Environment" id="Environment_7trdo"]
+background_mode = 2
+sky = SubResource("Sky_ubfyf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3rriw"]
+albedo_texture = ExtResource("2_2elnx")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="Prototype Level" type="Node3D" unique_id=1527916753]
+
+[node name="UI" type="Control" parent="." unique_id=2041766851]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=3320397]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -160.0
+offset_right = 160.0
+grow_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+metadata/_edit_group_ = true
+
+[node name="CircleMask" type="TextureRect" parent="UI/MarginContainer" unique_id=812534556]
+clip_children = 1
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = SubResource("GradientTexture2D_uhg71")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="UI/MarginContainer/CircleMask" unique_id=89717868]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="UI/MarginContainer/CircleMask/SubViewportContainer" unique_id=1747511697]
+handle_input_locally = false
+size = Vector2i(160, 160)
+render_target_update_mode = 4
+
+[node name="RadarCameraRig" type="Node3D" parent="UI/MarginContainer/CircleMask/SubViewportContainer/SubViewport" unique_id=1503955098]
+transform = Transform3D(-1, 0, 2.3849761e-08, 0, 1, 0, -2.3849761e-08, 0, -1, -3.980579, 0, -1.5851059)
+
+[node name="RadarCamera" type="Camera3D" parent="UI/MarginContainer/CircleMask/SubViewportContainer/SubViewport/RadarCameraRig" unique_id=697681248]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 100, 0)
+cull_mask = 1015808
+projection = 1
+size = 20.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=451367747]
+environment = SubResource("Environment_7trdo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=242535334]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=1865119778 node_paths=PackedStringArray("teammates") instance=ExtResource("1_u2wky")]
+transform = Transform3D(-1, 0, 2.3849761e-08, 0, 1, 0, -2.3849761e-08, 0, -1, -3.980579, 0, -1.5851059)
+teammates = [null, NodePath(""), null]
+
+[node name="RemoteTransformRadarCamera" type="RemoteTransform3D" parent="Player" unique_id=1321901750]
+remote_path = NodePath("../../UI/MarginContainer/CircleMask/SubViewportContainer/SubViewport/RadarCameraRig")
+update_scale = false
+
+[node name="CSGFloor" type="CSGBox3D" parent="." unique_id=547039189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+layers = 32768
+material_override = SubResource("StandardMaterial3D_3rriw")
+use_collision = true
+size = Vector3(100, 1, 100)

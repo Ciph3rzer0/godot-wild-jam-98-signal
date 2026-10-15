@@ -44,7 +44,7 @@ size = Vector3(2, 4, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_32ncx"]
 size = Vector3(1.6, 4, 0.6)
 
-[node name="Player" type="CharacterBody3D" unique_id=1865119778 node_paths=PackedStringArray("cam", "gun_tip") groups=["team_0"]]
+[node name="Player" type="CharacterBody3D" unique_id=1865119778 node_paths=PackedStringArray("cam", "gun_tip")]
 collision_layer = 16
 collision_mask = 66119
 script = ExtResource("1_4flbx")
