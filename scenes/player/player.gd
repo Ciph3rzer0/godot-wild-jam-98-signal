@@ -274,6 +274,7 @@ func find_signal_target() -> SignalTarget:
 	var best_score := INF
 
 	for node in get_tree().get_nodes_in_group(&"signal_targets"):
+		if node.disabled: continue
 		var target := node as SignalTarget
 		if not target or not target.is_visible_in_tree():
 			continue
