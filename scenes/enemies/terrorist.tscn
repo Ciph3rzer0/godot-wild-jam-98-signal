@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bpvjjcx13hhmv"]
 
 [ext_resource type="AnimationLibrary" uid="uid://cgsl7ywecgmii" path="res://assets/models/characters/animations.glb" id="1_ieyfw"]
+[ext_resource type="Script" uid="uid://h773dd1pv2cr" path="res://scenes/enemies/terrorist.gd" id="1_k858l"]
 [ext_resource type="PackedScene" uid="uid://yr7lge4rjqgx" path="res://assets/models/equips/handgun.glb" id="1_vammo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_okm43"]
@@ -184,6 +185,7 @@ radius = 0.28955078
 height = 2.1278076
 
 [node name="Terrorist" type="CharacterBody3D" unique_id=1953779749]
+script = ExtResource("1_k858l")
 
 [node name="CharacterModel" type="Node3D" parent="." unique_id=197376853]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06316066, 0, -0.13953066)
