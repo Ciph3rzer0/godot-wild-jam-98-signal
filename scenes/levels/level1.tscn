@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bjopuuaqydblu"]
 
 [ext_resource type="PackedScene" uid="uid://cmd46kghrvyc3" path="res://scenes/player/policePlayer.tscn" id="2_4tcl0"]
-[ext_resource type="PackedScene" uid="uid://cqjwn7gq2golt" path="res://scenes/ai_teammate/squadmate.tscn" id="3_dd0lh"]
+[ext_resource type="PackedScene" uid="uid://cqjwn7gq2golt" path="res://scenes/units/squadmates/squadmate.tscn" id="3_dd0lh"]
 [ext_resource type="PackedScene" uid="uid://41j772jln2ny" path="res://assets/models/environment/l1-walls.glb" id="4_bfxgj"]
-[ext_resource type="PackedScene" uid="uid://bpvjjcx13hhmv" path="res://scenes/enemies/terrorist.tscn" id="5_1seuy"]
+[ext_resource type="PackedScene" uid="uid://bpvjjcx13hhmv" path="res://scenes/units/ai/terrorist.tscn" id="5_1seuy"]
 [ext_resource type="PackedScene" uid="uid://dcxl4dpvwhbuy" path="res://assets/models/environment/asphaltFloor.glb" id="5_dywbp"]
 [ext_resource type="PackedScene" uid="uid://c7usov56xlpg7" path="res://scenes/hostage/hostage.tscn" id="6_1seuy"]
 
@@ -587,7 +587,7 @@ transform = Transform3D(1.4280412, 0, 0, 0, 1.9999988, 0, 0, 0, 1.4905133, -3.69
 [node name="l1-walls" parent="." unique_id=368027361 instance=ExtResource("4_bfxgj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.088354945, 0.49689507, 0.52051854)
 
-[node name="Cube_002" parent="l1-walls" index="0" unique_id=549711616]
+[node name="Cube_002" parent="l1-walls" index="0" unique_id=1096225393]
 transform = Transform3D(1.7360821, 0, 0, 0, 0.48898828, 0, 0, 0, 0.043931287, -1.5793028, 0.16666818, -2.527441)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="l1-walls" unique_id=890574830]
