@@ -101,6 +101,7 @@ mesh = SubResource("BoxMesh_75vfm")
 
 [node name="Shield" type="CSGMesh3D" parent="." unique_id=397986650]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 1.1247408, 0.19999996)
+visible = false
 material_override = SubResource("StandardMaterial3D_p47bc")
 mesh = SubResource("CylinderMesh_75vfm")
 
