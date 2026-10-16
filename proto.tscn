@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://2lpufdmde2uc" path="res://addons/godot-prototype-texture/PNG/grid_512x512/grid_blue_512x512.png" id="1_fl4k8"]
 [ext_resource type="PackedScene" uid="uid://bxc4ceq66ael3" path="res://scenes/player/player.tscn" id="2_icttm"]
-[ext_resource type="PackedScene" uid="uid://dbgkrrjvkd87e" path="res://scenes/ai_teammate/ai_teammate.tscn" id="3_ubfyf"]
+[ext_resource type="PackedScene" uid="uid://dbgkrrjvkd87e" path="res://scenes/units/squadmates/ai_teammate.tscn" id="3_ubfyf"]
 [ext_resource type="Texture2D" uid="uid://jjcd7kbg6ve5" path="res://addons/godot-prototype-texture/PNG/logo_512x512/logo_orange_512x512.png" id="4_7trdo"]
 [ext_resource type="Script" uid="uid://7tt7istu1p8r" path="res://signal_target.gd" id="4_ekw8u"]
-[ext_resource type="PackedScene" uid="uid://c824qy2qut6m1" path="res://scenes/enemies/ai_enemy.tscn" id="6_lrm5r"]
+[ext_resource type="PackedScene" uid="uid://c824qy2qut6m1" path="res://scenes/units/enemies/ai_enemy.tscn" id="6_lrm5r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_icttm"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)

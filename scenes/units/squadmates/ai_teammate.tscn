@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://dbgkrrjvkd87e"]
 
-[ext_resource type="Script" uid="uid://blku3cixk7iij" path="res://scenes/units/ai_actor.gd" id="1_viqr6"]
+[ext_resource type="Script" uid="uid://blku3cixk7iij" path="res://scenes/units/ai/ai_actor.gd" id="1_viqr6"]
 [ext_resource type="Script" uid="uid://bo5y5sur160r6" path="res://addons/state_machine/StateMachine.gd" id="2_3bo10"]
 [ext_resource type="Material" uid="uid://b1ax5sjyd2bx5" path="res://scenes/radar/ally_radar_dot.tres" id="2_wsott"]
 [ext_resource type="PackedScene" uid="uid://de6hjfimvduja" path="res://scenes/objects/bullet/bullet.tscn" id="2_yhyk5"]
-[ext_resource type="Script" uid="uid://dxi8ymorv1mmv" path="res://scenes/ai_teammate/states/wait.gd" id="3_cw6eu"]
+[ext_resource type="Script" uid="uid://dxi8ymorv1mmv" path="res://scenes/units/ai/states/wait.gd" id="3_cw6eu"]
 [ext_resource type="Texture2D" uid="uid://csucxwl38he0t" path="res://addons/godot-prototype-texture/PNG/logo_512x512/logo_lime_512x512.png" id="3_sl17d"]
-[ext_resource type="Script" uid="uid://q4puqaj3nmbx" path="res://scenes/ai_teammate/states/move.gd" id="4_viqr6"]
-[ext_resource type="Script" uid="uid://cws6qxdbyesrx" path="res://scenes/ai_teammate/states/follow.gd" id="5_yhyk5"]
-[ext_resource type="Script" uid="uid://bav6agln5erbr" path="res://scenes/ai_teammate/states/patrol.gd" id="6_4ffhm"]
-[ext_resource type="Script" uid="uid://ds8kjwjfaggds" path="res://scenes/enemies/states/scanning.gd" id="7_4ffhm"]
-[ext_resource type="Script" uid="uid://fi3eyjs2i4wt" path="res://scenes/enemies/states/hold_fire.gd" id="8_empyl"]
-[ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/enemies/states/engaging.gd" id="8_y7xsm"]
-[ext_resource type="Script" uid="uid://cal2x1hpac871" path="res://scenes/enemies/states/alerted.gd" id="9_sknpd"]
-[ext_resource type="Script" uid="uid://mytkvrlqyl4a" path="res://scenes/enemies/debug_fov.gd" id="9_yhyk5"]
+[ext_resource type="Script" uid="uid://q4puqaj3nmbx" path="res://scenes/units/ai/states/move.gd" id="4_viqr6"]
+[ext_resource type="Script" uid="uid://cws6qxdbyesrx" path="res://scenes/units/ai/states/follow.gd" id="5_yhyk5"]
+[ext_resource type="Script" uid="uid://bav6agln5erbr" path="res://scenes/units/ai/states/patrol.gd" id="6_4ffhm"]
+[ext_resource type="Script" uid="uid://fi3eyjs2i4wt" path="res://scenes/units/ai/states/hold_fire.gd" id="8_ust3i"]
+[ext_resource type="Script" uid="uid://ds8kjwjfaggds" path="res://scenes/units/ai/states/scanning.gd" id="9_kmw7f"]
+[ext_resource type="Script" uid="uid://mytkvrlqyl4a" path="res://scenes/units/debug_fov.gd" id="9_yhyk5"]
+[ext_resource type="Script" uid="uid://cal2x1hpac871" path="res://scenes/units/ai/states/alerted.gd" id="10_hffai"]
+[ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/units/ai/states/engaging.gd" id="11_6tg35"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0o143"]
 radius = 0.25
@@ -75,16 +75,16 @@ script = ExtResource("2_3bo10")
 initial_state = NodePath("HoldFire")
 
 [node name="HoldFire" type="Node" parent="CombatState" unique_id=1749604475]
-script = ExtResource("8_empyl")
+script = ExtResource("8_ust3i")
 
 [node name="Scanning" type="Node" parent="CombatState" unique_id=1058996374]
-script = ExtResource("7_4ffhm")
+script = ExtResource("9_kmw7f")
 
 [node name="Alerted" type="Node" parent="CombatState" unique_id=1743336902]
-script = ExtResource("9_sknpd")
+script = ExtResource("10_hffai")
 
 [node name="Engaging" type="Node" parent="CombatState" unique_id=1198638309]
-script = ExtResource("8_y7xsm")
+script = ExtResource("11_6tg35")
 avg_act_chance_per_second = 2.0
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=426961026]

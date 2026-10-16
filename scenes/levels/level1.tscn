@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bjopuuaqydblu"]
 
 [ext_resource type="PackedScene" uid="uid://cmd46kghrvyc3" path="res://scenes/player/policePlayer.tscn" id="2_4tcl0"]
-[ext_resource type="PackedScene" uid="uid://cqjwn7gq2golt" path="res://scenes/ai_teammate/squadmate.tscn" id="3_dd0lh"]
+[ext_resource type="PackedScene" uid="uid://cqjwn7gq2golt" path="res://scenes/units/squadmates/squadmate.tscn" id="3_dd0lh"]
 [ext_resource type="PackedScene" uid="uid://41j772jln2ny" path="res://assets/models/environment/l1-walls.glb" id="4_bfxgj"]
-[ext_resource type="PackedScene" uid="uid://bpvjjcx13hhmv" path="res://scenes/enemies/terrorist.tscn" id="5_1seuy"]
+[ext_resource type="PackedScene" uid="uid://bpvjjcx13hhmv" path="res://scenes/units/ai/terrorist.tscn" id="5_1seuy"]
 [ext_resource type="PackedScene" uid="uid://dcxl4dpvwhbuy" path="res://assets/models/environment/asphaltFloor.glb" id="5_dywbp"]
 [ext_resource type="PackedScene" uid="uid://c7usov56xlpg7" path="res://scenes/hostage/hostage.tscn" id="6_1seuy"]
 [ext_resource type="PackedScene" uid="uid://cw7sws8plbuy" path="res://assets/models/environment/wall_cinderblock.glb" id="7_2r1tl"]
