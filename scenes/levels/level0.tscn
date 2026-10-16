@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bpvjjcx13hhmv" path="res://scenes/units/ai/terrorist.tscn" id="8_vals0"]
 
 [sub_resource type="Environment" id="Environment_h45xw"]
+background_energy_multiplier = 0.56
 fog_light_color = Color(0.19916937, 0.21980953, 0.25192553, 1)
 fog_density = 0.079
 
@@ -33,37 +34,6 @@ material = SubResource("StandardMaterial3D_0o143")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=524386190]
 environment = SubResource("Environment_h45xw")
-
-[node name="Label3D" type="Label3D" parent="." unique_id=59119305]
-transform = Transform3D(1.5213856, 0, 1.1025497e-14, 0, 1.5213856, 0, -1.1025497e-14, 0, 1.5213856, -0.5317489, 0.87668574, -3.375373)
-text = "Squad Leader"
-outline_size = 5
-
-[node name="Label3D2" type="Label3D" parent="." unique_id=879540072]
-transform = Transform3D(1.3091979, 0, 9.48777e-15, 0, 1.3091979, 0, -9.48777e-15, 0, 1.3091979, -0.5317489, 0.6042812, -3.375373)
-text = "by
-cipherzero & frkatona"
-font_size = 10
-outline_size = 5
-
-[node name="Label3D3" type="Label3D" parent="." unique_id=1456612247]
-transform = Transform3D(-1.0417808, 0, -9.107538e-08, 0, 1.0417808, 0, 9.107538e-08, 0, -1.0417808, -0.672094, 1.0342196, 1.7938366)
-text = "next mission"
-font_size = 10
-outline_size = 5
-
-[node name="Label3D4" type="Label3D" parent="." unique_id=605651050]
-transform = Transform3D(-1.0417808, 0, -9.107535e-08, 0, 1.0417808, 0, 9.107535e-08, 0, -1.0417808, 0.82107997, 0.10375309, 0.34838617)
-text = "shielding fire
-"
-font_size = 10
-outline_size = 5
-
-[node name="Label3D5" type="Label3D" parent="." unique_id=1156904436]
-transform = Transform3D(-1.0417808, 0, -9.1075336e-08, 0, 1.0417808, 0, 9.1075336e-08, 0, -1.0417808, -1.9509892, 0.10375321, 0.06922105)
-text = "giving commands"
-font_size = 10
-outline_size = 5
 
 [node name="blockout_0" parent="." unique_id=1293202992 instance=ExtResource("1_o8kyb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.73555505, -0.1285516, -0.8615308)
@@ -90,10 +60,44 @@ shape = SubResource("WorldBoundaryShape3D_o8kyb")
 [node name="floor" type="CollisionShape3D" parent="worldBoundaries" unique_id=11740829]
 shape = SubResource("WorldBoundaryShape3D_h45xw")
 
+[node name="labels" type="Node3D" parent="." unique_id=661600025]
+
+[node name="Label3D" type="Label3D" parent="labels" unique_id=59119305]
+transform = Transform3D(1.5213856, 0, 1.1025497e-14, 0, 1.5213856, 0, -1.1025497e-14, 0, 1.5213856, -0.5317489, 0.87668574, -3.375373)
+text = "Squad Leader"
+outline_size = 5
+
+[node name="Label3D2" type="Label3D" parent="labels" unique_id=879540072]
+transform = Transform3D(1.3091979, 0, 9.48777e-15, 0, 1.3091979, 0, -9.48777e-15, 0, 1.3091979, -0.5317489, 0.6042812, -3.375373)
+text = "by
+cipherzero & frkatona"
+font_size = 10
+outline_size = 5
+
+[node name="Label3D3" type="Label3D" parent="labels" unique_id=1456612247]
+transform = Transform3D(-1.0417808, 0, -9.107538e-08, 0, 1.0417808, 0, 9.107538e-08, 0, -1.0417808, -0.672094, 1.0342196, 1.7938366)
+text = "next mission"
+font_size = 10
+outline_size = 5
+
+[node name="Label3D4" type="Label3D" parent="labels" unique_id=605651050]
+transform = Transform3D(-1.0417808, 0, -9.107535e-08, 0, 1.0417808, 0, 9.107535e-08, 0, -1.0417808, 0.82107997, 0.10375309, 0.34838617)
+text = "shielding fire
+"
+font_size = 10
+outline_size = 5
+
+[node name="Label3D5" type="Label3D" parent="labels" unique_id=1156904436]
+transform = Transform3D(-1.0417808, 0, -9.1075336e-08, 0, 1.0417808, 0, 9.1075336e-08, 0, -1.0417808, -1.9509892, 0.10375321, 0.06922105)
+text = "giving commands"
+font_size = 10
+outline_size = 5
+
 [node name="building" type="Node3D" parent="." unique_id=1003696473]
 
 [node name="AreaLight3D" type="AreaLight3D" parent="building" unique_id=1223069528]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.84164816, 2.2178671, -1.0103744)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.84164816, 2.216403, -1.0103744)
+light_energy = 2.576
 
 [node name="wall_cinderblock" parent="building" unique_id=1363947085 instance=ExtResource("5_d0grl")]
 transform = Transform3D(0.6794404, 0, 0, 0, 0.6794404, 0, 0, 0, 0.6794404, -0.8807723, 0.7684021, -3.4209616)
