@@ -85,8 +85,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	# 		if _mounted_object.push_event_to_viewport(event):
 	# 			get_viewport().set_input_as_handled()
 
-	if !is_mouse_free: return
+	if is_mouse_free: return
+	
+	if event.is_action_pressed("cheat_float"):
+		cheat_float = !cheat_float
+		if cheat_float:
+			velocity.y = 0
+			
+	if event.is_action_pressed("cheat_hide_shield"):
+		$Shield.visible = !$Shield.visible
 
+var cheat_float := true
 
 var fov_tween: Tween
 func change_fov(target_fov: float, duration: float) -> void:
@@ -180,7 +189,7 @@ func _physics_process(delta: float) -> void:
 	
 	var raw_input := Input.get_vector("pc_left", "pc_right", "pc_forward", "pc_back")	
 	
-	if not is_on_floor():
+	if not cheat_float and not is_on_floor():
 		velocity += get_gravity() * 2 * delta
 		landing_velocity = -velocity.y
 		distance = 0
@@ -191,7 +200,7 @@ func _physics_process(delta: float) -> void:
 
 	$CollisionShape3D.shape.height = lerp($CollisionShape3D.shape.height, 1.85, 0.1)
 
-	if is_on_floor():
+	if cheat_float or is_on_floor():
 		if landing_velocity != 0:
 			landing_velocity = 0
 
@@ -202,6 +211,9 @@ func _physics_process(delta: float) -> void:
 		# Walk with Shift
 		elif Input.is_key_pressed(KEY_SHIFT):
 			speed = run_speed
+	
+		if cheat_float:
+			speed *= 6
 
 	if Input.is_key_pressed(KEY_CTRL):
 		$CollisionShape3D.shape.height = lerp($CollisionShape3D.shape.height, 1.38, 0.1)
@@ -217,7 +229,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
-
+	
+	if cheat_float:
+		if Input.is_key_pressed(KEY_CTRL):
+			velocity.y -= .35
+		elif Input.is_key_pressed(KEY_SPACE):
+			velocity.y += .35
+		else:
+			velocity *= .55
+	
 	move_and_slide()
 	
 	
@@ -279,11 +299,26 @@ func find_signal_target() -> SignalTarget:
 
 
 func _has_line_of_sight(from: Vector3, to: Vector3, target: Node) -> bool:
+	var draw_from = from - cam.global_basis.y * 0.1 - cam.global_basis.x * 0.01
 	var query := PhysicsRayQueryParameters3D.create(from, to)
 	query.exclude = [get_rid()]
 	query.collision_mask = interactable_occlusion_flags
 	var hit := get_world_3d().direct_space_state.intersect_ray(query)
 	if hit.is_empty():
+		if DEBUG.draw_player_los:
+			DebugDraw.draw_line(draw_from, to, Color.PINK, 2)
 		return true
+	
 	var collider: Node = hit.collider
-	return collider == target or target.is_ancestor_of(collider) or collider.is_ancestor_of(target)
+	
+	if collider == target or target.is_ancestor_of(collider) or collider.is_ancestor_of(target):
+		if DEBUG.draw_player_los:
+			DebugDraw.draw_line(draw_from, to, Color.LAWN_GREEN, 2)
+		return true
+	
+	if DEBUG.print_player_los:
+		print("Player LOS occluded by: ", collider.name)
+	
+	if DEBUG.draw_player_los:
+		DebugDraw.draw_line(draw_from, hit.position, Color.AZURE, 2)
+	return false

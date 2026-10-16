@@ -3,6 +3,9 @@ extends State
 ## Emitted once when the teammate reaches move_target.
 signal arrived
 
+## How close (horizontally) counts as standing on the spot.
+@export var arrive_distance := 0.1
+
 var move_target: SignalTarget
 
 var _ai: AIActor
@@ -35,20 +38,28 @@ func physics_update(delta: float) -> void:
 		_ai.nav_agent.target_position = move_target.global_position
 		_arrived = false
 
-	if _ai.nav_agent.is_navigation_finished():
+	var to_target := move_target.global_position - _ai.global_position
+	to_target.y = 0.0
+	var target_dist := to_target.length()
+
+	if target_dist <= arrive_distance:
 		_ai.velocity = Vector3.ZERO
 		if not _arrived:
 			_arrived = true
 			arrived.emit()
 		return
 
-	var dir: Vector3 = _ai.nav_agent.get_next_path_position() - _ai.global_position
-	dir.y = 0.0
-	if dir.length_squared() < 0.0001:
-		return
+	var dir := to_target
+	if not _ai.nav_agent.is_navigation_finished():
+		dir = _ai.nav_agent.get_next_path_position() - _ai.global_position
+		dir.y = 0.0
+		if dir.length_squared() < 0.0001:
+			dir = to_target
 	dir = dir.normalized()
 
-	_ai.velocity = dir * _ai.movement_speed
+	# Slow down on the last step so we land on the spot instead of overshooting.
+	var speed := minf(_ai.movement_speed, target_dist / delta)
+	_ai.velocity = dir * speed
 	_ai.move_and_slide()
 	_face(dir, delta)
 

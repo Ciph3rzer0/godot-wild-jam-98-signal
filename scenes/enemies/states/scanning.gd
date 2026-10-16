@@ -23,12 +23,12 @@ func physics_update(_delta: float) -> void:
 	
 	for opponent in opponents:
 		var ray := _ai.can_see_shoot(opponent)
-		if ray.can_shoot:
-			print("Can shoot ", opponent.name)
-		elif ray.can_see:
-			print("Can see ", opponent.name)
-		else:
-			print("-----------")
+		# if ray.can_shoot:
+		# 	print("Can shoot ", opponent.name)
+		# elif ray.can_see:
+		# 	print("Can see ", opponent.name)
+		# else:
+		# 	print("-----------")
 		
 		if ray.can_shoot:
 			if randf() < 0.04:
