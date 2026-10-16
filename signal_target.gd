@@ -2,6 +2,8 @@
 class_name SignalTarget
 extends Node3D
 
+@export var disabled := false
+
 ## Where selection aims. Defaults to this node's origin.
 @export var aim_point: Node3D
 ## Meshes to outline when focused.
@@ -11,7 +13,11 @@ static var _outline_mat: StandardMaterial3D
 
 
 func _ready() -> void:
-	add_to_group(&"signal_targets")
+	if (disabled):
+		$MeshInstance3D.visible = false
+		$CollisionShape3D.disabled = true
+	else:
+		add_to_group(&"signal_targets")
 
 
 func get_aim_position() -> Vector3:

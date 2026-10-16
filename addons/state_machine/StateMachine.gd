@@ -66,6 +66,8 @@ func transition_to(new_state: State) -> void:
 	if current_state:
 		old_name = current_state.name
 		current_state.exit()
+		current_state.state_exited.emit(current_state)
 	current_state = new_state
 	current_state.enter()
+	current_state.state_entered.emit(current_state)
 	state_changed.emit(old_name, current_state.name)

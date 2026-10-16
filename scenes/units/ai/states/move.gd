@@ -3,6 +3,8 @@ extends State
 ## Emitted once when the teammate reaches move_target.
 signal arrived
 
+@export var explicit_move_target: SignalTarget
+
 ## How close (horizontally) counts as standing on the spot.
 @export var arrive_distance := 0.1
 
@@ -11,25 +13,32 @@ var move_target: SignalTarget
 var _ai: AIActor
 var _arrived := false
 
+
 ## Called once when the state becomes active.
 func enter() -> void:
 	_ai = actor as AIActor
 	assert(_ai != null, "Move requires an AIActor actor")
 	
-	move_target = _ai.move_target as SignalTarget
+	if explicit_move_target:
+		move_target = explicit_move_target as SignalTarget
+	else:
+		move_target = _ai.move_target as SignalTarget
 	assert(move_target != null, "Move requries a move_target")
 	
 	_arrived = false
 	# Overwrite whatever target the previous state left on the agent.
 	_ai.nav_agent.target_position = move_target.global_position
 
+
 ## Called once when the state stops being active.
 func exit() -> void:
 	_ai.velocity = Vector3.ZERO
 
+
 ## Called every frame while active.
 func update(_delta: float) -> void:
 	pass
+
 
 ## Called every physics frame while active.
 func physics_update(delta: float) -> void:
@@ -44,7 +53,10 @@ func physics_update(delta: float) -> void:
 
 	if target_dist <= arrive_distance:
 		_ai.velocity = Vector3.ZERO
-		if not _arrived:
+		var facing := move_target.global_basis.x
+		facing.y = 0.0
+		_face(facing, delta)
+		if not _arrived and _is_facing(facing):
 			_arrived = true
 			arrived.emit()
 		return
@@ -63,7 +75,24 @@ func physics_update(delta: float) -> void:
 	_ai.move_and_slide()
 	_face(dir, delta)
 
+
+func _is_facing(dir: Vector3) -> bool:
+	if dir.length_squared() < 0.0001:
+		return true
+	var target_yaw := atan2(-dir.x, -dir.z)
+	return absf(angle_difference(_ai.rotation.y, target_yaw)) < deg_to_rad(2.0)
+
+
 ## Turns toward a flat direction. Model faces -Z; use atan2(dir.x, dir.z) if it faces +Z.
 func _face(dir: Vector3, delta: float) -> void:
+	if dir.length_squared() < 0.0001:
+		return
 	var target_yaw := atan2(-dir.x, -dir.z)
 	_ai.rotation.y = rotate_toward(_ai.rotation.y, target_yaw, _ai.turn_speed * delta)
+
+
+func transition_to_move(target):
+	print(target)
+	if (target is SignalTarget):
+		_ai.move_target = target
+		(get_parent() as StateMachine).transition_to(self)
