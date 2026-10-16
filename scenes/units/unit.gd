@@ -19,8 +19,6 @@ func is_dead(): return health <= 0
 
 
 func _ready() -> void:
-	assert(bullet)
-	assert(gun_tip)
 	health = max_health
 	add_to_group(team_group(team))
 	

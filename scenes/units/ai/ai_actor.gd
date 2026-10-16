@@ -37,9 +37,6 @@ var combat_target: Unit
 
 func _ready() -> void:
 	super()
-	assert(nav_agent)
-	assert(aim_pivot)
-	assert(eyes)
 
 func apply_gravity(_delta):
 	#if not is_on_floor():
