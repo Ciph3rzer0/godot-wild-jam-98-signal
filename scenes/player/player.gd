@@ -299,25 +299,26 @@ func find_signal_target() -> SignalTarget:
 
 
 func _has_line_of_sight(from: Vector3, to: Vector3, target: Node) -> bool:
+	var draw_from = from - cam.global_basis.y * 0.1 - cam.global_basis.x * 0.01
 	var query := PhysicsRayQueryParameters3D.create(from, to)
 	query.exclude = [get_rid()]
 	query.collision_mask = interactable_occlusion_flags
 	var hit := get_world_3d().direct_space_state.intersect_ray(query)
 	if hit.is_empty():
 		if DEBUG.draw_player_los:
-			DebugDraw.draw_line(from - Vector3.UP*0.1, to, Color.PINK, 1)
+			DebugDraw.draw_line(draw_from, to, Color.PINK, 2)
 		return true
 	
 	var collider: Node = hit.collider
 	
 	if collider == target or target.is_ancestor_of(collider) or collider.is_ancestor_of(target):
 		if DEBUG.draw_player_los:
-			DebugDraw.draw_line(from * (Vector3.ONE - Vector3.UP), to, Color.WEB_GREEN, 1)
+			DebugDraw.draw_line(draw_from, to, Color.LAWN_GREEN, 2)
 		return true
 	
 	if DEBUG.print_player_los:
 		print("Player LOS occluded by: ", collider.name)
 	
 	if DEBUG.draw_player_los:
-		DebugDraw.draw_line(from * (Vector3.ONE - Vector3.UP), hit.position, Color.AZURE, 1)
+		DebugDraw.draw_line(draw_from, hit.position, Color.AZURE, 2)
 	return false
