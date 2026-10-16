@@ -31,16 +31,16 @@ func physics_update(_delta: float) -> void:
 	act_chance -= 1 / avg_act_chance_per_second
 	
 	var opponent = _ai.combat_target
-	shoot_at(opponent.global_position)
-	return
 	
 	var ray := _ai.can_see_shoot(opponent)
 	if ray.can_shoot:
-		print("Engaging:: Can shoot ", opponent.name)
+		#print("Engaging:: Can shoot ", opponent.name)
+		shoot_at(opponent.global_position)
 	elif ray.can_see:
-		print("Engaging:: Can see ", opponent.name)
-	else:
-		print("Engaging:: -----------")
+		#print("Engaging:: Can see ", opponent.name)
+		shoot_at(opponent.global_position)
+	# else:
+	# 	print("Engaging:: -----------")
 	
 
 

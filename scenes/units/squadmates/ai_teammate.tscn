@@ -52,7 +52,7 @@ face = NodePath("Face")
 aim_pivot = NodePath("Face")
 eyes = NodePath("Face/Eyes")
 visual_occluder_mask = 6
-attack_occluder_mask = 6
+attack_occluder_mask = 310
 gun_tip = NodePath("GunTip")
 bullet = ExtResource("2_yhyk5")
 
@@ -74,7 +74,7 @@ script = ExtResource("6_4ffhm")
 
 [node name="CombatState" type="Node" parent="." unique_id=2105040461 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_3bo10")
-initial_state = NodePath("HoldFire")
+initial_state = NodePath("Scanning")
 
 [node name="HoldFire" type="Node" parent="CombatState" unique_id=1749604475]
 script = ExtResource("8_ust3i")

@@ -1,7 +1,7 @@
 class_name Unit
 extends CharacterBody3D
 
-enum Team { FRIENDLY, HOSTILE }
+enum Team { FRIENDLY, HOSTILE, NEUTRAL }
 
 signal damaged(amount: float, source: Node)
 signal died
@@ -40,9 +40,10 @@ func is_opponent(other: Unit) -> bool:
 func get_opponents() -> Array[Unit]:
 	var result: Array[Unit] = []
 	for t in Team.values():
+		if t == Team.NEUTRAL: continue
 		if t != team:
 			for n in get_tree().get_nodes_in_group(team_group(t)):
-				if n is Unit:
+				if n is Unit and n.is_alive():
 					result.append(n)
 	return result
 
