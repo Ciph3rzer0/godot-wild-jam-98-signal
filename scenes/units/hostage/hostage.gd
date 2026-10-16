@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends AIActor
 
 func _ready() -> void:
 	$AnimationPlayer.play("animations/handgun_aiming")

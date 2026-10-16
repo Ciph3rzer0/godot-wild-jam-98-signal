@@ -7,7 +7,8 @@ func enter() -> void:
 	_ai = actor as AIActor
 	assert(_ai != null, "Scanning requires an AIEnemy actor")
 	
-	_ai.face.material_override = preload("uid://b6gosj3lq4oxq")
+	if _ai.face:
+		_ai.face.material_override = preload("uid://b6gosj3lq4oxq")
 
 
 ## Called once when the state stops being active.

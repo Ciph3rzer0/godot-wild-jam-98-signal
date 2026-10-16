@@ -95,7 +95,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("cheat_hide_shield"):
 		$Shield.visible = !$Shield.visible
 
-var cheat_float := true
+var cheat_float := false
 
 var fov_tween: Tween
 func change_fov(target_fov: float, duration: float) -> void:
