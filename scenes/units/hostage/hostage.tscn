@@ -189,11 +189,11 @@ root_node = NodePath("../CharacterModel")
 libraries/animations = ExtResource("1_g3pbs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=264505929]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93716097, 0.018109242)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84387684, 0.018109242)
 shape = SubResource("BoxShape3D_rc6wk")
 
 [node name="CharacterModel" type="Node3D" parent="." unique_id=1768070642]
-transform = Transform3D(0.71, 0, 0, 0, 0.71, 0, 0, 0, 0.71, 0.04402113, 0.38428223, 0.24136674)
+transform = Transform3D(0.71, 0, 0, 0, 0.71, 0, 0, 0, 0.71, 0.04402113, 0.26900372, 0.24136674)
 
 [node name="rig-enemy" type="Node3D" parent="CharacterModel" unique_id=1446269951]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05752611, -0.38981634, -0.23635769)

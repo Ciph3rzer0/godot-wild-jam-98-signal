@@ -19,4 +19,3 @@ func update(_delta: float) -> void:
 ## Called every physics frame while active.
 func physics_update(delta: float) -> void:
 	_ai.apply_gravity(delta)
-	_ai.move_and_slide()

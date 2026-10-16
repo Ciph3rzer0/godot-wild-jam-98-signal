@@ -16,11 +16,15 @@ signal state_changed(from_state: String, to_state: String)
 
 var current_state: State
 
+var actor: Unit
 
 func _ready() -> void:
+	actor = get_parent() as Unit
+	assert(actor)
+	
 	for child in get_children():
 		if child is State:
-			child.actor = get_parent()
+			child.actor = actor
 			child.transitioned.connect(_on_state_transitioned)
 	current_state = initial_state
 	if current_state == null:
@@ -29,22 +33,24 @@ func _ready() -> void:
 				current_state = child
 				break
 	if current_state == null:
-		push_warning("StateMachine: no State children under %s" % get_parent().name)
+		push_warning("StateMachine: no State children under %s" % actor.name)
 		return
 	# Children are ready before their parent. Wait for the actor, so the first
 	# state can use the actor's @onready nodes in enter().
-	if not get_parent().is_node_ready():
-		await get_parent().ready
+	if not actor.is_node_ready():
+		await actor.ready
 	current_state.enter()
 	state_changed.emit("", current_state.name)
 
 
 func _process(delta: float) -> void:
+	if actor.is_dead(): return
 	if current_state:
 		current_state.update(delta)
 
 
 func _physics_process(delta: float) -> void:
+	if actor.is_dead(): return
 	if current_state:
 		current_state.physics_update(delta)
 
@@ -58,10 +64,12 @@ func _on_state_transitioned(state_name: String) -> void:
 
 ## Force a change from outside, by state name.
 func change_state(state_name: String) -> void:
+	if actor.is_dead(): return
 	_on_state_transitioned(state_name)
 
 
 func transition_to(new_state: State) -> void:
+	if actor.is_dead(): return
 	var old_name := ""
 	if current_state:
 		old_name = current_state.name

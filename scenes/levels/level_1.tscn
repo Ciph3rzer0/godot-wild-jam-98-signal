@@ -76,6 +76,9 @@ size = Vector3(0.5, 0.1, 0.5)
 
 [node name="Prototype Level" unique_id=1527916753 instance=ExtResource("1_x6ivy")]
 
+[node name="UI" parent="." index="0" unique_id=2041766851]
+mouse_filter = 2
+
 [node name="RadarCameraRig" parent="UI/MarginContainer/CircleMask/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(1747511697) index="0" unique_id=1503955098]
 transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, -1.6445713, 0.5, 5.6644993)
 
@@ -99,7 +102,7 @@ navigation_mesh = SubResource("NavigationMesh_dywbp")
 metadata/_edit_lock_ = true
 
 [node name="Hostage" parent="." index="9" unique_id=1367416622 instance=ExtResource("12_np2pn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1861496, 0.54540336, -5.4182596)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1861496, 0.38612854, -5.4182596)
 
 [node name="Enemy" parent="." index="10" unique_id=361484658 instance=ExtResource("4_bfxgj")]
 transform = Transform3D(0.7501361, 0, -0.6612835, 0, 1, 0, 0.6612835, 0, 0.7501361, 3.9172142, 0.4, -6.9692426)

@@ -59,33 +59,9 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 	
-	if is_mouse_free: return
-	if event is InputEventMouseMotion:
-		rotation_degrees.y -= event.relative.x / 10
-		cam.rotation_degrees.x -= event.relative.y / 10
-		cam.rotation_degrees.x = clamp(cam.rotation_degrees.x, -90, 90)
 
 func _unhandled_input(event: InputEvent) -> void:
-
-	#if event.is_action_pressed("pc_interact") and !_mounted_object and !is_mouse_free:
-		#var interactable := get_faced_interactable()
-		#if interactable:
-			#interactable.interact(self)
-			#get_viewport().set_input_as_handled()
-			#return
-#
-	#if (!_mounted_object or !is_mouse_free) and event.is_action_pressed("pc_interact"):
-		#if _mounted_object:
-			#dismount()
-		#else:
-			#try_mount()
-	
-	# if _mounted_object:
-	# 	if event is InputEventKey or event is InputEventPanGesture:
-	# 		if _mounted_object.push_event_to_viewport(event):
-	# 			get_viewport().set_input_as_handled()
-
-	if is_mouse_free: return
+	if is_dead() or is_mouse_free: return
 	
 	if event.is_action_pressed("cheat_float"):
 		cheat_float = !cheat_float
@@ -94,6 +70,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 	if event.is_action_pressed("cheat_hide_shield"):
 		$Shield.visible = !$Shield.visible
+	
+	if is_mouse_free: return
+	if event is InputEventMouseMotion:
+		rotation_degrees.y -= event.relative.x / 10
+		cam.rotation_degrees.x -= event.relative.y / 10
+		cam.rotation_degrees.x = clamp(cam.rotation_degrees.x, -90, 90)
 
 var cheat_float := false
 
@@ -109,14 +91,14 @@ func change_fov(target_fov: float, duration: float) -> void:
 
 var exit_button_held_timer := 0.0
 func _process(delta: float) -> void:
-	var mouse_mode := Input.get_mouse_mode()
-	
 	if Input.is_action_pressed("ui_exit_game"):
 		exit_button_held_timer += delta
 		if (exit_button_held_timer) > 0.5:
 			get_tree().quit()
 	else:
 		exit_button_held_timer = 0
+	
+	if is_dead(): return
 	
 	focused_target = find_signal_target()
 
@@ -185,6 +167,8 @@ func _send_command(sig: HandSignalSprite.SIGNAL) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if is_dead(): return
+	
 	_handle_signals()
 	
 	var raw_input := Input.get_vector("pc_left", "pc_right", "pc_forward", "pc_back")	

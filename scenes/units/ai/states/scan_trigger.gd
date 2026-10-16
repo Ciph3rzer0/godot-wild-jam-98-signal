@@ -34,4 +34,3 @@ func physics_update(delta: float) -> void:
 				# (get_parent() as StateMachine).transition_to($"../Engaging")
 	
 	_ai.apply_gravity(delta)
-	_ai.move_and_slide()

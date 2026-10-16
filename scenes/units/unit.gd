@@ -14,12 +14,21 @@ signal died
 
 var health: float
 
+func is_alive(): return health > 0
+func is_dead(): return health <= 0
+
 
 func _ready() -> void:
 	assert(bullet)
 	assert(gun_tip)
 	health = max_health
 	add_to_group(team_group(team))
+	
+	died.connect(func():
+		for child in find_children("*", "CollisionShape3D"):
+			(child as CollisionShape3D).disabled = true 
+		visible = false
+	)
 
 
 static func team_group(t: Team) -> StringName:
@@ -46,8 +55,6 @@ func get_target_points() -> Array[Vector3]:
 
 
 func take_damage(amount: float, source: Node = null) -> void:
-	if health <= 0.0:
-		return
 	health -= amount
 	damaged.emit(amount, source)
 	if health <= 0.0:
