@@ -98,8 +98,7 @@ func can_see_shoot(target: Unit) -> RayTest:
 				break
 	
 	if debug_sight_lines and ray.can_see:
-		debug_line_3d(from, target.global_position + Vector3.UP * 0.9,
-				Color.RED if ray.can_shoot else Color.YELLOW)
+		DebugDraw.draw_line(from, target.global_position + Vector3.UP * 0.9, Color.RED if ray.can_shoot else Color.YELLOW, 3)
 	return ray
 
 ## Result of a can_see_shoot() test.
@@ -112,20 +111,3 @@ class RayTest:
 func _is_ray_clear(from: Vector3, to: Vector3, mask: int) -> bool:
 	var query := PhysicsRayQueryParameters3D.create(from, to, mask, [get_rid()])
 	return get_world_3d().direct_space_state.intersect_ray(query).is_empty()
-
-
-## Draw a line for AI targeting debugging
-func debug_line_3d(start: Vector3, end: Vector3, color: Color = Color.RED) -> void:
-	var mesh_instance := MeshInstance3D.new()
-	var immediate_mesh := ImmediateMesh.new()
-	var material := StandardMaterial3D.new()
-	mesh_instance.mesh = immediate_mesh
-	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	material.albedo_color = color
-	immediate_mesh.surface_begin(Mesh.PRIMITIVE_LINES, material)
-	immediate_mesh.surface_add_vertex(start)
-	immediate_mesh.surface_add_vertex(end)
-	immediate_mesh.surface_end()
-	get_tree().root.add_child(mesh_instance)
-	await get_tree().create_timer(0.2).timeout
-	mesh_instance.queue_free()

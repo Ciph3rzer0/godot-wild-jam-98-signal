@@ -15,6 +15,10 @@ run/main_scene="uid://bjopuuaqydblu"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DebugDraw="*res://addons/debug_draw/debug_draw_3d.tscn"
+
 [debug]
 
 shapes/navigation/3d/geometry_face_color=Color(0.91764706, 0.9411765, 0.5058824, 1)
