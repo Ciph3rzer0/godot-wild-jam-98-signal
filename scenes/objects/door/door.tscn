@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://lqph4kw8y2dc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_h45xw"]
+size = Vector3(0.95202637, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a7m2"]
+albedo_color = Color(0.45025533, 0.2156845, 0.09434169, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h5ew4"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Door" type="Node3D" unique_id=812434341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8561431, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1672826363]
+transform = Transform3D(1, 0, 0, 0, 1.6155957, 0, 0, 0, 0.07387494, -0.52566046, 0, 0)
+mesh = SubResource("BoxMesh_h45xw")
+surface_material_override/0 = SubResource("StandardMaterial3D_8a7m2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1766611977]
+transform = Transform3D(1, 0, 0, 0, 0.61896676, 0, 0, 0, 5.5995355, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=254367722]
+transform = Transform3D(1, 0, 0, 0, 1.6155957, 0, 0, 0, 0.17858624, 0, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_h5ew4")
