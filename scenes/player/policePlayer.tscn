@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0o143"]
 radius = 0.22558594
-height = 2.1813965
+height = 1.7977295
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bar0n"]
 resource_name = "policeBlue"
@@ -233,11 +233,11 @@ bind/34/pose = Transform3D(1, 0, 0, 0, 0.99999976, 1.4901156e-07, 0, 1.4901156e-
 transform = Transform3D(-1, 0, -8.742278e-08, -4.371139e-08, 0.8660254, 0.5, 7.5710346e-08, 0.5, -0.8660254, 0, 3.421874, -2.793787)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1027244029]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0048030317, 1.1055859, -0.06959757)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0048030317, 0.91375244, -0.06959757)
 shape = SubResource("CapsuleShape3D_0o143")
 
 [node name="CharacterModel" type="Node3D" parent="." unique_id=1882017561]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.067395, 0.14769107, 0.036475927)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.067395, 0.14769107, -0.18235281)
 
 [node name="rig-enemy" type="Node3D" parent="CharacterModel" unique_id=246001551]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.019771397, -0.20728573, -0.03086397)

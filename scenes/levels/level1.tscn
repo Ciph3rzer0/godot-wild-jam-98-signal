@@ -595,9 +595,9 @@ transform = Transform3D(1.7360821, 0, 0, 0, 0.48898828, 0, 0, 0, 0.043931287, -1
 shape = SubResource("ConcavePolygonShape3D_1seuy")
 
 [node name="Terrorist" parent="." unique_id=1953779749 instance=ExtResource("5_1seuy")]
-transform = Transform3D(0.14994448, 0, -0.14994448, 0, 0.21205354, 0, 0.14994448, 0, 0.14994448, 0.2278041, 0.16960475, -1.5434644)
+transform = Transform3D(0.14994448, 0, -0.14994448, 0, 0.21205354, 0, 0.14994448, 0, 0.14994448, -0.27314305, 0.17552087, -1.5675555)
 
 [node name="Hostage" parent="." unique_id=1367416622 instance=ExtResource("6_1seuy")]
-transform = Transform3D(0.2060424, 0, 0, 0, 0.2060424, 0, 0, 0, 0.2060424, -0.79313856, 0.18024066, -1.3361953)
+transform = Transform3D(0.2060424, 0, 0, 0, 0.2060424, 0, 0, 0, 0.2060424, -2.005342, 0.1694319, -1.1216863)
 
 [editable path="l1-walls"]
