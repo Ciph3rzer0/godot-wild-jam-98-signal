@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://41j772jln2ny" path="res://assets/models/environment/l1-walls.glb" id="4_bfxgj"]
 [ext_resource type="PackedScene" uid="uid://bpvjjcx13hhmv" path="res://scenes/units/ai/terrorist.tscn" id="5_1seuy"]
 [ext_resource type="PackedScene" uid="uid://dcxl4dpvwhbuy" path="res://assets/models/environment/asphaltFloor.glb" id="5_dywbp"]
-[ext_resource type="PackedScene" uid="uid://c7usov56xlpg7" path="res://scenes/hostage/hostage.tscn" id="6_1seuy"]
+[ext_resource type="PackedScene" uid="uid://c7usov56xlpg7" path="res://scenes/units/hostage/hostage.tscn" id="6_1seuy"]
 [ext_resource type="PackedScene" uid="uid://cw7sws8plbuy" path="res://assets/models/environment/wall_cinderblock.glb" id="7_2r1tl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_80iay"]
@@ -89,9 +89,6 @@ transform = Transform3D(-0.21467699, 0, 1.876766e-08, 0, 0.21467699, 0, -1.87676
 
 [node name="Terrorist" parent="NPCs" unique_id=1953779749 instance=ExtResource("5_1seuy")]
 transform = Transform3D(0.14994448, 0, -0.14994448, 0, 0.21205354, 0, 0.14994448, 0, 0.14994448, -0.27314305, 0.17552087, -1.5675555)
-
-[node name="Terrorist2" parent="NPCs" unique_id=232955108 instance=ExtResource("5_1seuy")]
-transform = Transform3D(0.14994448, 0, -0.14994448, 0, 0.21205354, 0, 0.14994448, 0, 0.14994448, -0.5058478, 0.17552087, 5.672595)
 
 [node name="Hostage" parent="NPCs" unique_id=1367416622 instance=ExtResource("6_1seuy")]
 transform = Transform3D(0.2060424, 0, 0, 0, 0.2060424, 0, 0, 0, 0.2060424, -2.005342, 0.1694319, -1.1216863)
