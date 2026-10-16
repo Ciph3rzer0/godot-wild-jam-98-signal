@@ -1,11 +1,20 @@
 [gd_scene format=3 uid="uid://bjopuuaqydblu"]
 
 [ext_resource type="PackedScene" uid="uid://dykvknbluafhw" path="res://scenes/levels/base_level.tscn" id="1_x6ivy"]
-[ext_resource type="NavigationMesh" uid="uid://b2q4qiu77p4ie" path="res://scenes/units/ai_nav_mesh.tres" id="4_2r1tl"]
 [ext_resource type="PackedScene" uid="uid://c824qy2qut6m1" path="res://scenes/enemies/ai_enemy.tscn" id="4_bfxgj"]
 [ext_resource type="PackedScene" uid="uid://c83u4mtw7i7uu" path="res://scenes/levels/blockout_1 (2).tscn" id="5_2r1tl"]
 [ext_resource type="PackedScene" uid="uid://dbgkrrjvkd87e" path="res://scenes/ai_teammate/ai_teammate.tscn" id="5_dywbp"]
 [ext_resource type="Script" uid="uid://7tt7istu1p8r" path="res://signal_target.gd" id="6_2r1tl"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_dywbp"]
+vertices = PackedVector3Array(-15.452448, 0.4879753, -7.08628, -9.452448, 0.4879753, -7.08628, -9.452448, 0.4879753, -7.88628, -9.152449, 0.4879753, -8.08628, -9.152449, 0.4879753, -18.08628, -15.452448, 0.4879753, -18.08628, 0.64755154, 0.4879753, -11.38628, 1.1475515, 0.4879753, -11.58628, 1.1475515, 0.4879753, -18.08628, 0.64755154, 0.4879753, -7.9862795, 1.6475515, 0.4879753, -11.38628, 17.347553, 0.4879753, -18.08628, 1.6475515, 0.4879753, -2.9862795, 17.347553, 0.4879753, -2.88628, -15.452448, 0.4879753, 8.71372, -9.452448, 0.4879753, 8.71372, -3.452448, 0.4879753, 3.5137196, -2.6524477, 0.4879753, 3.5137196, -2.452448, 0.4879753, 3.0137196, -3.6524477, 0.4879753, 3.0137196, 0.64755154, 0.4879753, -0.7862797, 1.1475515, 0.4879753, -2.1862793, 0.64755154, 0.4879753, -2.38628, 1.1475515, 0.4879753, -0.98628044, 0.64755154, 0.4879753, -7.08628, -8.552448, 0.4879753, -7.08628, -8.552448, 0.4879753, 3.0137196, 0.64755154, 0.4879753, 3.0137196, 1.6475515, 0.4879753, -0.7862797, 17.347553, 0.4879753, -0.28627968, 1.6475515, 0.4879753, -2.38628, 1.6475515, 0.4879753, -0.1862793, 1.6475515, 0.4879753, 9.413721, 1.6475515, 0.4879753, 14.713722, 17.347553, 0.4879753, 14.713722, -1.8524475, 0.4879753, 9.21372, -1.3524475, 0.4879753, 9.21372, -1.1524477, 0.4879753, 8.71372, -2.0524483, 0.4879753, 8.71372, 0.64755154, 0.4879753, 8.71372, 0.64755154, 0.4879753, 4.0137196, -2.452448, 0.4879753, 4.0137196, -3.6524477, 0.4879753, 4.0137196, -8.552448, 0.4879753, 4.0137196, -8.552448, 0.4879753, 8.71372, -9.052448, 0.4879753, 14.713722, -9.052448, 0.4879753, 9.71372, -9.452448, 0.4879753, 9.51372, -15.452448, 0.4879753, 14.713722, -1.1524477, 0.4879753, 9.61372, -2.0524483, 0.4879753, 9.61372, 1.4475527, 0.4879753, 9.61372)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(4, 0, 5), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 4), PackedInt32Array(4, 6, 3), PackedInt32Array(6, 9, 3), PackedInt32Array(7, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(12, 10, 13), PackedInt32Array(13, 10, 11), PackedInt32Array(0, 1, 14), PackedInt32Array(14, 1, 15), PackedInt32Array(18, 17, 16), PackedInt32Array(16, 19, 18), PackedInt32Array(18, 19, 20), PackedInt32Array(20, 19, 22), PackedInt32Array(20, 22, 21), PackedInt32Array(21, 23, 20), PackedInt32Array(19, 26, 22), PackedInt32Array(22, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(18, 20, 27), PackedInt32Array(21, 30, 23), PackedInt32Array(23, 30, 28), PackedInt32Array(28, 30, 13), PackedInt32Array(28, 13, 29), PackedInt32Array(30, 12, 13), PackedInt32Array(29, 31, 28), PackedInt32Array(32, 34, 33), PackedInt32Array(31, 29, 32), PackedInt32Array(32, 29, 34), PackedInt32Array(36, 35, 37), PackedInt32Array(37, 35, 38), PackedInt32Array(39, 37, 40), PackedInt32Array(40, 37, 41), PackedInt32Array(17, 41, 16), PackedInt32Array(16, 41, 42), PackedInt32Array(42, 41, 38), PackedInt32Array(38, 41, 37), PackedInt32Array(43, 42, 44), PackedInt32Array(44, 42, 38), PackedInt32Array(46, 45, 47), PackedInt32Array(47, 45, 48), PackedInt32Array(47, 48, 14), PackedInt32Array(14, 15, 47), PackedInt32Array(36, 49, 35), PackedInt32Array(35, 49, 50), PackedInt32Array(49, 33, 50), PackedInt32Array(50, 33, 46), PackedInt32Array(46, 33, 45), PackedInt32Array(33, 51, 32), PackedInt32Array(49, 51, 33)]
+geometry_parsed_geometry_type = 1
+geometry_source_geometry_mode = 1
+cell_size = 0.1
+cell_height = 0.1
+agent_radius = 0.3
+detail_sample_distance = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r1tl"]
 transparency = 1
@@ -29,31 +38,37 @@ size = Vector3(0.5, 0.1, 0.5)
 [node name="Prototype Level" unique_id=1527916753 instance=ExtResource("1_x6ivy")]
 
 [node name="RadarCameraRig" parent="UI/MarginContainer/CircleMask/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(1747511697) index="0" unique_id=1503955098]
-transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, -1.6445713, 0.5, 12.641313)
+transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, -1.6445713, 0.5, 1.6722994)
+
+[node name="RadarCamera" parent="UI/MarginContainer/CircleMask/SubViewportContainer/SubViewport/RadarCameraRig" index="0" unique_id=697681248]
+size = 50.0
 
 [node name="Player" parent="." index="3" unique_id=1865119778 node_paths=PackedStringArray("teammates")]
-transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, -1.6445713, 0.5, 12.641313)
-teammates = [NodePath("../AITeammate")]
+transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, -1.6445713, 0.5, 1.6722994)
+teammates = [NodePath("../AITeammate"), NodePath("../AITeammate2")]
 
 [node name="AITeammate" parent="." index="4" unique_id=933410074 instance=ExtResource("5_dywbp")]
 transform = Transform3D(0.8601651, 0, -0.51001555, 0, 1, 0, 0.51001555, 0, 0.8601651, 3.5433416, 0.50000095, 11.957792)
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="6" unique_id=1116788572]
-navigation_mesh = ExtResource("4_2r1tl")
+[node name="AITeammate2" parent="." index="5" unique_id=289776472 instance=ExtResource("5_dywbp")]
+transform = Transform3D(0.8601651, 0, -0.51001555, 0, 1, 0, 0.51001555, 0, 0.8601651, -4.236211, 0.50000095, -1.6630898)
 
-[node name="blockout_1 (2)" parent="." index="7" unique_id=2018022391 groups=["navigation_mesh_source_group"] instance=ExtResource("5_2r1tl")]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="7" unique_id=1116788572]
+navigation_mesh = SubResource("NavigationMesh_dywbp")
+
+[node name="blockout_1 (2)" parent="." index="8" unique_id=2018022391 groups=["navigation_mesh_source_group"] instance=ExtResource("5_2r1tl")]
 metadata/_edit_lock_ = true
 
-[node name="Enemy" parent="." index="8" unique_id=289776472 instance=ExtResource("4_bfxgj")]
+[node name="Enemy" parent="." index="9" unique_id=361484658 instance=ExtResource("4_bfxgj")]
 transform = Transform3D(0.7501361, 0, -0.6612835, 0, 1, 0, 0.6612835, 0, 0.7501361, 3.9172142, 0.4, -6.9692426)
 
-[node name="Enemy2" parent="." index="9" unique_id=1553773145 instance=ExtResource("4_bfxgj")]
+[node name="Enemy2" parent="." index="10" unique_id=1553773145 instance=ExtResource("4_bfxgj")]
 transform = Transform3D(0.8179001, 0, -0.5753602, 0, 1, 0, 0.5753602, 0, 0.8179001, 5.7204847, 0.4, -6.222976)
 
-[node name="Enemy3" parent="." index="10" unique_id=774387382 instance=ExtResource("4_bfxgj")]
+[node name="Enemy3" parent="." index="11" unique_id=774387382 instance=ExtResource("4_bfxgj")]
 transform = Transform3D(-0.81790006, 0, 0.57536024, 0, 1, 0, -0.57536024, 0, -0.81790006, 0.3949597, 0.4, -6.4933076)
 
-[node name="InteractableWindow" type="StaticBody3D" parent="." index="11" unique_id=939045752 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+[node name="InteractableWindow" type="StaticBody3D" parent="." index="12" unique_id=939045752 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.611212, 0, 9.8625765)
 collision_layer = 8
 collision_mask = 0
@@ -70,7 +85,7 @@ mesh = SubResource("BoxMesh_1seuy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5754633, 1.0868578, -0.014501095)
 shape = SubResource("BoxShape3D_1seuy")
 
-[node name="InteractableWindow2" type="StaticBody3D" parent="." index="12" unique_id=2039574482 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+[node name="InteractableWindow2" type="StaticBody3D" parent="." index="13" unique_id=2039574482 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.5163407, -4.7683716e-07, -8.200917)
 collision_layer = 8
 collision_mask = 0
@@ -87,7 +102,7 @@ mesh = SubResource("BoxMesh_1seuy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000002, 0)
 shape = SubResource("CylinderShape3D_nfihu")
 
-[node name="InteractableFloor" type="StaticBody3D" parent="." index="13" unique_id=1695278063 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+[node name="InteractableFloor" type="StaticBody3D" parent="." index="14" unique_id=1695278063 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.6064669, 0.45, 9.8625765)
 collision_layer = 8
 collision_mask = 0
@@ -103,7 +118,7 @@ mesh = SubResource("BoxMesh_2r1tl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3434221, 0)
 shape = SubResource("CylinderShape3D_nfihu")
 
-[node name="InteractableFloor2" type="StaticBody3D" parent="." index="14" unique_id=65826097 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+[node name="InteractableFloor2" type="StaticBody3D" parent="." index="15" unique_id=65826097 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3935331, 0.45, -1.6985998)
 collision_layer = 8
 collision_mask = 0
