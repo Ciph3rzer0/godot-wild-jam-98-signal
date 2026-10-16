@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+DEBUG="*uid://byfvigfj0qg1y"
 DebugDraw="*res://addons/debug_draw/debug_draw_3d.tscn"
 Profily="*uid://qmnu1ehm866e"
 

@@ -284,15 +284,20 @@ func _has_line_of_sight(from: Vector3, to: Vector3, target: Node) -> bool:
 	query.collision_mask = interactable_occlusion_flags
 	var hit := get_world_3d().direct_space_state.intersect_ray(query)
 	if hit.is_empty():
-		DebugDraw.draw_line(from - Vector3.UP*0.1, to, Color.PINK, 1)
+		if DEBUG.draw_player_los:
+			DebugDraw.draw_line(from - Vector3.UP*0.1, to, Color.PINK, 1)
 		return true
 	
 	var collider: Node = hit.collider
 	
 	if collider == target or target.is_ancestor_of(collider) or collider.is_ancestor_of(target):
-		DebugDraw.draw_line(from * (Vector3.ONE - Vector3.UP), to, Color.WEB_GREEN, 1)
+		if DEBUG.draw_player_los:
+			DebugDraw.draw_line(from * (Vector3.ONE - Vector3.UP), to, Color.WEB_GREEN, 1)
 		return true
 	
-	#print (collider.name)
-	DebugDraw.draw_line(from * (Vector3.ONE - Vector3.UP), hit.position, Color.AZURE, 1)
+	if DEBUG.print_player_los:
+		print("Player LOS occluded by: ", collider.name)
+	
+	if DEBUG.draw_player_los:
+		DebugDraw.draw_line(from * (Vector3.ONE - Vector3.UP), hit.position, Color.AZURE, 1)
 	return false
