@@ -3,6 +3,8 @@ extends State
 ## Emitted once when the teammate reaches move_target.
 signal arrived
 
+@export var explicit_move_target: SignalTarget
+
 ## How close (horizontally) counts as standing on the spot.
 @export var arrive_distance := 0.1
 
@@ -16,7 +18,10 @@ func enter() -> void:
 	_ai = actor as AIActor
 	assert(_ai != null, "Move requires an AIActor actor")
 	
-	move_target = _ai.move_target as SignalTarget
+	if explicit_move_target:
+		move_target = explicit_move_target as SignalTarget
+	else:
+		move_target = _ai.move_target as SignalTarget
 	assert(move_target != null, "Move requries a move_target")
 	
 	_arrived = false
@@ -67,3 +72,13 @@ func physics_update(delta: float) -> void:
 func _face(dir: Vector3, delta: float) -> void:
 	var target_yaw := atan2(-dir.x, -dir.z)
 	_ai.rotation.y = rotate_toward(_ai.rotation.y, target_yaw, _ai.turn_speed * delta)
+
+
+func transition_to_move(target):
+	print(target)
+	if (target is SignalTarget):
+		_ai.move_target = target
+		(get_parent() as StateMachine).transition_to(self)
+
+func _on_scan_trigger_target_acquired(target: Unit) -> void:
+	pass # Replace with function body.

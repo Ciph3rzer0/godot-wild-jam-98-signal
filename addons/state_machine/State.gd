@@ -4,6 +4,9 @@ extends Node
 ## emitting transitioned with the node name of the next state; the StateMachine
 ## listens, so states never need to know about the machine.
 
+signal state_entered(state: State)
+signal state_exited(state: State)
+
 signal transitioned(state_name: String)
 
 ## The node being driven: the StateMachine's parent. Set by the StateMachine.
@@ -24,3 +27,7 @@ var actor: CharacterBody3D
 
 ## Called every physics frame while active.
 @abstract func physics_update(_delta: float) -> void
+
+
+func transition_to(v1: Variant = null, v2: Variant = null, v3: Variant = null):
+	(get_parent() as StateMachine).transition_to(self)
