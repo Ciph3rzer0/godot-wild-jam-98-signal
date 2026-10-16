@@ -146,5 +146,5 @@ radius = 3.0
 segments = 10
 
 [node name="GunTip" type="Marker3D" parent="." unique_id=1754596449]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000001, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, -0.8)
 gizmo_extents = 0.1

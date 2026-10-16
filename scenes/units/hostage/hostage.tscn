@@ -6,9 +6,8 @@
 [ext_resource type="Script" uid="uid://dxi8ymorv1mmv" path="res://scenes/units/ai/states/wait.gd" id="3_txf0g"]
 [ext_resource type="Script" uid="uid://fi3eyjs2i4wt" path="res://scenes/units/ai/states/hold_fire.gd" id="4_n80r0"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h45xw"]
-radius = 0.27392578
-height = 1.5756836
+[sub_resource type="BoxShape3D" id="BoxShape3D_rc6wk"]
+size = Vector3(0.515, 1.215, 0.146)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6urs"]
 resource_name = "skin"
@@ -190,8 +189,8 @@ root_node = NodePath("../CharacterModel")
 libraries/animations = ExtResource("1_g3pbs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=264505929]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.82967806, 0)
-shape = SubResource("CapsuleShape3D_h45xw")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93716097, 0.018109242)
+shape = SubResource("BoxShape3D_rc6wk")
 
 [node name="CharacterModel" type="Node3D" parent="." unique_id=1768070642]
 transform = Transform3D(0.71, 0, 0, 0, 0.71, 0, 0, 0, 0.71, 0.04402113, 0.38428223, 0.24136674)
