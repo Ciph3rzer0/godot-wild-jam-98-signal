@@ -1,11 +1,13 @@
 [gd_scene format=4 uid="uid://c7usov56xlpg7"]
 
 [ext_resource type="AnimationLibrary" uid="uid://cgsl7ywecgmii" path="res://assets/models/characters/animations.glb" id="1_g3pbs"]
-[ext_resource type="Script" uid="uid://bhqaq6x8jvq" path="res://scenes/hostage/hostage.gd" id="1_pqwij"]
+[ext_resource type="Script" uid="uid://bhqaq6x8jvq" path="res://scenes/units/hostage/hostage.gd" id="1_pqwij"]
+[ext_resource type="Script" uid="uid://bo5y5sur160r6" path="res://addons/state_machine/StateMachine.gd" id="2_m34ln"]
+[ext_resource type="Script" uid="uid://dxi8ymorv1mmv" path="res://scenes/units/ai/states/wait.gd" id="3_txf0g"]
+[ext_resource type="Script" uid="uid://fi3eyjs2i4wt" path="res://scenes/units/ai/states/hold_fire.gd" id="4_n80r0"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h45xw"]
-radius = 0.234375
-height = 2.040039
+[sub_resource type="BoxShape3D" id="BoxShape3D_rc6wk"]
+size = Vector3(0.515, 1.215, 0.146)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6urs"]
 resource_name = "skin"
@@ -164,7 +166,22 @@ bind/34/bone = -1
 bind/34/pose = Transform3D(1, 0, 0, 0, 0.99999976, 1.4901156e-07, 0, 1.4901156e-08, 0.9999999, 0.05752611, -1.3914832, 0.21165763)
 
 [node name="Hostage" type="CharacterBody3D" unique_id=1367416622]
+collision_layer = 128
 script = ExtResource("1_pqwij")
+
+[node name="MovementState" type="Node" parent="." unique_id=304663995 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_m34ln")
+initial_state = NodePath("Wait")
+
+[node name="Wait" type="Node" parent="MovementState" unique_id=527760859]
+script = ExtResource("3_txf0g")
+
+[node name="CombatState" type="Node" parent="." unique_id=1082691522 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_m34ln")
+initial_state = NodePath("HoldFire")
+
+[node name="HoldFire" type="Node" parent="CombatState" unique_id=1050044331]
+script = ExtResource("4_n80r0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=571810795]
 reset_on_save = false
@@ -172,11 +189,11 @@ root_node = NodePath("../CharacterModel")
 libraries/animations = ExtResource("1_g3pbs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=264505929]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0618558, 0)
-shape = SubResource("CapsuleShape3D_h45xw")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84387684, 0.018109242)
+shape = SubResource("BoxShape3D_rc6wk")
 
 [node name="CharacterModel" type="Node3D" parent="." unique_id=1768070642]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04402113, 0.38428223, 0.24136674)
+transform = Transform3D(0.71, 0, 0, 0, 0.71, 0, 0, 0, 0.71, 0.04402113, 0.26900372, 0.24136674)
 
 [node name="rig-enemy" type="Node3D" parent="CharacterModel" unique_id=1446269951]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05752611, -0.38981634, -0.23635769)

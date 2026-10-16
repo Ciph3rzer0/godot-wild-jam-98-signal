@@ -37,12 +37,14 @@ var combat_target: Unit
 
 func _ready() -> void:
 	super()
-	assert(nav_agent)
-	assert(aim_pivot)
-	assert(eyes)
 
+func apply_gravity(_delta):
+	#if not is_on_floor():
+		#velocity += get_gravity() * 2 * delta
+	pass
 
 func receive_command(command: HandSignalSprite.SIGNAL, sender: Node3D, target: Variant = null) -> void:
+	if is_dead(): return
 	match command:
 		HandSignalSprite.SIGNAL.STOP:
 			movement.transition_to($MovementState/Wait)

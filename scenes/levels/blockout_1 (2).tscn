@@ -1212,6 +1212,7 @@ shape = SubResource("ConcavePolygonShape3D_ofxu6")
 
 [node name="hostage_001" type="MeshInstance3D" parent="." unique_id=239991225]
 transform = Transform3D(0.22844751, 0, -0.0023047228, 0, 0.22845912, 0, 0.0023047226, 0, 0.22844751, -1.0416613, 0.13265505, -1.7359308)
+visible = false
 layers = 65537
 mesh = SubResource("ArrayMesh_nqrgp")
 

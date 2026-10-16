@@ -9,7 +9,8 @@ func enter() -> void:
 	_ai = actor as AIActor
 	assert(_ai != null, "Scanning requires an AIActor actor")
 	
-	_ai.face.material_override = preload("uid://dx4vk1urlamo4")
+	if _ai.face:
+		_ai.face.material_override = preload("uid://dx4vk1urlamo4")
 
 ## Called once when the state stops being active.
 func exit() -> void:
@@ -20,7 +21,7 @@ func update(_delta: float) -> void:
 	pass
 
 ## Called every physics frame while active.
-func physics_update(_delta: float) -> void:
+func physics_update(delta: float) -> void:
 	var opponents = _ai.get_opponents()
 	
 	for opponent in opponents:
@@ -31,3 +32,5 @@ func physics_update(_delta: float) -> void:
 				print ("Target acquired")
 				target_acquired.emit(opponent)
 				# (get_parent() as StateMachine).transition_to($"../Engaging")
+	
+	_ai.apply_gravity(delta)

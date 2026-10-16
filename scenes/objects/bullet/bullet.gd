@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 @export var speed := 27.0
+@export var damage := 55.0
 
 var target : Vector3
 
@@ -14,5 +15,9 @@ func _ready() -> void:
 	top_level = true
 
 func _on_body_entered(body: Node) -> void:
-	print(" BULLET HIT ", body.name)
+	if (body is Unit):
+		print(" OBJECT HIT ", body.name)
+		body.take_damage(damage, self)
+	else:
+		print(" BULLET HIT UNIT ", body.name)
 	queue_free()

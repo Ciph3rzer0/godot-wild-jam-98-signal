@@ -7,7 +7,7 @@ var _move_target: Node3D
 ## Called once when the state becomes active.
 func enter() -> void:
 	_ai = actor as AIActor
-	assert(_ai != null, "Patrol requires an AITeammate actor")
+	assert(_ai != null, "Patrol requires an AIActor")
 	# Re-apply the current waypoint so the agent drops whatever target the
 	# previous state left behind (e.g. the player's position from Follow).
 	set_patrol_index(_patrol_index)

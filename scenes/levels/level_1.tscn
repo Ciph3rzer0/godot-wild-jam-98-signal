@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cal2x1hpac871" path="res://scenes/units/ai/states/alerted.gd" id="10_ndtll"]
 [ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/units/ai/states/engaging.gd" id="11_7h2jl"]
 [ext_resource type="Script" uid="uid://cq70c3tom5np1" path="res://scenes/units/ai/states/scan_trigger.gd" id="12_mqh5v"]
+[ext_resource type="PackedScene" uid="uid://c7usov56xlpg7" path="res://scenes/units/hostage/hostage.tscn" id="12_np2pn"]
 [ext_resource type="Script" uid="uid://q4puqaj3nmbx" path="res://scenes/units/ai/states/move.gd" id="13_bahl2"]
 [ext_resource type="Material" uid="uid://c5wxuhvhhuoo8" path="res://scenes/radar/hostile_radar_dot.tres" id="14_o7j4k"]
 [ext_resource type="Material" uid="uid://dx4vk1urlamo4" path="res://scenes/units/enemies/scanning_face_material.tres" id="15_31oqk"]
@@ -50,7 +51,7 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_uhg71"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_bahl2"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_np2pn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r1tl"]
 transparency = 1
@@ -75,6 +76,9 @@ size = Vector3(0.5, 0.1, 0.5)
 
 [node name="Prototype Level" unique_id=1527916753 instance=ExtResource("1_x6ivy")]
 
+[node name="UI" parent="." index="0" unique_id=2041766851]
+mouse_filter = 2
+
 [node name="RadarCameraRig" parent="UI/MarginContainer/CircleMask/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(1747511697) index="0" unique_id=1503955098]
 transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, -1.6445713, 0.5, 5.6644993)
 
@@ -97,13 +101,16 @@ navigation_mesh = SubResource("NavigationMesh_dywbp")
 [node name="blockout_1 (2)" parent="." index="8" unique_id=2018022391 groups=["navigation_mesh_source_group"] instance=ExtResource("5_2r1tl")]
 metadata/_edit_lock_ = true
 
-[node name="Enemy" parent="." index="9" unique_id=361484658 instance=ExtResource("4_bfxgj")]
+[node name="Hostage" parent="." index="9" unique_id=1367416622 instance=ExtResource("12_np2pn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1861496, 0.38612854, -5.4182596)
+
+[node name="Enemy" parent="." index="10" unique_id=361484658 instance=ExtResource("4_bfxgj")]
 transform = Transform3D(0.7501361, 0, -0.6612835, 0, 1, 0, 0.6612835, 0, 0.7501361, 3.9172142, 0.4, -6.9692426)
 
-[node name="Enemy2" parent="." index="10" unique_id=1553773145 instance=ExtResource("4_bfxgj")]
+[node name="Enemy2" parent="." index="11" unique_id=1553773145 instance=ExtResource("4_bfxgj")]
 transform = Transform3D(0.8179001, 0, -0.5753602, 0, 1, 0, 0.5753602, 0, 0.8179001, 5.7204847, 0.4, -6.222976)
 
-[node name="Enemy3" type="CharacterBody3D" parent="." index="11" unique_id=774387382 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
+[node name="Enemy3" type="CharacterBody3D" parent="." index="12" unique_id=774387382 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
 transform = Transform3D(-0.81790006, 0, 0.57536024, 0, 1, 0, -0.57536024, 0, -0.81790006, 0.3949597, 0.4, -6.4933076)
 collision_layer = 64
 collision_mask = 55
@@ -198,18 +205,18 @@ mesh = SubResource("BoxMesh_uhg71")
 [node name="Eyes" type="MeshInstance3D" parent="Enemy3/Face" index="2" unique_id=521000194]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 cast_shadow = 0
-mesh = SubResource("ImmediateMesh_bahl2")
+mesh = SubResource("ImmediateMesh_np2pn")
 script = ExtResource("16_x7jkp")
 arc_angle = 90.0
 radius = 3.0
 segments = 10
 
 [node name="GunTip" type="Marker3D" parent="Enemy3" index="9" unique_id=695593966]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000001, -0.5)
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, 0, 1.3, -0.8)
 gizmo_extents = 0.1
 
-[node name="InteractableHostage" type="StaticBody3D" parent="." index="12" unique_id=707821752 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.1861496, 0, -5.8615575)
+[node name="InteractableHostage" type="StaticBody3D" parent="." index="13" unique_id=707821752 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.1861496, 0.54540336, -5.7291293)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("6_2r1tl")
@@ -218,17 +225,16 @@ aim_point = NodePath("MeshInstance3D")
 highlight_meshes = [NodePath("MeshInstance3D")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InteractableHostage" index="0" unique_id=1457391751]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62726593, 1.6175354, -0.03414917)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62726593, 1.0701524, -0.03414917)
 material_override = SubResource("StandardMaterial3D_2r1tl")
 mesh = SubResource("BoxMesh_1seuy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableHostage" index="1" unique_id=184995886]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5754633, 1.0868578, -0.014501095)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("BoxShape3D_bahl2")
 disabled = true
 
-[node name="InteractableWindow" type="StaticBody3D" parent="." index="13" unique_id=939045752 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+[node name="InteractableWindow" type="StaticBody3D" parent="." index="14" unique_id=939045752 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.611212, 0.45392707, 9.8625765)
 collision_layer = 8
 collision_mask = 0
@@ -245,7 +251,7 @@ mesh = SubResource("BoxMesh_1seuy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5754633, 1.0868578, -0.014501095)
 shape = SubResource("BoxShape3D_1seuy")
 
-[node name="InteractableWindow2" type="StaticBody3D" parent="." index="14" unique_id=2039574482 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+[node name="InteractableWindow2" type="StaticBody3D" parent="." index="15" unique_id=2039574482 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.5163407, -4.7683716e-07, -8.200917)
 collision_layer = 8
 collision_mask = 0
@@ -262,7 +268,7 @@ mesh = SubResource("BoxMesh_1seuy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000002, 0)
 shape = SubResource("CylinderShape3D_nfihu")
 
-[node name="InteractableFloor" type="StaticBody3D" parent="." index="15" unique_id=1695278063 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+[node name="InteractableFloor" type="StaticBody3D" parent="." index="16" unique_id=1695278063 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.6064669, 0.45, 9.8625765)
 collision_layer = 8
 collision_mask = 0
@@ -278,7 +284,7 @@ mesh = SubResource("BoxMesh_2r1tl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3434221, 0)
 shape = SubResource("CylinderShape3D_nfihu")
 
-[node name="InteractableFloor2" type="StaticBody3D" parent="." index="16" unique_id=65826097 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+[node name="InteractableFloor2" type="StaticBody3D" parent="." index="17" unique_id=65826097 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3935331, 0.45, -1.6985998)
 collision_layer = 8
 collision_mask = 0
@@ -295,3 +301,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4478814, 0)
 shape = SubResource("CylinderShape3D_nfihu")
 
 [connection signal="target_acquired" from="Enemy3/MovementState/ScanTrigger" to="Enemy3/MovementState/Move" method="transition_to"]
+[connection signal="arrived" from="Enemy3/MovementState/Move" to="Enemy3/CombatState/Engaging" method="transition_to"]
