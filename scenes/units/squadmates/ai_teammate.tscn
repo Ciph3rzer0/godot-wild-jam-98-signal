@@ -56,8 +56,8 @@ nav_agent = NodePath("NavigationAgent3D")
 face = NodePath("Face")
 aim_pivot = NodePath("Face")
 eyes = NodePath("Face/Eyes")
-visual_occluder_mask = 6
-attack_occluder_mask = 310
+visual_occluder_mask = 7
+attack_occluder_mask = 311
 gun_tip = NodePath("GunTip")
 bullet = ExtResource("2_yhyk5")
 
