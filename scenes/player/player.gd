@@ -1,13 +1,12 @@
-#https://github.com/Linko-3D/Godot-Simple-First-Person-Controller/blob/main/player/player.gd
 class_name Player
 extends Unit
 
 @export var teammates: Array[AIActor]
 var actively_signaled_teammate: AIActor
 
+@export var cam_rig : Node3D
 @export var cam : Camera3D
 
-@onready var interaction_ray: RayCast3D = $Camera3D/InteractionRay
 @onready var hand_signal_sprite: HandSignalSprite = $HandSignal
 
 @export_flags_3d_physics var interactable_occlusion_flags := 1
@@ -76,9 +75,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if is_mouse_free: return
 	if event is InputEventMouseMotion:
-		rotation_degrees.y -= event.relative.x / 10
-		cam.rotation_degrees.x -= event.relative.y / 10
-		cam.rotation_degrees.x = clamp(cam.rotation_degrees.x, -90, 90)
+		cam_rig.rotation_degrees.y -= event.relative.x / 10
+		cam_rig.rotation_degrees.x -= event.relative.y / 10
+		cam_rig.rotation_degrees.x = clamp(cam_rig.rotation_degrees.x, -90, 90)
 
 var cheat_float := false
 
