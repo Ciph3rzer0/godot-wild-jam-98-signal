@@ -1,13 +1,9 @@
 [gd_scene format=4 uid="uid://bjopuuaqydblu"]
 
-[ext_resource type="PackedScene" uid="uid://cmd46kghrvyc3" path="res://scenes/player/policePlayer.tscn" id="2_4tcl0"]
 [ext_resource type="PackedScene" uid="uid://lqph4kw8y2dc" path="res://scenes/objects/door/door.tscn" id="2_8a7m2"]
-[ext_resource type="PackedScene" uid="uid://cqjwn7gq2golt" path="res://scenes/units/squadmates/squadmate.tscn" id="3_dd0lh"]
 [ext_resource type="PackedScene" uid="uid://bo8jsvp0gesik" path="res://assets/models/environment/nuclearCannister.glb" id="3_nkeig"]
 [ext_resource type="PackedScene" uid="uid://41j772jln2ny" path="res://assets/models/environment/l1-walls.glb" id="4_bfxgj"]
-[ext_resource type="PackedScene" uid="uid://bpvjjcx13hhmv" path="res://scenes/units/ai/terrorist.tscn" id="5_1seuy"]
 [ext_resource type="PackedScene" uid="uid://dcxl4dpvwhbuy" path="res://assets/models/environment/asphaltFloor.glb" id="5_dywbp"]
-[ext_resource type="PackedScene" uid="uid://c7usov56xlpg7" path="res://scenes/units/hostage/hostage.tscn" id="6_1seuy"]
 [ext_resource type="PackedScene" uid="uid://bw5hkxnldhvyu" path="res://assets/models/environment/sandbagPile.glb" id="9_nkeig"]
 [ext_resource type="PackedScene" uid="uid://yt6vstx0xa7l" path="res://assets/models/environment/wall_redblock.glb" id="9_plydf"]
 [ext_resource type="PackedScene" uid="uid://dhkfoontbcqjy" path="res://assets/models/environment/metalStairs.glb" id="10_5ntmo"]
@@ -163,13 +159,6 @@ size = Vector3(3.7187061, 0.11621094, 5.9696655)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2r1tl"]
 size = Vector3(3.8794522, 0.11621094, 3.809269)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0o143"]
-emission_enabled = true
-emission = Color(0.91269803, 0.8816077, 0.86342293, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_nfihu"]
-material = SubResource("StandardMaterial3D_0o143")
 
 [sub_resource type="BoxMesh" id="BoxMesh_0o143"]
 size = Vector3(1, 14.46875, 1)
@@ -688,44 +677,6 @@ mesh = SubResource("BoxMesh_h45xw")
 [node name="ceiling_side" type="MeshInstance3D" parent="Building" unique_id=1791270846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9593542, 1.3262066, -1.3769468)
 mesh = SubResource("BoxMesh_2r1tl")
-
-[node name="Player" parent="." unique_id=887139957 instance=ExtResource("2_4tcl0")]
-transform = Transform3D(-0.2487001, 0, 2.1742053e-08, 0, 0.2487001, 0, -2.1742053e-08, 0, -0.2487001, -2.25163, 0.16933727, 7.2592816)
-
-[node name="lightPanels21" type="MeshInstance3D" parent="Player" unique_id=1452937165]
-transform = Transform3D(-1.0832453, -6.1563355e-08, -8.151711e-15, 9.470033e-08, -0.70420283, -1.8648946e-07, 8.278965e-15, -1.2312672e-07, 1.0665953, 0.34553266, 4.417854, 26.334839)
-mesh = SubResource("PlaneMesh_nfihu")
-
-[node name="lightPanels22" type="MeshInstance3D" parent="Player" unique_id=298982525]
-transform = Transform3D(-1.0832453, -6.1563355e-08, -8.151711e-15, 9.470033e-08, -0.70420283, -1.8648946e-07, 8.278965e-15, -1.2312672e-07, 1.0665953, 0.34553266, 4.4178524, 33.68638)
-mesh = SubResource("PlaneMesh_nfihu")
-
-[node name="lightPanels23" type="MeshInstance3D" parent="Player" unique_id=1415804584]
-transform = Transform3D(-1.0832453, -6.1563355e-08, -8.151711e-15, 9.470033e-08, -0.70420283, -1.8648946e-07, 8.278965e-15, -1.2312672e-07, 1.0665953, -6.298678, 4.4178543, 26.334839)
-mesh = SubResource("PlaneMesh_nfihu")
-
-[node name="lightPanels25" type="MeshInstance3D" parent="Player" unique_id=303600798]
-transform = Transform3D(-1.0832453, -6.1563355e-08, -8.151711e-15, 9.470033e-08, -0.70420283, -1.8648946e-07, 8.278965e-15, -1.2312672e-07, 1.0665953, 0.34553266, 4.4178553, 18.784954)
-mesh = SubResource("PlaneMesh_nfihu")
-
-[node name="lightPanels26" type="MeshInstance3D" parent="Player" unique_id=585645170]
-transform = Transform3D(-1.0832453, -6.1563355e-08, -8.151711e-15, 9.470033e-08, -0.70420283, -1.8648946e-07, 8.278965e-15, -1.2312672e-07, 1.0665953, -6.298678, 4.4178557, 18.784954)
-mesh = SubResource("PlaneMesh_nfihu")
-
-[node name="lightPanels24" type="MeshInstance3D" parent="Player" unique_id=1790213472]
-transform = Transform3D(-1.0832453, -6.1563355e-08, -8.151711e-15, 9.470033e-08, -0.70420283, -1.8648946e-07, 8.278965e-15, -1.2312672e-07, 1.0665953, -6.298678, 4.417853, 33.68638)
-mesh = SubResource("PlaneMesh_nfihu")
-
-[node name="NPCs" type="Node3D" parent="." unique_id=322440933]
-
-[node name="Squadmate" parent="NPCs" unique_id=1399255242 instance=ExtResource("3_dd0lh")]
-transform = Transform3D(-0.21467699, 0, 1.876766e-08, 0, 0.21467699, 0, -1.876766e-08, 0, -0.21467699, -2.5441234, 0.15866895, 7.220509)
-
-[node name="Terrorist" parent="NPCs" unique_id=1953779749 instance=ExtResource("5_1seuy")]
-transform = Transform3D(0.14994448, 0, -0.14994448, 0, 0.21205354, 0, 0.14994448, 0, 0.14994448, -0.27314305, -4.824479, -1.5675555)
-
-[node name="Hostage" parent="NPCs" unique_id=1367416622 instance=ExtResource("6_1seuy")]
-transform = Transform3D(0.2060424, 0, 0, 0, 0.2060424, 0, 0, 0, 0.2060424, -2.005342, 0.1694319, -1.1216863)
 
 [node name="Outside" type="Node3D" parent="." unique_id=94873107]
 
