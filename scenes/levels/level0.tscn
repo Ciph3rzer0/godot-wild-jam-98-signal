@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://db4gn3p87mybd" path="res://assets/models/environment/paneledCementFloor.glb" id="2_cperm"]
 [ext_resource type="PackedScene" uid="uid://cmd46kghrvyc3" path="res://scenes/player/policePlayer.tscn" id="3_hghvf"]
 [ext_resource type="PackedScene" uid="uid://dcxl4dpvwhbuy" path="res://assets/models/environment/asphaltFloor.glb" id="4_d0grl"]
+[ext_resource type="PackedScene" uid="uid://bw5hkxnldhvyu" path="res://assets/models/environment/sandbagPile.glb" id="4_d3ub6"]
 [ext_resource type="PackedScene" uid="uid://bsgjaiyblney7" path="res://assets/models/environment/van.glb" id="4_ry65h"]
 [ext_resource type="PackedScene" uid="uid://cw7sws8plbuy" path="res://assets/models/environment/wall_cinderblock.glb" id="5_d0grl"]
 [ext_resource type="PackedScene" uid="uid://c7usov56xlpg7" path="res://scenes/units/hostage/hostage.tscn" id="5_oem7y"]
@@ -177,6 +178,12 @@ mesh = SubResource("PlaneMesh_h45xw")
 [node name="lightPanels25" type="MeshInstance3D" parent="building" unique_id=355097976]
 transform = Transform3D(-0.34341097, -6.1563355e-08, -2.4973498e-15, 3.0021948e-08, -0.70420283, -5.7132716e-08, 2.6246019e-15, -1.2312672e-07, 0.32676104, -2.4896567, 2.2608163, -0.6611881)
 mesh = SubResource("PlaneMesh_h45xw")
+
+[node name="sandbagPile2" parent="building" unique_id=656898307 instance=ExtResource("4_d3ub6")]
+transform = Transform3D(-1.1031339e-08, 0.02334849, -0.25236762, 7.9900986e-10, 0.32235536, 0.018279213, 0.25302875, 0, -1.1060238e-08, 1.3660434, 0.03224677, -0.57966536)
+
+[node name="sandbagPile3" parent="building" unique_id=276685895 instance=ExtResource("4_d3ub6")]
+transform = Transform3D(0.017893074, 0.02222728, 0.25179473, 6.450191e-10, 0.32243073, -0.017445106, -0.2523953, 0.0015757609, 0.017850496, 1.378886, 0.03224677, 0.4158361)
 
 [node name="background" type="Node3D" parent="." unique_id=1914192772]
 

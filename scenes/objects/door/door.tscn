@@ -9,6 +9,9 @@ albedo_color = Color(0.45025533, 0.2156845, 0.09434169, 1)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h5ew4"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_h45xw"]
+height = 0.22766113
+
 [node name="Door" type="Node3D" unique_id=812434341]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8561431, 0, 0)
 
@@ -23,3 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 0.61896676, 0, 0, 0, 5.5995355, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=254367722]
 transform = Transform3D(1, 0, 0, 0, 1.6155957, 0, 0, 0, 0.17858624, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_h5ew4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=2054329332]
+transform = Transform3D(-0.09058175, 0, -7.918908e-09, -7.918908e-09, -3.959454e-09, 0.09058175, -3.4614647e-16, 0.09058175, 3.959454e-09, -0.20690888, 0.06228712, 0.12894058)
+mesh = SubResource("CylinderMesh_h45xw")
