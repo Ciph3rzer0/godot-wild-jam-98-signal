@@ -55,6 +55,7 @@ visual_occluder_mask = 7
 attack_occluder_mask = 327
 debug_sight_lines = true
 team = 1
+max_health = 30.0
 gun_tip = NodePath("GunTip")
 bullet = ExtResource("2_oaelh")
 
