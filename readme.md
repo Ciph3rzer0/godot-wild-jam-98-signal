@@ -48,7 +48,177 @@
 		- [ ] hand gestures
 			- arm
 				- lateral extension
-				- forward extension
+				- forward extension### Theme
+- Signal ([itch jam page link](https://itch.io/jam/godot-wild-jam-98))
+
+### Wildcards:
+- Flashlight
+- Double Duty
+- Feeling Froggy
+
+### Ideas
+- Flag semaphore
+- Outer Wilds
+- Traffic
+- Swat hand signals
+
+### SWAT hand signals
+- you are SWAT team leader
+- you have a shield and shitty pistol (stun gun? rubber bullet? baton?)
+- you mostly give silent directions to your two AI teammates
+
+### starter project tasks
+- getting project in shared version control
+- characters
+	- three SWAT capsules (you and two AI)
+	- one terrorist capsule
+- environment
+	- outside a room with two entrances
+- UI/controls
+	- right click/drag for pie menu to select hand signal corresponding to person/task
+	- start with just printing the task to console, ultimately will translate to move/action AI commands with restrained scope
+	- minimap (or some way to convey non-obvious positional information...maybe a camera-pull to a "drone view" with heat signatures or something)
+
+### next tasks
+- AI
+	- navmesh / go-to / take shot
+	- {flesh out commands --> tailor to puzzles; keep realistic/in-scope}
+
+### modeling
+- characters
+	- [x] player (simple policewoman?)
+	- [x] swat teammates (GIGN)
+	- [x] enemies ✅ 2026-10-13
+- animations
+	- lower/whole body
+		- [x] idle (crouch, stand)
+		- [x] walk (crouch, stand)
+		- [x] run (crouch, stand)
+	- torso/arm split
+		- [x] hand gestures ✅ 2026-10-15
+		- [x] aim/shoot weapon ✅ 2026-10-15
+		- [x] raise shield ✅ 2026-10-15
+		- [ ] surrender/scared
+	- [ ] pass animations to all four character models
+- tools
+	- [x] hand gun
+	- [x] riot shield
+	- [x] big gun
+- environments
+	- level
+		- [x] cinder block walls
+		- [x] cement floor
+		- [x] metal railings/bridges
+		- [ ] doors/windows
+	- props
+		- barrel
+		- box
+		- sandbag stack
+	- level ideas
+		- prioritize considering vantage points and ground-level stealth / LOS props
+		- industrial setting --> factory / power plant / etc.
+		- office building
+		- convenience store
+
+### SWAT notes ([video 1](https://youtu.be/ZTZFGVL5fs4))
+- roles (usually 4-8 man teams)
+	- entry team
+		- ground team leader
+		- breacher (battering ram, hydraulic devices)
+	- observation/overwatch team: sniper/recon specialists
+	- misc.: crisis negotiators, medics, intelligence coordinators, perimeter team
+- created as special police unit in LA after mass shootings in 60s, e.g. bell tower at UT
+- main response roles - riots, sniper attacks, political assassinations, urban guerrilla warfare (also counter-terrorism since 9/11)
+	- where specialized weapons and tactics are necessary
+- weapons
+	- early - M1 Carbines (mass produced in WWII)
+	- then - MP5 submachine gun (9mm rounds -> low stopping power)
+	- later
+		- SMG - CAR-15 and M4 carbines (56 mm rounds)
+		- shotgun - Benelli M1
+		- pistol - Colt I9II, M9 Beretta, Sig Sauer P226, FN Five-Seven
+		- non-lethal
+			- tasers
+			- tear gas
+			- pepper spray cannisters
+			- pepper ball guns
+			- shotguns with beanbag rounds
+			- stun grenades
+
+### Tactical Hand Signals notes ([video 2](https://youtu.be/uEfLh75wh3Q))
+- 2:42 - loud machine whirring
+- 5:19 - ok/acknowledge symbol
+- 11:44 - suspect; hostage
+
+### 10/14 thoughts
+- consider leaning into stealth to open quiet signal options
+	- footsteps/machine whirring from tac hand signals video
+	- levels open with players default crouch/stealth walking
+- conveying enemy's intentions, like when they're going to kill the hostage or begin incursion
+	- text
+		- bottom-screen closed caption style
+		- overhead, RS thought bubble style
+	- voice acting
+- wildcard ideas
+	- flashlight
+		- dark level components where use a light to send or receive signal
+		- just have flashlight on gun
+	- double duty ("one mechanic solves two different problems)
+		- ?
+	- feeling froggy
+		- throw  your teammates onto roof with your shield like leapfrog?
+- swap pistol to baton
+- level 0: local domestic dispute
+	- no teammates, just one room for either a training dummy or a domestic dispute before more intense threats to introduce most basic elements:
+		- introduce shield
+		- demonstrate that your attack is somewhat impotent (perhaps role is just shielding/backing out the victim)
+		- encourage fast failure/reset ('press R to reset')
+			- give small text hints at start of new reset
+- level 1: house hostage
+	- introduce teammate(s)
+	- draw eye to window behind hostage where correct solution involves a teammate taking the shot while the terrorist's back is turned from them (towards you)
+	- text hints on restart: encourage scouting perimeter; encourage watching for 'wait' locations 
+- level 2: industrial terrorist cell takedown
+	- introduce verticality
+	- instead of a window, there's a skylight to rappel through
+		- allow full freedom to breach all together, or add a rail like "only one person can take a small entry" (i.e., windows and rappel sites, as opposed to doors)?
+	- justify tac-signals with industrial machine whir (can't hear each other; also allows running without alerting enemies)
+- josh ideas
+	- third person
+	- enemies shooting
+	- shield (= directional damage)
+- gameplay
+	- need more direct theme relevance in the moment-to-moment
+	- need commands to be generalizable to puzzles rather than each command feeling like a point-and-click adventure game lock-and-key situation
+	- 'breaching' doesn't necessarily have to be central to each encounter
+		- maybe the last level is a trap and so you need to set up to defend against waves/incursions
+		- for incursions, keeping signals relevant likely means contriving reasons for static teammates to be the suboptimal choice, e.g.:
+			- you see the roof is collapsing over them, so you need them to cover the door from the *other* vantage point
+			- you need covering fire from teammate-1 to let teammate-2 fall back while you're completing some contrived primary objective (e.g., shielding the bomb the terrorists are trying to shoot or whatever)
+	- first level = you are distraction for the window sniper to save hostage; maybe next level has solution where you command your teammate to cause a distraction
+		- similarly, while first level has the shout "Everyone Go Go Go" command, maybe for next level where hearing is impeded by the whirring machine, you can tell them to sync up a countdown and your stopwatch is inside your shield
+
+
+### misc.
+- Josh showing off some cool debug camera utilities
+
+### 10/15 notes
+- make level 0 a ~ 'playable title screen', where you're dropped into a training ground to showcase/play with mechanics and return after each mission, accepting the next whenever you're ready by interacting with some object (e.g., SWAT van)
+	- shielding a target from projectiles
+	- blocking enemy movement
+	- signaling/ordering NPC to 'escape'
+- directions -> person (squadmate 1 or 2), action (follow me, go here, take the shot), timing (now, on my signal, after 30s)
+	- clarify "on my signal" or "after 30s" in the level 0 room
+- enemies don't move and aggro on closest revealed character with LOS
+- level 1:
+	- one teammate, one terrorist in main room holding hostage facing door --> 
+		- if you try to enter from the front with your squad mate, the hostage is killed if you approach, try to shoot (no clear shot), or wait too long
+		- if you try to shoot from the window without distracting the terrorist, a notification says there's no valid line of sight
+		- need to have teammate wait at window while you enter so the terrorist moves to the correct location, then make the hand signal to take the shot
+	- stretch: more terrorists come from the side door and you have to back the hostage out by blocking their shots
+- level 2:
+	- one mechanic will be moving horizontally with your teammate to keep them shielded from a sniper but having them stop at crusher spots (just red lights on ground)
+
 				- 90d bend
 			- hand
 				- finger point
