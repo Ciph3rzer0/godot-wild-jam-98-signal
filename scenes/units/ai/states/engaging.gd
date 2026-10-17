@@ -31,20 +31,22 @@ func physics_update(_delta: float) -> void:
 	act_chance -= 1 / avg_act_chance_per_second
 	
 	var opponent = _ai.combat_target
-	shoot_at(opponent.global_position)
-	return
 	
 	var ray := _ai.can_see_shoot(opponent)
 	if ray.can_shoot:
-		print("Engaging:: Can shoot ", opponent.name)
+		#print("Engaging:: Can shoot ", opponent.name)
+		shoot_at(opponent.global_position)
 	elif ray.can_see:
-		print("Engaging:: Can see ", opponent.name)
-	else:
-		print("Engaging:: -----------")
+		#print("Engaging:: Can see ", opponent.name)
+		shoot_at(opponent.global_position)
+	# else:
+	# 	print("Engaging:: -----------")
 	
 
 
 func shoot_at(target: Vector3):
+	if DEBUG.print_weapons_discharge:
+		print(_ai.name, " SHOOT AT ", _ai.combat_target.name)
 	var new_bullet := _ai.bullet.instantiate()
 	get_tree().root.add_child(new_bullet)
 	new_bullet.global_position = _ai.gun_tip.global_position

@@ -44,20 +44,27 @@
 			}
 		]
 	},
+	"cSpell.ignoreRegExpList": [
+		"uid://[a-zA-Z0-9]+"
+	],
 	"cSpell.words": [
-    "astar",
-    "FDIAGSIZE",
-    "HSIZE",
-    "Interactable",
-    "keypress",
-    "lerp",
-    "oldy",
-    "pathfinding",
-    "randf",
-    "tscn",
-    "viewports",
-    "VSIZE"
-  ],
+		"astar",
+		"FDIAGSIZE",
+		"HSIZE",
+		"Interactable",
+		"keypress",
+		"lerp",
+		"minf",
+		"occluder",
+		"oldy",
+		"pathfinding",
+		"randf",
+		"repath",
+		"tscn",
+		"unproject",
+		"viewports",
+		"VSIZE"
+	],
 	"files.exclude": {
 		"**/*.uid": true,
 		".godot": true,

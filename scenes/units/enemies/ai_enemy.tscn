@@ -11,6 +11,11 @@
 [ext_resource type="Script" uid="uid://dxi8ymorv1mmv" path="res://scenes/units/ai/states/wait.gd" id="6_oaelh"]
 [ext_resource type="Material" uid="uid://dx4vk1urlamo4" path="res://scenes/units/enemies/scanning_face_material.tres" id="7_wg236"]
 [ext_resource type="Script" uid="uid://mytkvrlqyl4a" path="res://scenes/units/debug_fov.gd" id="8_wg236"]
+[ext_resource type="Texture2D" uid="uid://c1bc715nth0fb" path="res://addons/godot-prototype-texture/PNG/checker_512x512/checker_red_512x512.png" id="9_uoium"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xwda"]
+albedo_texture = ExtResource("9_uoium")
+uv1_scale = Vector3(0.8, 2.3, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0o143"]
 radius = 0.25
@@ -34,7 +39,7 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_uhg71"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_c7ihk"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_4vqdi"]
 
 [node name="Enemy" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
 collision_layer = 64
@@ -47,7 +52,7 @@ eyes = NodePath("Face/Eyes")
 sight_range = 30.0
 fov_deg = 90.0
 visual_occluder_mask = 6
-attack_occluder_mask = 6
+attack_occluder_mask = 326
 debug_sight_lines = true
 team = 1
 gun_tip = NodePath("GunTip")
@@ -79,6 +84,7 @@ script = ExtResource("6_oaelh")
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=426961026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_7xwda")
 mesh = SubResource("CapsuleMesh_0o143")
 
 [node name="FacingIndicator" type="MeshInstance3D" parent="." unique_id=1655915331]
@@ -127,7 +133,7 @@ mesh = SubResource("BoxMesh_uhg71")
 [node name="Eyes" type="MeshInstance3D" parent="Face" unique_id=521000194]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 cast_shadow = 0
-mesh = SubResource("ImmediateMesh_c7ihk")
+mesh = SubResource("ImmediateMesh_4vqdi")
 script = ExtResource("8_wg236")
 arc_angle = 90.0
 radius = 3.0
