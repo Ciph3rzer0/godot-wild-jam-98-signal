@@ -1,6 +1,7 @@
 extends State
 
-signal defended_area_breached(unit: Unit)
+signal defended_area_breached()
+signal defended_area_breached_by_unit(unit: Unit)
 
 @export var defended_area: Area3D
 
@@ -26,4 +27,5 @@ func update(_delta: float) -> void:
 func physics_update(_delta: float) -> void:
 	for unit in defended_area.get_overlapping_bodies():
 		if _ai.can_see_shoot(unit).can_see:
-			defended_area_breached.emit(unit)
+			defended_area_breached.emit()
+			defended_area_breached_by_unit.emit(unit)

@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://de6hjfimvduja" path="res://scenes/objects/bullet/bullet.tscn" id="6_np2pn"]
 [ext_resource type="Script" uid="uid://bo5y5sur160r6" path="res://addons/state_machine/StateMachine.gd" id="7_v6ha0"]
 [ext_resource type="Script" uid="uid://fi3eyjs2i4wt" path="res://scenes/units/ai/states/hold_fire.gd" id="8_gmpev"]
+[ext_resource type="Script" uid="uid://dbthisxgsim0i" path="res://scenes/units/ai/dialog_box.gd" id="8_ndtll"]
 [ext_resource type="Script" uid="uid://ds8kjwjfaggds" path="res://scenes/units/ai/states/scanning.gd" id="9_mkypq"]
 [ext_resource type="Script" uid="uid://cal2x1hpac871" path="res://scenes/units/ai/states/alerted.gd" id="10_ndtll"]
 [ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/units/ai/states/engaging.gd" id="11_7h2jl"]
@@ -132,6 +133,8 @@ nav_agent = NodePath("NavigationAgent3D")
 face = NodePath("Face")
 aim_pivot = NodePath("Face")
 eyes = NodePath("Face/Eyes")
+movement_speed = 6.0
+turn_speed = 6.0
 sight_range = 30.0
 fov_deg = 90.0
 visual_occluder_mask = 6
@@ -141,7 +144,19 @@ team = 1
 gun_tip = NodePath("GunTip")
 bullet = ExtResource("6_np2pn")
 
-[node name="CombatState" type="Node" parent="Enemy3" index="0" unique_id=1242890481 node_paths=PackedStringArray("initial_state")]
+[node name="DialogBox" type="Label3D" parent="Enemy3" index="0" unique_id=594904632]
+transform = Transform3D(-1, 0, -5.7620454e-08, 0, 1, 0, 5.7620454e-08, 0, -1, 0, 2.0746331, 0)
+billboard = 1
+no_depth_test = true
+text = "Dialog"
+font_size = 48
+outline_size = 18
+vertical_alignment = 2
+autowrap_mode = 2
+width = 600.0
+script = ExtResource("8_ndtll")
+
+[node name="CombatState" type="Node" parent="Enemy3" index="1" unique_id=1242890481 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_v6ha0")
 initial_state = NodePath("HoldFire")
 
@@ -161,7 +176,7 @@ avg_act_chance_per_second = 2.0
 [node name="KillHostage" type="Node" parent="Enemy3/CombatState" index="4" unique_id=1706232906]
 script = ExtResource("15_v6ha0")
 
-[node name="MovementState" type="Node" parent="Enemy3" index="1" unique_id=2122641983 node_paths=PackedStringArray("initial_state")]
+[node name="MovementState" type="Node" parent="Enemy3" index="2" unique_id=2122641983 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_v6ha0")
 initial_state = NodePath("ScanTrigger")
 
@@ -179,24 +194,24 @@ explicit_move_target = NodePath("../../../InteractableHostage")
 script = ExtResource("16_gmpev")
 defended_area = NodePath("../../../Enemy3 Defended Room")
 
-[node name="CapsuleBody" type="MeshInstance3D" parent="Enemy3" index="2" unique_id=426961026]
+[node name="CapsuleBody" type="MeshInstance3D" parent="Enemy3" index="3" unique_id=426961026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_0o143")
 
-[node name="FacingIndicator" type="MeshInstance3D" parent="Enemy3" index="3" unique_id=1655915331]
+[node name="FacingIndicator" type="MeshInstance3D" parent="Enemy3" index="4" unique_id=1655915331]
 transform = Transform3D(0.3, 0, 0, 0, -1.3113416e-08, 0.05885305, 0, -0.29999998, -2.5725484e-09, 0, 2.2002637, -0.045395434)
 visible = false
 layers = 32768
 mesh = SubResource("PrismMesh_obbxu")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy3" index="4" unique_id=830640399]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy3" index="5" unique_id=830640399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 shape = SubResource("CapsuleShape3D_h45xw")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemy3" index="5" unique_id=1009275116]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemy3" index="6" unique_id=1009275116]
 
-[node name="MoveTargetIndicator" type="Node3D" parent="Enemy3" index="6" unique_id=330278994]
+[node name="MoveTargetIndicator" type="Node3D" parent="Enemy3" index="7" unique_id=330278994]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 top_level = true
 visible = false
@@ -205,13 +220,13 @@ visible = false
 transform = Transform3D(0.3, 0, 0, 0, -0.3, 4.5298744e-08, 0, -4.5298744e-08, -0.3, 0, 1, 0)
 mesh = SubResource("PrismMesh_uhg71")
 
-[node name="RadarDot" type="MeshInstance3D" parent="Enemy3" index="7" unique_id=1186292314]
+[node name="RadarDot" type="MeshInstance3D" parent="Enemy3" index="8" unique_id=1186292314]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
 layers = 262144
 material_override = ExtResource("14_o7j4k")
 mesh = SubResource("SphereMesh_sl17d")
 
-[node name="Face" type="CSGMesh3D" parent="Enemy3" index="8" unique_id=933804409]
+[node name="Face" type="CSGMesh3D" parent="Enemy3" index="9" unique_id=933804409]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 1.6, 0)
 material_override = ExtResource("15_31oqk")
 mesh = SubResource("CylinderMesh_uhg71")
@@ -235,7 +250,7 @@ arc_angle = 90.0
 radius = 3.0
 segments = 10
 
-[node name="GunTip" type="Marker3D" parent="Enemy3" index="9" unique_id=695593966]
+[node name="GunTip" type="Marker3D" parent="Enemy3" index="10" unique_id=695593966]
 transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, 0, 1.3, -0.8)
 gizmo_extents = 0.1
 
@@ -325,6 +340,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4478814, 0)
 shape = SubResource("CylinderShape3D_nfihu")
 
 [connection signal="target_acquired" from="Enemy3/MovementState/ScanTrigger" to="Enemy3/MovementState/Move" method="transition_to"]
+[connection signal="target_acquired" from="Enemy3/MovementState/ScanTrigger" to="Enemy3/DialogBox" method="show_dialog" binds= ["Stop right there or I kill the hostage!"]]
 [connection signal="arrived" from="Enemy3/MovementState/Move" to="Enemy3/MovementState/DefendArea" method="transition_to"]
 [connection signal="defended_area_breached" from="Enemy3/MovementState/DefendArea" to="Enemy3/CombatState/KillHostage" method="transition_to"]
 [connection signal="defended_area_breached" from="Enemy3/MovementState/DefendArea" to="Enemy3/MovementState/Wait" method="transition_to"]
+[connection signal="defended_area_breached" from="Enemy3/MovementState/DefendArea" to="Enemy3/DialogBox" method="show_dialog" binds= ["BIG MISTAKE"]]

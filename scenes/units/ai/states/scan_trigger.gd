@@ -2,7 +2,8 @@ extends State
 
 var _ai: AIActor
 
-signal target_acquired(target: Unit)
+signal target_acquired()
+signal target_unit_acquired(target: Unit)
 
 ## Called once when the state becomes active.
 func enter() -> void:
@@ -30,7 +31,8 @@ func physics_update(delta: float) -> void:
 			if randf() < 0.04:
 				_ai.combat_target = opponent
 				print ("Target acquired")
-				target_acquired.emit(opponent)
+				target_acquired.emit()
+				target_unit_acquired.emit(opponent)
 				# (get_parent() as StateMachine).transition_to($"../Engaging")
 	
 	_ai.apply_gravity(delta)
