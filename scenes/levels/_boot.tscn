@@ -4,7 +4,7 @@
 
 [node name="Boot" type="Node3D" unique_id=678208906 node_paths=PackedStringArray("progress_bar", "status_label")]
 script = ExtResource("1_0yiur")
-starting_scene_path = "uid://bjopuuaqydblu"
+starting_scene_path = "uid://wbk6w2xtky2m"
 progress_bar = NodePath("CanvasLayer/LoadingScreen/CenterContainer/VBoxContainer/LoadingBar")
 status_label = NodePath("CanvasLayer/LoadingScreen/CenterContainer/VBoxContainer/MarginContainer/StatusLabel")
 
