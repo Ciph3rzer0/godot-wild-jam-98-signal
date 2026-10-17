@@ -49,6 +49,7 @@
 	],
 	"cSpell.words": [
 		"astar",
+		"ciph3rzer0",
 		"FDIAGSIZE",
 		"HSIZE",
 		"Interactable",
@@ -63,7 +64,8 @@
 		"tscn",
 		"unproject",
 		"viewports",
-		"VSIZE"
+		"VSIZE",
+		"webexport"
 	],
 	"files.exclude": {
 		"**/*.uid": true,
