@@ -23,7 +23,7 @@ func enter() -> void:
 		move_target = explicit_move_target as SignalTarget
 	else:
 		move_target = _ai.move_target as SignalTarget
-	assert(move_target != null, "Move requries a move_target")
+	assert(move_target != null, "Move requires a move_target")
 	
 	_arrived = false
 	# Overwrite whatever target the previous state left on the agent.
