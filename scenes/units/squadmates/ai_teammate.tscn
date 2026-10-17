@@ -46,7 +46,7 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_cw6eu"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_k4e8f"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_xl718"]
 
 [node name="AI Teammate" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
 collision_layer = 64
@@ -110,8 +110,6 @@ visible = false
 shape = SubResource("CapsuleShape3D_h45xw")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1009275116]
-path_desired_distance = 0.1
-target_desired_distance = 0.1
 
 [node name="MoveTargetIndicator" type="Node3D" parent="." unique_id=330278994]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
@@ -145,7 +143,7 @@ mesh = SubResource("BoxMesh_cw6eu")
 [node name="Eyes" type="MeshInstance3D" parent="Face" unique_id=122483706]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 cast_shadow = 0
-mesh = SubResource("ImmediateMesh_k4e8f")
+mesh = SubResource("ImmediateMesh_xl718")
 script = ExtResource("9_yhyk5")
 arc_angle = 90.0
 radius = 3.0

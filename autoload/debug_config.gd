@@ -9,7 +9,7 @@ var print_weapons_discharge := false:
 	get:
 		return !RELEASE and SET_DEBUG_PRINT_ON and print_weapons_discharge
 
-var print_state_transitions := true:
+var print_state_transitions := false:
 	get:
 		return !RELEASE and SET_DEBUG_PRINT_ON and print_state_transitions
 
