@@ -14,6 +14,11 @@
 [ext_resource type="Script" uid="uid://mytkvrlqyl4a" path="res://scenes/units/debug_fov.gd" id="9_yhyk5"]
 [ext_resource type="Script" uid="uid://cal2x1hpac871" path="res://scenes/units/ai/states/alerted.gd" id="10_hffai"]
 [ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/units/ai/states/engaging.gd" id="11_6tg35"]
+[ext_resource type="Texture2D" uid="uid://cr5ltnim68xsh" path="res://addons/godot-prototype-texture/PNG/checker_512x512/checker_lime_512x512.png" id="12_xl718"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1j2q2"]
+albedo_texture = ExtResource("12_xl718")
+uv1_scale = Vector3(0.8, 2.3, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0o143"]
 radius = 0.25
@@ -41,7 +46,7 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_cw6eu"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_rc6wk"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_k4e8f"]
 
 [node name="AI Teammate" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
 collision_layer = 64
@@ -91,6 +96,7 @@ avg_act_chance_per_second = 2.0
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=426961026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_1j2q2")
 mesh = SubResource("CapsuleMesh_0o143")
 
 [node name="FacingIndicator" type="MeshInstance3D" parent="." unique_id=1655915331]
@@ -139,7 +145,7 @@ mesh = SubResource("BoxMesh_cw6eu")
 [node name="Eyes" type="MeshInstance3D" parent="Face" unique_id=122483706]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 cast_shadow = 0
-mesh = SubResource("ImmediateMesh_rc6wk")
+mesh = SubResource("ImmediateMesh_k4e8f")
 script = ExtResource("9_yhyk5")
 arc_angle = 90.0
 radius = 3.0
