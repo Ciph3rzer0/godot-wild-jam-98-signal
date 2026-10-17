@@ -74,7 +74,7 @@ script = ExtResource("6_4ffhm")
 
 [node name="CombatState" type="Node" parent="." unique_id=2105040461 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_3bo10")
-initial_state = NodePath("Scanning")
+initial_state = NodePath("HoldFire")
 
 [node name="HoldFire" type="Node" parent="CombatState" unique_id=1749604475]
 script = ExtResource("8_ust3i")

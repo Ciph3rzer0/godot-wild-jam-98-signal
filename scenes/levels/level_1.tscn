@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://q4puqaj3nmbx" path="res://scenes/units/ai/states/move.gd" id="13_bahl2"]
 [ext_resource type="Material" uid="uid://c5wxuhvhhuoo8" path="res://scenes/radar/hostile_radar_dot.tres" id="14_o7j4k"]
 [ext_resource type="Material" uid="uid://dx4vk1urlamo4" path="res://scenes/units/enemies/scanning_face_material.tres" id="15_31oqk"]
+[ext_resource type="Script" uid="uid://biu3nwq0vb7wm" path="res://scenes/units/ai/states/kill_hostage.gd" id="15_v6ha0"]
 [ext_resource type="Script" uid="uid://mytkvrlqyl4a" path="res://scenes/units/debug_fov.gd" id="16_x7jkp"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_dywbp"]
@@ -51,7 +52,7 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_uhg71"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_np2pn"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_gmpev"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r1tl"]
 transparency = 1
@@ -142,6 +143,9 @@ script = ExtResource("10_ndtll")
 script = ExtResource("11_7h2jl")
 avg_act_chance_per_second = 2.0
 
+[node name="KillHostage" type="Node" parent="Enemy3/CombatState" index="4" unique_id=1706232906]
+script = ExtResource("15_v6ha0")
+
 [node name="MovementState" type="Node" parent="Enemy3" index="1" unique_id=2122641983]
 script = ExtResource("7_v6ha0")
 
@@ -202,7 +206,7 @@ mesh = SubResource("BoxMesh_uhg71")
 [node name="Eyes" type="MeshInstance3D" parent="Enemy3/Face" index="2" unique_id=521000194]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 cast_shadow = 0
-mesh = SubResource("ImmediateMesh_np2pn")
+mesh = SubResource("ImmediateMesh_gmpev")
 script = ExtResource("16_x7jkp")
 arc_angle = 90.0
 radius = 3.0
@@ -299,3 +303,4 @@ shape = SubResource("CylinderShape3D_nfihu")
 
 [connection signal="target_acquired" from="Enemy3/MovementState/ScanTrigger" to="Enemy3/MovementState/Move" method="transition_to"]
 [connection signal="arrived" from="Enemy3/MovementState/Move" to="Enemy3/CombatState/Engaging" method="transition_to"]
+[connection signal="arrived" from="Enemy3/MovementState/Move" to="Enemy3/CombatState/KillHostage" method="transition_to"]

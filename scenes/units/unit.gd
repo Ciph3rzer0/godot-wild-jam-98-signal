@@ -48,6 +48,14 @@ func get_opponents() -> Array[Unit]:
 	return result
 
 
+func get_hostages() -> Array[Unit]:
+	var result: Array[Unit] = []
+	for n in get_tree().get_nodes_in_group(team_group(Team.NEUTRAL)):
+		if n is Unit and n.is_alive():
+			result.append(n)
+	return result
+
+
 ## Points other units check for sight and aim at. Override if the unit's shape changes.
 func get_target_points() -> Array[Vector3]:
 	return [global_position + Vector3.UP * 1.6, global_position + Vector3.UP * 0.9]

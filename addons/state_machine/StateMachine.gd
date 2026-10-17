@@ -70,6 +70,9 @@ func change_state(state_name: String) -> void:
 
 func transition_to(new_state: State) -> void:
 	if actor.is_dead(): return
+	if DEBUG.print_state_transitions:
+		print(actor.name, "::", name, " transitions from ", current_state.name, " -> ", new_state.name, "")
+	
 	var old_name := ""
 	if current_state:
 		old_name = current_state.name
