@@ -68,10 +68,6 @@ func _input(event: InputEvent) -> void:
 		set_mouse_free(!is_mouse_free)
 		get_viewport().set_input_as_handled()
 		return
-	elif event.is_action_pressed("cheat_restart_level"):
-		var error = get_tree().reload_current_scene()
-		if error != OK:
-			print("An error occurred while reloading the scene.")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if is_dead() or is_mouse_free: return
@@ -86,7 +82,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if is_mouse_free: return
 	if event is InputEventMouseMotion:
-		cam_rig.rotation_degrees.y -= event.relative.x / 10
+		rotation_degrees.y -= event.relative.x / 10
 		cam_rig.rotation_degrees.x -= event.relative.y / 10
 		cam_rig.rotation_degrees.x = clamp(cam_rig.rotation_degrees.x, -90, 90)
 

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dykvknbluafhw"]
 
 [ext_resource type="PackedScene" uid="uid://bxc4ceq66ael3" path="res://scenes/player/player.tscn" id="1_u2wky"]
+[ext_resource type="Script" uid="uid://chmyh2pgunnag" path="res://scenes/levels/level.gd" id="1_ukglk"]
 [ext_resource type="Texture2D" uid="uid://2lpufdmde2uc" path="res://addons/godot-prototype-texture/PNG/grid_512x512/grid_blue_512x512.png" id="2_2elnx"]
 
 [sub_resource type="Gradient" id="Gradient_lrm5r"]
@@ -32,6 +33,7 @@ uv1_triplanar = true
 uv1_world_triplanar = true
 
 [node name="Prototype Level" type="Node3D" unique_id=1527916753]
+script = ExtResource("1_ukglk")
 
 [node name="UI" type="Control" parent="." unique_id=2041766851]
 layout_mode = 3
@@ -93,7 +95,7 @@ shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1865119778 node_paths=PackedStringArray("teammates") instance=ExtResource("1_u2wky")]
 transform = Transform3D(-1, 0, 2.3849761e-08, 0, 1, 0, -2.3849761e-08, 0, -1, -3.980579, 0, -1.5851059)
-teammates = [null, NodePath(""), null]
+teammates = [null, null, null]
 
 [node name="RemoteTransformRadarCamera" type="RemoteTransform3D" parent="Player" unique_id=1321901750]
 remote_path = NodePath("../../UI/MarginContainer/CircleMask/SubViewportContainer/SubViewport/RadarCameraRig")

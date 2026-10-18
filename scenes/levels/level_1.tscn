@@ -273,6 +273,7 @@ mesh = SubResource("SphereMesh_sl17d")
 
 [node name="Face" type="CSGMesh3D" parent="Enemy3" index="10" unique_id=933804409]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 1.6, 0)
+visible = false
 material_override = ExtResource("15_31oqk")
 mesh = SubResource("CylinderMesh_uhg71")
 
@@ -406,6 +407,24 @@ panning_strength = 0.5
 bus = &"SFX"
 attenuation_filter_cutoff_hz = 3000.0
 
+[node name="RadioChatterLoop" type="AudioStreamPlayer3D" parent="." index="20" unique_id=956945361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6324635, 0.80048037, -5.124562)
+stream = ExtResource("25_o7j4k")
+volume_db = -15.0
+autoplay = true
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 6638.0
+
+[node name="Whir1Loop" type="AudioStreamPlayer3D" parent="." index="21" unique_id=1736847798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0083694, 0.8004805, -5.735733)
+stream = ExtResource("26_31oqk")
+autoplay = true
+max_distance = 25.0
+panning_strength = 0.5
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 3000.0
+
+[connection signal="died" from="Hostage" to="." method="end_scenario_in_loss" binds= ["Hostage lost"]]
 [connection signal="target_acquired" from="Enemy3/MovementState/ScanTrigger" to="Enemy3/MovementState/Move" method="transition_to"]
 [connection signal="target_acquired" from="Enemy3/MovementState/ScanTrigger" to="Enemy3/DialogBox" method="show_dialog" binds= ["Stop right there or I kill the hostage!"]]
 [connection signal="arrived" from="Enemy3/MovementState/Move" to="Enemy3/MovementState/DefendArea" method="transition_to"]

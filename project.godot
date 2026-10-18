@@ -24,6 +24,7 @@ buses/default_bus_layout="uid://dcfescckmue3"
 DEBUG="*uid://byfvigfj0qg1y"
 DebugDraw="*res://addons/debug_draw/debug_draw_3d.tscn"
 Profily="*uid://qmnu1ehm866e"
+GameManager="*uid://tq56k1vabwnb"
 
 [debug]
 
