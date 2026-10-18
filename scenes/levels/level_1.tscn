@@ -64,7 +64,7 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_uhg71"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_7o3do"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_mqh5v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r1tl"]
 transparency = 1
@@ -204,11 +204,13 @@ transform = Transform3D(-1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, -1, 0,
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="Enemy3" index="4" unique_id=426961026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_mqh5v")
 mesh = SubResource("CapsuleMesh_0o143")
 
 [node name="FacingIndicator" type="MeshInstance3D" parent="Enemy3" index="5" unique_id=1655915331]
 transform = Transform3D(0.3, 0, 0, 0, -1.3113416e-08, 0.05885305, 0, -0.29999998, -2.5725484e-09, 0, 2.2002637, -0.045395434)
+visible = false
 layers = 32768
 mesh = SubResource("PrismMesh_obbxu")
 
@@ -236,6 +238,7 @@ mesh = SubResource("SphereMesh_sl17d")
 
 [node name="Face" type="CSGMesh3D" parent="Enemy3" index="10" unique_id=933804409]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 1.6, 0)
+visible = false
 material_override = ExtResource("15_31oqk")
 mesh = SubResource("CylinderMesh_uhg71")
 
@@ -252,7 +255,7 @@ mesh = SubResource("BoxMesh_uhg71")
 [node name="Eyes" type="MeshInstance3D" parent="Enemy3/Face" index="2" unique_id=521000194]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 cast_shadow = 0
-mesh = SubResource("ImmediateMesh_7o3do")
+mesh = SubResource("ImmediateMesh_mqh5v")
 script = ExtResource("16_x7jkp")
 arc_angle = 90.0
 radius = 3.0

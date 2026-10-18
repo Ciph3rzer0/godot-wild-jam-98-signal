@@ -47,7 +47,7 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_cw6eu"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_k4e8f"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_1j2q2"]
 
 [node name="AI Teammate" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
 collision_layer = 64
@@ -96,7 +96,7 @@ script = ExtResource("11_6tg35")
 avg_act_chance_per_second = 2.0
 
 [node name="Squadmate" parent="." unique_id=1399255242 instance=ExtResource("16_1j2q2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.009720951, 0.4260366, -0.027185142)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.009720951, 0.05754131, -0.027185142)
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=426961026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -153,7 +153,7 @@ mesh = SubResource("BoxMesh_cw6eu")
 [node name="Eyes" type="MeshInstance3D" parent="Face" unique_id=122483706]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 cast_shadow = 0
-mesh = SubResource("ImmediateMesh_k4e8f")
+mesh = SubResource("ImmediateMesh_1j2q2")
 script = ExtResource("9_yhyk5")
 arc_angle = 90.0
 radius = 3.0
