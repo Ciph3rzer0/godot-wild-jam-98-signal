@@ -3,6 +3,8 @@
 [ext_resource type="AnimationLibrary" uid="uid://cgsl7ywecgmii" path="res://assets/models/characters/animations.glb" id="2_aal20"]
 [ext_resource type="PackedScene" uid="uid://b8mmcu6u5fg4f" path="res://assets/models/equips/SMG.glb" id="3_hbhas"]
 
+[ext_resource type="Script" path="res://scenes/units/character_animator.gd" id="Script_character_animator"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h45xw"]
 radius = 0.30078125
 height = 1.9405212
@@ -203,23 +205,6 @@ bind/33/pose = Transform3D(1, 0, 0, 0, 0.98243594, 0.18659934, 0, -0.18659917, 0
 bind/34/name = &"DEF-spine.006"
 bind/34/bone = -1
 bind/34/pose = Transform3D(1, 0, 0, 0, 0.99999976, 1.4901156e-07, 0, 1.4901156e-08, 0.9999999, -0.055172447, -1.5201467, 0.0757314)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6u3d2"]
-animation = &"animations/idleCrouch"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1hmqh"]
-animation = &"animations/SMG_aiming"
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_ck580"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_h45xw"]
-nodes/Animation/node = SubResource("AnimationNodeAnimation_1hmqh")
-nodes/Animation/position = Vector2(-192, 352)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_6u3d2")
-"nodes/Animation 2/position" = Vector2(-160, 160)
-nodes/Blend2/node = SubResource("AnimationNodeBlend2_ck580")
-nodes/Blend2/position = Vector2(128, 144)
-node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"Animation 2", &"Blend2", 1, &"Animation"]
 
 [node name="Squadmate" type="CharacterBody3D" unique_id=1399255242]
 
@@ -500,6 +485,6 @@ libraries/animations = ExtResource("2_aal20")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=979784115]
 root_node = NodePath("../CharacterModel")
-tree_root = SubResource("AnimationNodeBlendTree_h45xw")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Blend2/blend_amount = 0.2
+script = ExtResource("Script_character_animator")
+profile = 1

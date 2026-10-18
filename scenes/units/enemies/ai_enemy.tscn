@@ -42,7 +42,8 @@ height = 0.4
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_4vqdi"]
 
-[node name="Enemy" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
+[node name="Enemy" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("animator", "nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
+animator = NodePath("Terrorist/AnimationTree")
 collision_layer = 64
 collision_mask = 55
 script = ExtResource("1_wg236")

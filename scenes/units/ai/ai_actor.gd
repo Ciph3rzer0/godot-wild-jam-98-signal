@@ -40,11 +40,29 @@ var combat_target: Unit
 @onready var combat := $CombatState
 
 @onready var audio: AudioStreamPlayer3D = _get_or_create_sfx(&"ShotSFX", shot_sound, -4.0)
-@onready var anim: AnimationPlayer = get_node_or_null("Squadmate/AnimationPlayer")
 @onready var _command_sfx: AudioStreamPlayer3D = _get_or_create_sfx(&"CommandSFX", command_sound, -12.0)
+
+var _last_animation_position := Vector3.ZERO
 
 func _ready() -> void:
 	super()
+	_last_animation_position = global_position
+	# State-machine children move first; sample the actual resulting displacement.
+	process_physics_priority = 1
+
+
+func _physics_process(delta: float) -> void:
+	var travel := global_position - _last_animation_position
+	_last_animation_position = global_position
+	if is_dead() or not animator: return
+	animator.update_motion(Vector2(travel.x, travel.z).length() / delta)
+	var combat_name: StringName = combat.current_state.name if combat.current_state else &"HoldFire"
+	animator.set_aiming(combat_name in [&"Scanning", &"Alerted", &"Engaging", &"KillHostage"])
+
+
+func play_shot_animation() -> void:
+	if animator:
+		animator.fire()
 
 func apply_gravity(_delta):
 	#if not is_on_floor():

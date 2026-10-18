@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://h773dd1pv2cr" path="res://scenes/units/enemies/terrorist.gd" id="1_k858l"]
 [ext_resource type="PackedScene" uid="uid://yr7lge4rjqgx" path="res://assets/models/equips/handgun.glb" id="1_vammo"]
 
+[ext_resource type="Script" path="res://scenes/units/character_animator.gd" id="Script_character_animator"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_okm43"]
 resource_name = "skin"
 cull_mode = 2
@@ -461,3 +463,9 @@ libraries/animations = ExtResource("1_ieyfw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02948, 0)
 shape = SubResource("CapsuleShape3D_h45xw")
 disabled = true
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../CharacterModel")
+anim_player = NodePath("../AnimationPlayer")
+script = ExtResource("Script_character_animator")
+profile = 2

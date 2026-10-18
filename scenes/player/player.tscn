@@ -15,6 +15,8 @@
 [ext_resource type="AudioStream" path="res://assets/audio/sfx/click-1.wav" id="14_signal"]
 [ext_resource type="AudioStream" path="res://assets/audio/sfx/negative.wav" id="15_denied"]
 
+[ext_resource type="Script" path="res://scenes/units/character_animator.gd" id="Script_character_animator"]
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_footsteps"]
 resource_local_to_scene = true
 playback_mode = 2
@@ -281,28 +283,8 @@ bind/34/name = &"DEF-spine.006"
 bind/34/bone = -1
 bind/34/pose = Transform3D(1, 0, 0, 0, 0.99999976, 1.4901156e-07, 0, 1.4901156e-08, 0.9999999, 0.019771397, -1.5740138, 0.006163938)
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vt2bd"]
-animation = &"animations/handRaise"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_455bl"]
-animation = &"animations/idleCrouch"
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_s11ho"]
-filter_enabled = true
-filters = ["rig-enemy/Skeleton3D:DEF-forearm.R", "rig-enemy/Skeleton3D:DEF-forearm.R.001", "rig-enemy/Skeleton3D:DEF-hand.R", "rig-enemy/Skeleton3D:DEF-upper_arm.R", "rig-enemy/Skeleton3D:DEF-upper_arm.R.001"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fcs02"]
-graph_offset = Vector2(-496.01968, 283.8499)
-nodes/output/position = Vector2(240, 368)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_455bl")
-nodes/Animation/position = Vector2(-304, 288)
-nodes/Blend2/node = SubResource("AnimationNodeBlend2_s11ho")
-nodes/Blend2/position = Vector2(-16, 368)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_vt2bd")
-"nodes/Animation 2/position" = Vector2(-320, 512)
-node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"Animation", &"Blend2", 1, &"Animation 2"]
-
-[node name="Player" type="CharacterBody3D" unique_id=1865119778 node_paths=PackedStringArray("cam_rig", "cam")]
+[node name="Player" type="CharacterBody3D" unique_id=1865119778 node_paths=PackedStringArray("animator", "cam_rig", "cam")]
+animator = NodePath("AnimationTree")
 collision_layer = 16
 collision_mask = 66119
 script = ExtResource("1_4flbx")
@@ -676,9 +658,9 @@ libraries/animations = ExtResource("9_je7p5")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1661767653]
 root_node = NodePath("../CharacterModel")
-tree_root = SubResource("AnimationNodeBlendTree_fcs02")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Blend2/blend_amount = 0.59
+script = ExtResource("Script_character_animator")
+profile = 0
 
 [node name="Footsteps" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_footsteps")

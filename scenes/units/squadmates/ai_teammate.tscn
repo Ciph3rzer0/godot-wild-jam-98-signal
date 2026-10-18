@@ -50,7 +50,8 @@ height = 0.4
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_1j2q2"]
 
-[node name="AI Teammate" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
+[node name="AI Teammate" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("animator", "nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
+animator = NodePath("Squadmate/AnimationTree")
 collision_layer = 64
 collision_mask = 583
 script = ExtResource("1_viqr6")

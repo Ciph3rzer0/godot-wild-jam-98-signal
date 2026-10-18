@@ -164,7 +164,7 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9240475, 2.0677857, -1.6595025)
 shape = SubResource("BoxShape3D_uhg71")
 
-[node name="Enemy3" type="CharacterBody3D" parent="." index="14" unique_id=774387382 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
+[node name="Enemy3" type="CharacterBody3D" parent="." index="14" unique_id=774387382 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip", "animator")]
 transform = Transform3D(-0.81790006, 0, 0.57536024, 0, 1, 0, -0.57536024, 0, -0.81790006, -1.5004853, 0.4, -6.901283)
 collision_layer = 64
 collision_mask = 55
@@ -182,6 +182,7 @@ attack_occluder_mask = 7
 team = 1
 gun_tip = NodePath("GunTip")
 bullet = ExtResource("6_np2pn")
+animator = NodePath("Terrorist/AnimationTree")
 metadata/_edit_group_ = true
 
 [node name="DialogBox" type="Label3D" parent="Enemy3" index="0" unique_id=594904632]

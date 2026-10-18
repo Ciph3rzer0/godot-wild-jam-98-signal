@@ -12,6 +12,9 @@ signal died
 @export var gun_tip: Node3D
 @export var bullet: PackedScene #RigidBody3D
 
+@export_group("Animation")
+@export var animator: CharacterAnimator
+
 @export_group("Audio")
 @export var hit_sound: AudioStream = preload("res://assets/audio/sfx/whomp.wav")
 @export var death_sound: AudioStream = preload("res://assets/audio/sfx/whomp.wav")
@@ -32,6 +35,8 @@ func _ready() -> void:
 	
 	died.connect(func():
 		_death_sfx.play()
+		if animator:
+			animator.active = false
 		for child in find_children("*", "CollisionShape3D"):
 			(child as CollisionShape3D).set_deferred("disabled", true)
 		visible = false

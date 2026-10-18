@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b4g2ea2un0fg6" path="res://assets/models/equips/flashlight.glb" id="2_vt2bd"]
 [ext_resource type="AnimationLibrary" uid="uid://cgsl7ywecgmii" path="res://assets/models/characters/animations.glb" id="3_kos7t"]
 
+[ext_resource type="Script" path="res://scenes/units/character_animator.gd" id="Script_character_animator"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0o143"]
 radius = 0.22558594
 height = 1.8085327
@@ -228,27 +230,6 @@ bind/33/pose = Transform3D(1, 0, 0, 0, 0.98243594, 0.18659934, 0, -0.18659917, 0
 bind/34/name = &"DEF-spine.006"
 bind/34/bone = -1
 bind/34/pose = Transform3D(1, 0, 0, 0, 0.99999976, 1.4901156e-07, 0, 1.4901156e-08, 0.9999999, 0.019771397, -1.5740138, 0.006163938)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vt2bd"]
-animation = &"animations/handRaise"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_455bl"]
-animation = &"animations/idleCrouch"
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_s11ho"]
-filter_enabled = true
-filters = ["rig-enemy/Skeleton3D:DEF-forearm.R", "rig-enemy/Skeleton3D:DEF-forearm.R.001", "rig-enemy/Skeleton3D:DEF-hand.R", "rig-enemy/Skeleton3D:DEF-upper_arm.R", "rig-enemy/Skeleton3D:DEF-upper_arm.R.001"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_80iay"]
-graph_offset = Vector2(-496.01968, 283.8499)
-nodes/output/position = Vector2(240, 368)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_455bl")
-nodes/Animation/position = Vector2(-304, 288)
-nodes/Blend2/node = SubResource("AnimationNodeBlend2_s11ho")
-nodes/Blend2/position = Vector2(-16, 368)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_vt2bd")
-"nodes/Animation 2/position" = Vector2(-320, 512)
-node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"Animation", &"Blend2", 1, &"Animation 2"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=887139957]
 script = ExtResource("1_kos7t")
@@ -541,6 +522,6 @@ libraries/animations = ExtResource("3_kos7t")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=579148637]
 root_node = NodePath("../CharacterModel")
-tree_root = SubResource("AnimationNodeBlendTree_80iay")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Blend2/blend_amount = 0.59
+script = ExtResource("Script_character_animator")
+profile = 0

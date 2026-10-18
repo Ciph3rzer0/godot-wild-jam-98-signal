@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://dxi8ymorv1mmv" path="res://scenes/units/ai/states/wait.gd" id="3_txf0g"]
 [ext_resource type="Script" uid="uid://fi3eyjs2i4wt" path="res://scenes/units/ai/states/hold_fire.gd" id="4_n80r0"]
 
+[ext_resource type="Script" path="res://scenes/units/character_animator.gd" id="Script_character_animator"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_rc6wk"]
 size = Vector3(0.515, 1.215, 0.146)
 
@@ -165,7 +167,8 @@ bind/34/name = &"DEF-spine.006"
 bind/34/bone = -1
 bind/34/pose = Transform3D(1, 0, 0, 0, 0.99999976, 1.4901156e-07, 0, 1.4901156e-08, 0.9999999, 0.05752611, -1.3914832, 0.21165763)
 
-[node name="Hostage" type="CharacterBody3D" unique_id=1367416622]
+[node name="Hostage" type="CharacterBody3D" unique_id=1367416622 node_paths=PackedStringArray("animator")]
+animator = NodePath("AnimationTree")
 collision_layer = 128
 script = ExtResource("1_pqwij")
 team = 2
@@ -451,3 +454,9 @@ bones/34/scale = Vector3(1, 1, 1)
 mesh = SubResource("ArrayMesh_h7c2a")
 skin = SubResource("Skin_yh7jm")
 skeleton = NodePath("..")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../CharacterModel")
+anim_player = NodePath("../AnimationPlayer")
+script = ExtResource("Script_character_animator")
+profile = 3

@@ -1,4 +1,3 @@
 extends CharacterBody3D
 
-func _ready() -> void:
-	$AnimationPlayer.play("animations/handgun_aiming")
+# AnimationTree owns playback; the containing AIActor supplies movement/combat state.
