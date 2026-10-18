@@ -9,6 +9,7 @@ static var current_level: Node
 
 @export var level_container: Node3D
 @export var loading_screen: CanvasLayer
+@export var paused_menu: CanvasLayer
 @export var progress_bar: ProgressBar
 @export var status_label: Label
 
@@ -22,6 +23,7 @@ var _progress := []
 func _ready() -> void:
 	loading_screen.show()
 	game_over_sequence.hide()
+	paused_menu.hide()
 	
 	set_process(false)
 	if starting_scene_path:

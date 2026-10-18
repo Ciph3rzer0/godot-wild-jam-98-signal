@@ -172,7 +172,7 @@ animator = NodePath("AnimationTree")
 collision_layer = 128
 script = ExtResource("1_pqwij")
 team = 2
-max_health = 20.0
+max_health = 1.0
 
 [node name="MovementState" type="Node" parent="." unique_id=304663995 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_m34ln")

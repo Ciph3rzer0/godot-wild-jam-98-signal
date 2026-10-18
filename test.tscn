@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ckpccrw3w4efh"]
+
+[ext_resource type="Script" uid="uid://dj31svjlirrpl" path="res://scenes/levels/paused_menu.gd" id="1_37kl0"]
+
+[node name="Control" type="Control" unique_id=526994406]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Paused Menu" type="CanvasLayer" parent="." unique_id=198940371 node_paths=PackedStringArray("resume_button")]
+script = ExtResource("1_37kl0")
+resume_button = NodePath("PanelContainer/CenterContainer/VBoxContainer/ResumeButton")
+
+[node name="PanelContainer" type="PanelContainer" parent="Paused Menu" unique_id=498197931]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Paused Menu/PanelContainer" unique_id=1324057297]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Paused Menu/PanelContainer/CenterContainer" unique_id=1415136021]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PausedLabel" type="Label" parent="Paused Menu/PanelContainer/CenterContainer/VBoxContainer" unique_id=1509865963]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "paused"
+uppercase = true
+
+[node name="ResumeButton" type="Button" parent="Paused Menu/PanelContainer/CenterContainer/VBoxContainer" unique_id=1283171449]
+layout_mode = 2
+text = "Resume"
+
+[connection signal="pressed" from="Paused Menu/PanelContainer/CenterContainer/VBoxContainer/ResumeButton" to="Paused Menu" method="resume_from_focus_pause"]

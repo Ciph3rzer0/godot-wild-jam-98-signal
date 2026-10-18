@@ -31,7 +31,6 @@ var landing_velocity
 
 var distance = 0
 
-var is_mouse_free := false
 
 #func _enter_tree() -> void:
 	#GameManager.set_player(self)
@@ -53,24 +52,9 @@ func get_target_points() -> Array[Vector3]:
 
 func _ready() -> void:
 	super()
-	set_mouse_free(false)
-
-func set_mouse_free(val: bool):
-	is_mouse_free = val
-	#crosshair_dot.visible = !val
-	if val:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		set_mouse_free(!is_mouse_free)
-		get_viewport().set_input_as_handled()
-		return
 
 func _unhandled_input(event: InputEvent) -> void:
-	if is_dead() or is_mouse_free: return
+	if is_dead():return# or is_mouse_free: return
 	
 	if event.is_action_pressed("cheat_float"):
 		cheat_float = !cheat_float
@@ -80,7 +64,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("cheat_hide_shield"):
 		$Shield.visible = !$Shield.visible
 	
-	if is_mouse_free: return
+	#if is_mouse_free: return
 	if event is InputEventMouseMotion:
 		rotation_degrees.y -= event.relative.x / 10
 		cam_rig.rotation_degrees.x -= event.relative.y / 10
@@ -98,15 +82,7 @@ func change_fov(target_fov: float, duration: float) -> void:
 	fov_tween = create_tween()
 	fov_tween.tween_property(cam, "fov", target_fov, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
-var exit_button_held_timer := 0.0
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("ui_exit_game"):
-		exit_button_held_timer += delta
-		if (exit_button_held_timer) > 0.5:
-			get_tree().quit()
-	else:
-		exit_button_held_timer = 0
-	
 	if is_dead(): return
 	
 	focused_target = find_signal_target()
