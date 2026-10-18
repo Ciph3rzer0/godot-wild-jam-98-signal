@@ -149,7 +149,7 @@ func _send_command(sig: HandSignalSprite.SIGNAL) -> void:
 func _physics_process(delta: float) -> void:
 	if is_dead(): return
 	
-	_handle_signals()
+	#_handle_signals()
 	
 	var raw_input := Input.get_vector("pc_left", "pc_right", "pc_forward", "pc_back")	
 	
