@@ -12,6 +12,7 @@ func _set_hand_signal(new_signal: SIGNAL):
 		frame = new_signal
 	
 	$Label3D.text = str(SIGNAL.find_key(new_signal))
+	hide()
 	
 enum SIGNAL {
 	# Commands
