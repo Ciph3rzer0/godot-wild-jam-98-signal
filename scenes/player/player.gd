@@ -51,6 +51,7 @@ func get_target_points() -> Array[Vector3]:
 	]
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	super()
 
 func _unhandled_input(event: InputEvent) -> void:

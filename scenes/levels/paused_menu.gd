@@ -8,6 +8,8 @@ var is_mouse_free := false
 
 func _ready() -> void:
 	set_mouse_free(false)
+	await get_tree().process_frame
+	resume_from_focus_pause()
 
 var exit_button_held_timer := 0.0
 func _process(delta: float) -> void:

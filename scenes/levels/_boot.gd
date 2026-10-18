@@ -14,6 +14,7 @@ static var current_level: Node
 @export var status_label: Label
 
 @export var game_over_sequence: GameOverScreen
+@export var victory_screen: CanvasLayer
 
 var _current_level_path := ""
 var _loading_path := ""
@@ -24,6 +25,7 @@ var _progress := []
 func _ready() -> void:
 	loading_screen.show()
 	game_over_sequence.hide()
+	victory_screen.hide()
 	paused_menu.hide()
 
 	set_process(false)
@@ -39,6 +41,7 @@ func restart_level() -> void:
 
 
 func load_level(path: String) -> void:
+	victory_screen.hide()
 	if not _loading_path.is_empty():
 		return  # already loading something
 
@@ -119,6 +122,7 @@ func _finish_loading() -> void:
 
 	if current_level is Level:
 		current_level.scenario_lost.connect(game_over_sequence.show_game_over)
+		current_level.scenario_won.connect(func(): victory_screen.show())
 	else:
 		push_error("%s is not a Level" % current_level.name)
 

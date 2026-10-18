@@ -423,6 +423,7 @@ bus = &"SFX"
 attenuation_filter_cutoff_hz = 3000.0
 
 [connection signal="died" from="Hostage" to="." method="end_scenario_in_loss" binds= ["Hostage lost"]]
+[connection signal="died" from="Enemy3" to="." method="end_scenario_in_win"]
 [connection signal="target_acquired" from="Enemy3/MovementState/ScanTrigger" to="Enemy3/MovementState/Move" method="transition_to"]
 [connection signal="target_acquired" from="Enemy3/MovementState/ScanTrigger" to="Enemy3/DialogBox" method="show_dialog" binds= ["Stop right there or I kill the hostage!"]]
 [connection signal="arrived" from="Enemy3/MovementState/Move" to="Enemy3/MovementState/DefendArea" method="transition_to"]
