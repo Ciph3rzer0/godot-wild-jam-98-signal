@@ -12,6 +12,12 @@ signal died
 @export var gun_tip: Node3D
 @export var bullet: PackedScene #RigidBody3D
 
+@export_group("Audio")
+@export var hit_sound: AudioStream = preload("res://assets/audio/sfx/whomp.wav")
+@export var death_sound: AudioStream = preload("res://assets/audio/sfx/whomp.wav")
+
+var _hit_sfx: AudioStreamPlayer3D
+var _death_sfx: AudioStreamPlayer3D
 var health: float
 
 func is_alive(): return health > 0
@@ -21,12 +27,32 @@ func is_dead(): return health <= 0
 func _ready() -> void:
 	health = max_health
 	add_to_group(team_group(team))
+	_hit_sfx = _get_or_create_sfx(&"HitSFX", hit_sound, -12.0)
+	_death_sfx = _get_or_create_sfx(&"DeathSFX", death_sound, -8.0, 0.75)
 	
 	died.connect(func():
+		_death_sfx.play()
 		for child in find_children("*", "CollisionShape3D"):
-			(child as CollisionShape3D).disabled = true 
+			(child as CollisionShape3D).set_deferred("disabled", true)
 		visible = false
 	)
+
+
+## supply defaults for every Unit instance.
+func _get_or_create_sfx(node_name: StringName, stream: AudioStream, volume_db: float, pitch_scale := 1.0) -> AudioStreamPlayer3D:
+	var sfx := get_node_or_null(NodePath(node_name)) as AudioStreamPlayer3D
+	if sfx:
+		return sfx
+	sfx = AudioStreamPlayer3D.new()
+	sfx.name = node_name
+	sfx.stream = stream
+	sfx.bus = &"SFX"
+	sfx.volume_db = volume_db
+	sfx.pitch_scale = pitch_scale
+	sfx.max_polyphony = 4
+	sfx.position.y = 1.0
+	add_child(sfx)
+	return sfx
 
 
 static func team_group(t: Team) -> StringName:
@@ -62,7 +88,10 @@ func get_target_points() -> Array[Vector3]:
 
 
 func take_damage(amount: float, source: Node = null) -> void:
+	if is_dead(): return
 	health -= amount
 	damaged.emit(amount, source)
 	if health <= 0.0:
 		died.emit()
+	elif amount > 0.0:
+		_hit_sfx.play()

@@ -208,7 +208,7 @@
 		- hostage situation should time out either because he kills the hostage after like 10s or  the enemies in the other room come out and overwhelm you 
 		- one bullet to kill terrorist
 		- I wouldn't continue to poll for commands while the last one is still pressed down (probably activate once on either downpress or release so you don't accidentally sweep a command across various options, past the intended one)
-		- on loss --> freeze game + "{reason why you lost}\n R to restart}
+		- on loss --> freeze game + "{reason why you lost}\n R to restart"
 		- on win --> either freeze + congratulations message, or have hostage run out the door
 	- third person controller with real models in the character scenes (I'll add the animation logic later)
 	- reticle, radial menu
