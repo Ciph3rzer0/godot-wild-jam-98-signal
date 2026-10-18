@@ -20,6 +20,7 @@ func show_game_over(reason: String) -> void:
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(game_over_panel, "modulate:a", 1.0, SLOWDOWN_TIME)
 	tween.chain().tween_callback(_freeze)
+	GameManager.set_play_state(GameManager.PlayState.GameOver)
 
 
 func _set_time_scale(value: float) -> void:

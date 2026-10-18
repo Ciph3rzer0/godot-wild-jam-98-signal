@@ -36,18 +36,24 @@ func toggle_pause():
 		pause_game()
 
 func pause_game():
+	if !GameManager.play_state == GameManager.PlayState.Playing:
+		return
 	get_tree().paused = true
 	#_paused_by_focus = true
 	show()
 	set_mouse_free(get_tree().paused)
+	GameManager.set_play_state(GameManager.PlayState.Paused)
 
 func resume_from_focus_pause() -> void:
+	if !GameManager.play_state == GameManager.PlayState.Paused:
+		return
 	#if not _paused_by_focus:
 		#return
 	#_paused_by_focus = false
 	hide()
 	get_tree().paused = false
 	set_mouse_free(get_tree().paused)
+	GameManager.set_play_state(GameManager.PlayState.Playing)
 
 func set_mouse_free(val: bool):
 	is_mouse_free = val

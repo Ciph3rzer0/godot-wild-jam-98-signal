@@ -40,7 +40,7 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_uhg71"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_4vqdi"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_7xwda"]
 
 [node name="Enemy" type="CharacterBody3D" unique_id=289776472 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
 collision_layer = 64
@@ -56,7 +56,7 @@ visual_occluder_mask = 7
 attack_occluder_mask = 327
 debug_sight_lines = true
 team = 1
-max_health = 30.0
+max_health = 1.0
 gun_tip = NodePath("GunTip")
 bullet = ExtResource("2_oaelh")
 
@@ -139,7 +139,7 @@ mesh = SubResource("BoxMesh_uhg71")
 [node name="Eyes" type="MeshInstance3D" parent="Face" unique_id=521000194]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 cast_shadow = 0
-mesh = SubResource("ImmediateMesh_4vqdi")
+mesh = SubResource("ImmediateMesh_7xwda")
 script = ExtResource("8_wg236")
 arc_angle = 90.0
 radius = 3.0
