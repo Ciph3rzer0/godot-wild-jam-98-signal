@@ -8,23 +8,21 @@
 [ext_resource type="PackedScene" uid="uid://b4g2ea2un0fg6" path="res://assets/models/equips/flashlight.glb" id="7_5gtgg"]
 [ext_resource type="PackedScene" uid="uid://be5wn1vteq3eo" path="res://assets/models/equips/riotShield.glb" id="8_h17s1"]
 [ext_resource type="AnimationLibrary" uid="uid://cgsl7ywecgmii" path="res://assets/models/characters/animations.glb" id="9_je7p5"]
-[ext_resource type="AudioStream" path="res://assets/audio/sfx/footstep-1.wav" id="10_step1"]
-[ext_resource type="AudioStream" path="res://assets/audio/sfx/footstep-2.wav" id="11_step2"]
-[ext_resource type="AudioStream" path="res://assets/audio/sfx/footstep-3.wav" id="12_step3"]
-[ext_resource type="AudioStream" path="res://assets/audio/sfx/footstep-4.wav" id="13_step4"]
-[ext_resource type="AudioStream" path="res://assets/audio/sfx/click-1.wav" id="14_signal"]
-[ext_resource type="AudioStream" path="res://assets/audio/sfx/negative.wav" id="15_denied"]
+[ext_resource type="AudioStream" uid="uid://cf7isswdblhg5" path="res://assets/audio/sfx/footstep-1.wav" id="10_step1"]
+[ext_resource type="AudioStream" uid="uid://ber7johe70nif" path="res://assets/audio/sfx/footstep-2.wav" id="11_step2"]
+[ext_resource type="AudioStream" uid="uid://oxphhq0j5udh" path="res://assets/audio/sfx/footstep-3.wav" id="12_step3"]
+[ext_resource type="AudioStream" uid="uid://mokrinu5sahp" path="res://assets/audio/sfx/footstep-4.wav" id="13_step4"]
+[ext_resource type="AudioStream" uid="uid://cpc1eg7jfwqyi" path="res://assets/audio/sfx/click-1.wav" id="14_signal"]
+[ext_resource type="AudioStream" uid="uid://bakt0khuemy28" path="res://assets/audio/sfx/negative.wav" id="15_denied"]
+[ext_resource type="Script" uid="uid://rqh85s4lunu7" path="res://scenes/units/character_animator.gd" id="Script_character_animator"]
 
-[ext_resource type="Script" path="res://scenes/units/character_animator.gd" id="Script_character_animator"]
+[sub_resource type="Gradient" id="Gradient_ugbui"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_footsteps"]
-resource_local_to_scene = true
-playback_mode = 2
-streams_count = 4
-stream_0/stream = ExtResource("10_step1")
-stream_1/stream = ExtResource("11_step2")
-stream_2/stream = ExtResource("12_step3")
-stream_3/stream = ExtResource("13_step4")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fcs02"]
+gradient = SubResource("Gradient_ugbui")
+width = 4
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0o143"]
 radius = 0.25
@@ -283,13 +281,71 @@ bind/34/name = &"DEF-spine.006"
 bind/34/bone = -1
 bind/34/pose = Transform3D(1, 0, 0, 0, 0.99999976, 1.4901156e-07, 0, 1.4901156e-08, 0.9999999, 0.019771397, -1.5740138, 0.006163938)
 
-[node name="Player" type="CharacterBody3D" unique_id=1865119778 node_paths=PackedStringArray("animator", "cam_rig", "cam")]
-animator = NodePath("AnimationTree")
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_footsteps"]
+resource_local_to_scene = true
+playback_mode = 2
+streams_count = 4
+stream_0/stream = ExtResource("10_step1")
+stream_1/stream = ExtResource("11_step2")
+stream_2/stream = ExtResource("12_step3")
+stream_3/stream = ExtResource("13_step4")
+
+[node name="Player" type="CharacterBody3D" unique_id=1865119778 node_paths=PackedStringArray("cam_rig", "cam", "animator")]
 collision_layer = 16
 collision_mask = 66119
 script = ExtResource("1_4flbx")
 cam_rig = NodePath("CameraRig")
 cam = NodePath("CameraRig/Camera3D")
+animator = NodePath("AnimationTree")
+
+[node name="Crosshairs" type="CanvasLayer" parent="." unique_id=1637823521]
+
+[node name="Control" type="Control" parent="Crosshairs" unique_id=885922774]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Crosshairs/Control" unique_id=1884193047]
+custom_minimum_size = Vector2(2, 2)
+custom_maximum_size = Vector2(-1, 2)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -0.5
+offset_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_fcs02")
+
+[node name="TextureRect2" type="TextureRect" parent="Crosshairs/Control" unique_id=492292194]
+custom_minimum_size = Vector2(4, 4)
+custom_maximum_size = Vector2(2, -1)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_fcs02")
 
 [node name="HeadPosition" type="Node3D" parent="." unique_id=692060840]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9875141, 0)
@@ -660,20 +716,19 @@ libraries/animations = ExtResource("9_je7p5")
 root_node = NodePath("../CharacterModel")
 anim_player = NodePath("../AnimationPlayer")
 script = ExtResource("Script_character_animator")
-profile = 0
 
-[node name="Footsteps" type="AudioStreamPlayer3D" parent="."]
+[node name="Footsteps" type="AudioStreamPlayer3D" parent="." unique_id=1312111101]
 stream = SubResource("AudioStreamRandomizer_footsteps")
 volume_db = -12.0
 max_polyphony = 2
 bus = &"SFX"
 
-[node name="SignalSFX" type="AudioStreamPlayer" parent="."]
+[node name="SignalSFX" type="AudioStreamPlayer" parent="." unique_id=1590452843]
 stream = ExtResource("14_signal")
 volume_db = -12.0
 bus = &"SFX"
 
-[node name="DeniedSFX" type="AudioStreamPlayer" parent="."]
+[node name="DeniedSFX" type="AudioStreamPlayer" parent="." unique_id=1590368880]
 stream = ExtResource("15_denied")
 volume_db = -12.0
 bus = &"SFX"
