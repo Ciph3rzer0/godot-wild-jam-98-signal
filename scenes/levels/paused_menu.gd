@@ -1,3 +1,4 @@
+class_name PausedMenu
 extends CanvasLayer
 
 @export var resume_button: Button

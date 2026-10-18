@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cdd6f34xkdh8s" path="res://scenes/player/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://fa8m66313tj1" path="res://scenes/player/hand_signals/hand_signal_sprite.tscn" id="2_dovo2"]
+[ext_resource type="PackedScene" uid="uid://cy7rjsnf27sys" path="res://scenes/radial_menu.tscn" id="2_myrg7"]
 [ext_resource type="Material" uid="uid://c8biv4nwhdgbw" path="res://scenes/radar/player_radar_dot.tres" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://csucxwl38he0t" path="res://addons/godot-prototype-texture/PNG/logo_512x512/logo_lime_512x512.png" id="4_lvxji"]
 [ext_resource type="Material" uid="uid://iak7dndhikw8" path="res://scenes/player/player_face_material.tres" id="4_p47bc"]
@@ -299,6 +300,8 @@ cam = NodePath("CameraRig/Camera3D")
 animator = NodePath("AnimationTree")
 
 [node name="Crosshairs" type="CanvasLayer" parent="." unique_id=1637823521]
+
+[node name="Radial Menu" parent="Crosshairs" unique_id=1926722181 instance=ExtResource("2_myrg7")]
 
 [node name="Control" type="Control" parent="Crosshairs" unique_id=885922774]
 custom_minimum_size = Vector2(32, 32)

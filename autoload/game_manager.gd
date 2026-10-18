@@ -2,6 +2,8 @@ extends Node
 
 signal play_state_changed(state: PlayState)
 
+@onready var paused_menu: PausedMenu = get_node("/root/Boot/Paused Menu")
+
 enum PlayState {
 	Loading,
 	Playing,

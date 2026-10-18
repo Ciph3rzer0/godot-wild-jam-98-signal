@@ -1,0 +1,226 @@
+[gd_scene format=3 uid="uid://cy7rjsnf27sys"]
+
+[ext_resource type="Script" uid="uid://c7s22iyfu618p" path="res://scenes/radial_menu.gd" id="1_ycxv0"]
+[ext_resource type="Script" uid="uid://ku7jbx1kli53" path="res://scenes/radial_button.gd" id="2_q46gd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq78i"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_detail = 1
+
+[node name="Radial Menu" type="Control" unique_id=1112076438]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ycxv0")
+
+[node name="Radial Menu" type="GridContainer" parent="." unique_id=1926722181]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -153.0
+offset_right = 153.0
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 3
+
+[node name="One" type="PanelContainer" parent="Radial Menu" unique_id=462847041]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yq78i")
+script = ExtResource("2_q46gd")
+gesture = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Radial Menu/One" unique_id=1834935454]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Button" type="Button" parent="Radial Menu/One/MarginContainer" unique_id=1389561105]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "1"
+
+[node name="Two" type="PanelContainer" parent="Radial Menu" unique_id=662094146]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yq78i")
+script = ExtResource("2_q46gd")
+gesture = 9
+
+[node name="MarginContainer" type="MarginContainer" parent="Radial Menu/Two" unique_id=832281616]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Button" type="Button" parent="Radial Menu/Two/MarginContainer" unique_id=785865590]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "2"
+
+[node name="Three" type="PanelContainer" parent="Radial Menu" unique_id=1250961568]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yq78i")
+script = ExtResource("2_q46gd")
+gesture = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="Radial Menu/Three" unique_id=1547299183]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Button" type="Button" parent="Radial Menu/Three/MarginContainer" unique_id=1476677993]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "3"
+
+[node name="Hold Fire" type="PanelContainer" parent="Radial Menu" unique_id=2112322344]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yq78i")
+script = ExtResource("2_q46gd")
+
+[node name="MarginContainer" type="MarginContainer" parent="Radial Menu/Hold Fire" unique_id=1091422226]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Button" type="Button" parent="Radial Menu/Hold Fire/MarginContainer" unique_id=253995596]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Hold
+Fire"
+
+[node name="_" type="PanelContainer" parent="Radial Menu" unique_id=1123681396]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yq78i")
+
+[node name="MarginContainer" type="MarginContainer" parent="Radial Menu/_" unique_id=2125723081]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Button" type="Button" parent="Radial Menu/_/MarginContainer" unique_id=396037709]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "1"
+
+[node name="Engage" type="PanelContainer" parent="Radial Menu" unique_id=669709200]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yq78i")
+script = ExtResource("2_q46gd")
+gesture = 12
+
+[node name="MarginContainer" type="MarginContainer" parent="Radial Menu/Engage" unique_id=699017733]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Button" type="Button" parent="Radial Menu/Engage/MarginContainer" unique_id=980566762]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Engage"
+
+[node name="Patrol" type="PanelContainer" parent="Radial Menu" unique_id=960270790]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yq78i")
+script = ExtResource("2_q46gd")
+gesture = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="Radial Menu/Patrol" unique_id=778528672]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Button" type="Button" parent="Radial Menu/Patrol/MarginContainer" unique_id=1322127919]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Patrol"
+
+[node name="Panel9" type="PanelContainer" parent="Radial Menu" unique_id=1157819175]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yq78i")
+script = ExtResource("2_q46gd")
+
+[node name="MarginContainer" type="MarginContainer" parent="Radial Menu/Panel9" unique_id=1309956369]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Button" type="Button" parent="Radial Menu/Panel9/MarginContainer" unique_id=1860314577]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "1"
+
+[node name="Move To" type="PanelContainer" parent="Radial Menu" unique_id=2087252628]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yq78i")
+script = ExtResource("2_q46gd")
+gesture = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="Radial Menu/Move To" unique_id=1794488476]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Button" type="Button" parent="Radial Menu/Move To/MarginContainer" unique_id=1138859455]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Move
+To"
