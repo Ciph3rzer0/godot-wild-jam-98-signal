@@ -52,7 +52,7 @@ transform = Transform3D(4.371139e-08, 1, -8.742278e-08, 1, -4.371139e-08, 0, -3.
 shape = SubResource("WorldBoundaryShape3D_o8kyb")
 
 [node name="floorbox" type="CollisionShape3D" parent="worldBoundaries" unique_id=882544152]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42044687, -0.33983982, 1.5794764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7572746, -0.49077404, -1.3020525)
 shape = SubResource("BoxShape3D_vals0")
 
 [node name="labels" type="Node3D" parent="." unique_id=661600025]

@@ -7,18 +7,30 @@
 [ext_resource type="PackedScene" uid="uid://c7usov56xlpg7" path="res://scenes/units/hostage/hostage.tscn" id="4_xy1qu"]
 [ext_resource type="Script" uid="uid://biu3nwq0vb7wm" path="res://scenes/units/ai/states/kill_hostage.gd" id="5_3mnpy"]
 [ext_resource type="PackedScene" uid="uid://dbgkrrjvkd87e" path="res://scenes/units/squadmates/ai_teammate.tscn" id="5_xy1qu"]
+[ext_resource type="Script" uid="uid://7tt7istu1p8r" path="res://signal_target.gd" id="8_6ayib"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_3mnpy"]
-vertices = PackedVector3Array(-14.503855, 0.6804807, -14.749679, -14.503855, 0.6804807, 24.250324, 16.996147, 0.6804807, 24.250324, 16.996147, 0.6804807, -14.749679)
+vertices = PackedVector3Array(-18.13702, 0.22767806, -23.494267, -18.13702, 0.22767806, 15.705734, 13.562981, 0.22767806, 15.705734, 13.562981, 0.22767806, -23.494267)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 geometry_parsed_geometry_type = 1
 geometry_source_geometry_mode = 1
 cell_size = 0.1
 cell_height = 0.1
-agent_radius = 0.6
 detail_sample_distance = 2.0
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_3mnpy"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_6ayib"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65guy"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.40784314)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p6rmu"]
+flip_faces = true
+size = Vector3(0.5, 0.1, 0.5)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_34hum"]
+height = 0.8
 
 [node name="Prototype Level" unique_id=1527916753 instance=ExtResource("1_bw3rj")]
 
@@ -50,10 +62,10 @@ script = ExtResource("4_3mnpy")
 script = ExtResource("5_3mnpy")
 
 [node name="Eyes" parent="Enemy/Face" parent_id_path=PackedInt32Array(289776472, 933804409) index="2" unique_id=521000194]
-mesh = SubResource("ImmediateMesh_3mnpy")
+mesh = SubResource("ImmediateMesh_6ayib")
 
 [node name="Hostage" parent="." index="9" unique_id=1367416622 instance=ExtResource("4_xy1qu")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7.262287, 0.00030758977, 1.209882)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7.262287, 0.13750336, 1.209882)
 
 [node name="InvisHostage" parent="." index="10" unique_id=742087857 instance=ExtResource("4_xy1qu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1167915, -0.032371044, -9.061571)
@@ -61,6 +73,23 @@ visible = false
 max_health = 99999999.0
 
 [node name="AI Teammate" parent="." index="11" unique_id=1751991092 instance=ExtResource("5_xy1qu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.967494, 0.018288285, 1.2238085)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.967494, 0.053040057, 1.2238085)
+
+[node name="InteractableFloor" type="StaticBody3D" parent="." index="12" unique_id=961337458 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.946115, 0.115583, -1.02596)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("8_6ayib")
+aim_point = NodePath("MeshInstance3D")
+highlight_meshes = [NodePath("MeshInstance3D")]
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InteractableFloor" index="0" unique_id=2023445915]
+material_override = SubResource("StandardMaterial3D_65guy")
+mesh = SubResource("BoxMesh_p6rmu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableFloor" index="1" unique_id=843960988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3434221, 0)
+shape = SubResource("CylinderShape3D_34hum")
 
 [editable path="Enemy"]

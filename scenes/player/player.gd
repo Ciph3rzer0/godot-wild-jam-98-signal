@@ -66,7 +66,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	#if is_mouse_free: return
 	if event is InputEventMouseMotion:
-		print('moving')
 		rotation_degrees.y -= event.relative.x / 10
 		cam_rig.rotation_degrees.x -= event.relative.y / 10
 		cam_rig.rotation_degrees.x = clamp(cam_rig.rotation_degrees.x, -90, 90)

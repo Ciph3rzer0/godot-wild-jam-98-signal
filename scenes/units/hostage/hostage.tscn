@@ -197,7 +197,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84387684, 0.018109242)
 shape = SubResource("BoxShape3D_rc6wk")
 
 [node name="CharacterModel" type="Node3D" parent="." unique_id=1768070642]
-transform = Transform3D(0.71, 0, 0, 0, 0.71, 0, 0, 0, 0.71, 0.04402113, 0.26900372, 0.24136674)
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0.04402113, 0.26900372, 0.24136674)
 
 [node name="rig-enemy" type="Node3D" parent="CharacterModel" unique_id=1446269951]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05752611, -0.38981634, -0.23635769)
