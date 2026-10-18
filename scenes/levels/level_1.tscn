@@ -98,9 +98,6 @@ size = Vector3(0.5, 0.1, 0.5)
 
 [node name="Prototype Level" unique_id=1527916753 instance=ExtResource("1_x6ivy")]
 
-[node name="UI" parent="." index="0" unique_id=2041766851]
-mouse_filter = 2
-
 [node name="RadarCameraRig" parent="UI/MarginContainer/CircleMask/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(1747511697) index="0" unique_id=1503955098]
 transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, -1.2804317, 0.5, 16.18572)
 

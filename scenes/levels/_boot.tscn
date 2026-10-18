@@ -6,7 +6,7 @@
 
 [node name="Boot" type="Node3D" unique_id=678208906 node_paths=PackedStringArray("level_container", "loading_screen", "paused_menu", "progress_bar", "status_label", "game_over_sequence")]
 script = ExtResource("1_0yiur")
-starting_scene_path = "uid://wbk6w2xtky2m"
+starting_scene_path = "uid://cner470lah6gy"
 level_container = NodePath("LevelContainer")
 loading_screen = NodePath("LoadingScreen")
 paused_menu = NodePath("Paused Menu")

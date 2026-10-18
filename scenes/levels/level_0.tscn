@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cner470lah6gy"]
+
+[ext_resource type="PackedScene" uid="uid://dykvknbluafhw" path="res://scenes/levels/base_level.tscn" id="1_bw3rj"]
+[ext_resource type="PackedScene" uid="uid://cbs86i3k72lqq" path="res://scenes/levels/level0.tscn" id="2_osc7o"]
+[ext_resource type="PackedScene" uid="uid://c824qy2qut6m1" path="res://scenes/units/enemies/ai_enemy.tscn" id="3_wjk5u"]
+[ext_resource type="Script" uid="uid://ds8kjwjfaggds" path="res://scenes/units/ai/states/scanning.gd" id="4_3mnpy"]
+[ext_resource type="PackedScene" uid="uid://c7usov56xlpg7" path="res://scenes/units/hostage/hostage.tscn" id="4_xy1qu"]
+[ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/units/ai/states/engaging.gd" id="5_6ayib"]
+[ext_resource type="PackedScene" uid="uid://dbgkrrjvkd87e" path="res://scenes/units/squadmates/ai_teammate.tscn" id="5_xy1qu"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_3mnpy"]
+vertices = PackedVector3Array(-14.503855, 0.6804807, -14.749679, -14.503855, 0.6804807, 24.250324, 16.996147, 0.6804807, 24.250324, 16.996147, 0.6804807, -14.749679)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 1
+geometry_source_geometry_mode = 1
+cell_size = 0.1
+cell_height = 0.1
+agent_radius = 0.6
+detail_sample_distance = 2.0
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_3mnpy"]
+
+[node name="Prototype Level" unique_id=1527916753 instance=ExtResource("1_bw3rj")]
+
+[node name="RadarCameraRig" parent="UI/MarginContainer/CircleMask/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(1747511697) index="0" unique_id=1503955098]
+transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, -1.3895373, -1.1920929e-07, -4.5984898)
+
+[node name="Player" parent="." index="3" unique_id=1865119778 node_paths=PackedStringArray("teammates")]
+transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, -1.3895373, -1.1920929e-07, -4.5984898)
+teammates = [NodePath("../AI Teammate")]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="5" unique_id=1666709727]
+navigation_mesh = SubResource("NavigationMesh_3mnpy")
+
+[node name="Level0" parent="." index="6" unique_id=877142389 groups=["navigation_mesh_source_group"] instance=ExtResource("2_osc7o")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="== Scene Objects ==" type="Node" parent="." index="7" unique_id=107332720]
+
+[node name="Enemy" parent="." index="8" unique_id=289776472 instance=ExtResource("3_wjk5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5098827, 0, 1.6748989)
+
+[node name="Scanning" type="Node" parent="Enemy/CombatState" parent_id_path=PackedInt32Array(289776472, 1242890481) index="0" unique_id=1196924209]
+script = ExtResource("4_3mnpy")
+
+[node name="Engaging" type="Node" parent="Enemy/CombatState" parent_id_path=PackedInt32Array(289776472, 1242890481) index="1" unique_id=847348757]
+script = ExtResource("5_6ayib")
+avg_act_chance_per_second = 1.0
+
+[node name="Eyes" parent="Enemy/Face" parent_id_path=PackedInt32Array(289776472, 933804409) index="2" unique_id=521000194]
+mesh = SubResource("ImmediateMesh_3mnpy")
+
+[node name="Hostage" parent="." index="9" unique_id=1367416622 instance=ExtResource("4_xy1qu")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7.262287, 0.00030758977, 1.209882)
+
+[node name="Hostage2" parent="." index="10" unique_id=742087857 instance=ExtResource("4_xy1qu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1167915, 0.27292415, -9.7694)
+visible = false
+
+[node name="AI Teammate" parent="." index="11" unique_id=1751991092 instance=ExtResource("5_xy1qu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.967494, 0.018288285, 1.2238085)
+
+[editable path="Enemy"]
