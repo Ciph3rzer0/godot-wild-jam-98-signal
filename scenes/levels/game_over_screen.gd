@@ -1,3 +1,4 @@
+class_name GameOverScreen
 extends Node
 
 # main.gd
