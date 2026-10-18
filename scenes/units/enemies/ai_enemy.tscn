@@ -49,20 +49,17 @@ sight_range = 30.0
 fov_deg = 90.0
 visual_occluder_mask = 7
 attack_occluder_mask = 327
-debug_sight_lines = true
 team = 1
 max_health = 1.0
 gun_tip = NodePath("GunTip")
 bullet = ExtResource("2_oaelh")
 animator = NodePath("Terrorist/AnimationTree")
 
-[node name="CombatState" type="Node" parent="." unique_id=1242890481 node_paths=PackedStringArray("initial_state")]
+[node name="CombatState" type="Node" parent="." unique_id=1242890481]
 script = ExtResource("1_i7rso")
-initial_state = NodePath("")
 
-[node name="MovementState" type="Node" parent="." unique_id=2122641983 node_paths=PackedStringArray("initial_state")]
+[node name="MovementState" type="Node" parent="." unique_id=2122641983]
 script = ExtResource("1_i7rso")
-initial_state = NodePath("")
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=426961026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

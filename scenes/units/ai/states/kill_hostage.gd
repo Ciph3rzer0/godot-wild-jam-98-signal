@@ -13,6 +13,8 @@ func enter() -> void:
 	if _ai.face:
 		_ai.face.material_override = preload("uid://b0i4hgb4pcx8v")
 	
+	await get_tree().process_frame
+	
 	_hostage = _find_closest_hostage()
 	assert(_hostage, "No hostage found")
 
@@ -51,7 +53,7 @@ func physics_update(_delta: float) -> void:
 	act_chance -= 1 / avg_act_chance_per_second
 	
 	var ray := _ai.can_see_shoot(_hostage)
-	if ray.can_shoot:
+	if ray.can_see:
 		shoot_at(_hostage.global_position)
 
 

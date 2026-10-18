@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c824qy2qut6m1" path="res://scenes/units/enemies/ai_enemy.tscn" id="3_wjk5u"]
 [ext_resource type="Script" uid="uid://ds8kjwjfaggds" path="res://scenes/units/ai/states/scanning.gd" id="4_3mnpy"]
 [ext_resource type="PackedScene" uid="uid://c7usov56xlpg7" path="res://scenes/units/hostage/hostage.tscn" id="4_xy1qu"]
-[ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/units/ai/states/engaging.gd" id="5_6ayib"]
+[ext_resource type="Script" uid="uid://biu3nwq0vb7wm" path="res://scenes/units/ai/states/kill_hostage.gd" id="5_3mnpy"]
 [ext_resource type="PackedScene" uid="uid://dbgkrrjvkd87e" path="res://scenes/units/squadmates/ai_teammate.tscn" id="5_xy1qu"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_3mnpy"]
@@ -40,12 +40,14 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 [node name="Enemy" parent="." index="8" unique_id=289776472 instance=ExtResource("3_wjk5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5098827, 0, 1.6748989)
 
-[node name="Scanning" type="Node" parent="Enemy/CombatState" parent_id_path=PackedInt32Array(289776472, 1242890481) index="0" unique_id=1196924209]
+[node name="CombatState" parent="Enemy" index="0" unique_id=1242890481 node_paths=PackedStringArray("initial_state")]
+initial_state = NodePath("Kill Hostage")
+
+[node name="Scanning" type="Node" parent="Enemy/CombatState" index="0" unique_id=1196924209]
 script = ExtResource("4_3mnpy")
 
-[node name="Engaging" type="Node" parent="Enemy/CombatState" parent_id_path=PackedInt32Array(289776472, 1242890481) index="1" unique_id=847348757]
-script = ExtResource("5_6ayib")
-avg_act_chance_per_second = 1.0
+[node name="Kill Hostage" type="Node" parent="Enemy/CombatState" index="1" unique_id=847348757]
+script = ExtResource("5_3mnpy")
 
 [node name="Eyes" parent="Enemy/Face" parent_id_path=PackedInt32Array(289776472, 933804409) index="2" unique_id=521000194]
 mesh = SubResource("ImmediateMesh_3mnpy")
@@ -53,9 +55,10 @@ mesh = SubResource("ImmediateMesh_3mnpy")
 [node name="Hostage" parent="." index="9" unique_id=1367416622 instance=ExtResource("4_xy1qu")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7.262287, 0.00030758977, 1.209882)
 
-[node name="Hostage2" parent="." index="10" unique_id=742087857 instance=ExtResource("4_xy1qu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1167915, 0.27292415, -9.7694)
+[node name="InvisHostage" parent="." index="10" unique_id=742087857 instance=ExtResource("4_xy1qu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1167915, -0.032371044, -9.061571)
 visible = false
+max_health = 99999999.0
 
 [node name="AI Teammate" parent="." index="11" unique_id=1751991092 instance=ExtResource("5_xy1qu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.967494, 0.018288285, 1.2238085)

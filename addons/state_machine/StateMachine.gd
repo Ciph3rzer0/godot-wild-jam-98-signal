@@ -39,6 +39,7 @@ func _ready() -> void:
 	# state can use the actor's @onready nodes in enter().
 	if not actor.is_node_ready():
 		await actor.ready
+	
 	current_state.enter()
 	state_changed.emit("", current_state.name)
 
