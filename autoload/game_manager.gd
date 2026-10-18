@@ -20,10 +20,22 @@ func set_play_state(state: PlayState):
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
+#func _input(event: InputEvent) -> void:
+	#var game_over_screen: GameOverScreen = get_node("/root/Boot/Game Over Screen")
+	#if event.is_action_pressed("cheat_restart_level"):
+		#game_over_screen._reset_game_state()
+		#var error = get_tree().reload_current_scene()
+		#if error != OK:
+			#print("An error occurred while reloading the scene.")
+			
 func _input(event: InputEvent) -> void:
-	var game_over_screen: GameOverScreen = get_node("/root/Boot/Game Over Screen")
 	if event.is_action_pressed("cheat_restart_level"):
-		game_over_screen._reset_game_state()
-		var error = get_tree().reload_current_scene()
-		if error != OK:
-			print("An error occurred while reloading the scene.")
+		# var game_over_screen: GameOverScreen = get_node("/root/Boot/Game Over Screen")
+		# game_over_screen._reset_game_state()
+		var main := get_tree().current_scene as Main
+		if main:
+			main.restart_level()  # load_level() already resets game state
+		else:
+			# Level was run on its own (F6): there's no Main, so reload the level itself.
+			get_tree().reload_current_scene()
+		get_viewport().set_input_as_handled()

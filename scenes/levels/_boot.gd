@@ -13,8 +13,9 @@ static var current_level: Node
 @export var progress_bar: ProgressBar
 @export var status_label: Label
 
-@export var game_over_sequence: Node
+@export var game_over_sequence: GameOverScreen
 
+var _current_level_path := ""
 var _loading_path := ""
 var _instance: Node
 var _progress := []
@@ -24,15 +25,30 @@ func _ready() -> void:
 	loading_screen.show()
 	game_over_sequence.hide()
 	paused_menu.hide()
-	
+
 	set_process(false)
 	if starting_scene_path:
 		load_level(starting_scene_path)
 
 
+func restart_level() -> void:
+	if not _current_level_path.is_empty():
+		load_level(_current_level_path)
+		$"Paused Menu".set_mouse_free(false)
+
+
+
 func load_level(path: String) -> void:
 	if not _loading_path.is_empty():
 		return  # already loading something
+
+	# Unpause and restore time scale first: Main is pausable, so if the tree
+	# stayed paused (e.g. restarting from game over), _process would never run
+	# and the load would hang.
+	game_over_sequence._reset_game_state()
+	paused_menu.hide()
+
+	_current_level_path = path
 	_loading_path = path
 
 	loading_screen.show()
@@ -87,6 +103,7 @@ func _finish_loading() -> void:
 
 	if _instance == null:
 		push_error("Failed to instantiate %s" % _loading_path)
+		status_label.text = "Failed to load level"
 		_loading_path = ""
 		return
 
@@ -103,8 +120,7 @@ func _finish_loading() -> void:
 	if current_level is Level:
 		current_level.scenario_lost.connect(game_over_sequence.show_game_over)
 	else:
-		print(current_level, " is not a level")
-		assert(false)
+		push_error("%s is not a Level" % current_level.name)
 
 	# Let the new level render a frame (shader compile) before revealing it.
 	await get_tree().process_frame

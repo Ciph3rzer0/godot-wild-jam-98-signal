@@ -107,3 +107,5 @@ layers = 32768
 material_override = SubResource("StandardMaterial3D_3rriw")
 use_collision = true
 size = Vector3(100, 1, 100)
+
+[connection signal="died" from="Player" to="." method="end_scenario_in_loss" binds= ["You died"]]

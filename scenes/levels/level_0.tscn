@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://biu3nwq0vb7wm" path="res://scenes/units/ai/states/kill_hostage.gd" id="5_3mnpy"]
 [ext_resource type="PackedScene" uid="uid://dbgkrrjvkd87e" path="res://scenes/units/squadmates/ai_teammate.tscn" id="5_xy1qu"]
 [ext_resource type="Script" uid="uid://7tt7istu1p8r" path="res://signal_target.gd" id="8_6ayib"]
+[ext_resource type="Script" uid="uid://8sr38ybbqt6s" path="res://scenes/levels/next_level.gd" id="9_65guy"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_3mnpy"]
 vertices = PackedVector3Array(-18.13702, 0.22767806, -23.494267, -18.13702, 0.22767806, 15.705734, 13.562981, 0.22767806, 15.705734, 13.562981, 0.22767806, -23.494267)
@@ -31,6 +32,9 @@ size = Vector3(0.5, 0.1, 0.5)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_34hum"]
 height = 0.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uhg71"]
+size = Vector3(2.37, 2.45, 2.2060351)
 
 [node name="Prototype Level" unique_id=1527916753 instance=ExtResource("1_bw3rj")]
 
@@ -91,5 +95,17 @@ mesh = SubResource("BoxMesh_p6rmu")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableFloor" index="1" unique_id=843960988]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3434221, 0)
 shape = SubResource("CylinderShape3D_34hum")
+
+[node name="NextLevel" type="Area3D" parent="." index="13" unique_id=1080222080]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0007777, 2.869546, 3.910089)
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+script = ExtResource("9_65guy")
+next_level = "uid://wbk6w2xtky2m"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NextLevel" index="0" unique_id=1999837839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.22948217)
+shape = SubResource("BoxShape3D_uhg71")
 
 [editable path="Enemy"]
