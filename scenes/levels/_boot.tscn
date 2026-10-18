@@ -2,17 +2,20 @@
 
 [ext_resource type="Script" uid="uid://de5i0slurdowd" path="res://scenes/levels/_boot.gd" id="1_0yiur"]
 [ext_resource type="Script" uid="uid://bxavplhnkq3t3" path="res://scenes/levels/game_over_screen.gd" id="2_jtoxe"]
+[ext_resource type="Script" uid="uid://dj31svjlirrpl" path="res://scenes/levels/paused_menu.gd" id="3_va53b"]
 
-[node name="Boot" type="Node3D" unique_id=678208906 node_paths=PackedStringArray("level_container", "loading_screen", "progress_bar", "status_label", "game_over_sequence")]
+[node name="Boot" type="Node3D" unique_id=678208906 node_paths=PackedStringArray("level_container", "loading_screen", "paused_menu", "progress_bar", "status_label", "game_over_sequence")]
 script = ExtResource("1_0yiur")
 starting_scene_path = "uid://wbk6w2xtky2m"
 level_container = NodePath("LevelContainer")
 loading_screen = NodePath("LoadingScreen")
+paused_menu = NodePath("Paused Menu")
 progress_bar = NodePath("LoadingScreen/LoadingScreen/CenterContainer/VBoxContainer/LoadingBar")
 status_label = NodePath("LoadingScreen/LoadingScreen/CenterContainer/VBoxContainer/MarginContainer/StatusLabel")
 game_over_sequence = NodePath("Game Over Screen")
 
 [node name="LoadingScreen" type="CanvasLayer" parent="." unique_id=1957333406]
+process_mode = 3
 visible = false
 
 [node name="LoadingScreen" type="PanelContainer" parent="LoadingScreen" unique_id=1367339122]
@@ -52,22 +55,28 @@ uppercase = true
 [node name="LevelContainer" type="Node3D" parent="." unique_id=1249429835]
 
 [node name="Game Over Screen" type="CanvasLayer" parent="." unique_id=1569474529 node_paths=PackedStringArray("game_over_screen", "game_over_panel", "game_over_reason")]
+process_mode = 3
+visible = false
 script = ExtResource("2_jtoxe")
 game_over_screen = NodePath(".")
-game_over_panel = NodePath("LoadingScreen")
-game_over_reason = NodePath("LoadingScreen/CenterContainer/VBoxContainer/MarginContainer/Game Over Reason")
+game_over_panel = NodePath("GameOverContainer")
+game_over_reason = NodePath("GameOverContainer/CenterContainer/VBoxContainer/MarginContainer/Game Over Reason")
 
-[node name="LoadingScreen" type="PanelContainer" parent="Game Over Screen" unique_id=2006183349]
+[node name="GameOverContainer" type="PanelContainer" parent="Game Over Screen" unique_id=2006183349]
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="CenterContainer" type="CenterContainer" parent="Game Over Screen/LoadingScreen" unique_id=365693811]
+[node name="CenterContainer" type="CenterContainer" parent="Game Over Screen/GameOverContainer" unique_id=365693811]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Game Over Screen/LoadingScreen/CenterContainer" unique_id=293168709]
+[node name="VBoxContainer" type="VBoxContainer" parent="Game Over Screen/GameOverContainer/CenterContainer" unique_id=293168709]
 layout_mode = 2
 
-[node name="Game Over Label" type="Label" parent="Game Over Screen/LoadingScreen/CenterContainer/VBoxContainer" unique_id=1452842861]
+[node name="ResumeButton" type="Button" parent="Game Over Screen/GameOverContainer/CenterContainer/VBoxContainer" unique_id=2136922440]
+layout_mode = 2
+text = "Resume"
+
+[node name="Game Over Label" type="Label" parent="Game Over Screen/GameOverContainer/CenterContainer/VBoxContainer" unique_id=1452842861]
 custom_minimum_size = Vector2(512, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
@@ -75,14 +84,45 @@ text = "Game Over"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Game Over Screen/LoadingScreen/CenterContainer/VBoxContainer" unique_id=1055313152]
+[node name="MarginContainer" type="MarginContainer" parent="Game Over Screen/GameOverContainer/CenterContainer/VBoxContainer" unique_id=1055313152]
 custom_minimum_size = Vector2(512, 64)
 custom_maximum_size = Vector2(512, 64)
 layout_mode = 2
 theme_override_constants/margin_top = 8
 
-[node name="Game Over Reason" type="Label" parent="Game Over Screen/LoadingScreen/CenterContainer/VBoxContainer/MarginContainer" unique_id=206837195]
+[node name="Game Over Reason" type="Label" parent="Game Over Screen/GameOverContainer/CenterContainer/VBoxContainer/MarginContainer" unique_id=206837195]
 custom_minimum_size = Vector2(512, 64)
 layout_mode = 2
 text = "Reason"
 horizontal_alignment = 1
+
+[node name="Paused Menu" type="CanvasLayer" parent="." unique_id=922778267 node_paths=PackedStringArray("resume_button")]
+process_mode = 3
+script = ExtResource("3_va53b")
+resume_button = NodePath("PanelContainer/CenterContainer/VBoxContainer/ResumeButton")
+
+[node name="PanelContainer" type="PanelContainer" parent="Paused Menu" unique_id=1869286553]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Paused Menu/PanelContainer" unique_id=116724925]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Paused Menu/PanelContainer/CenterContainer" unique_id=426804028]
+layout_mode = 2
+
+[node name="PausedLabel" type="Label" parent="Paused Menu/PanelContainer/CenterContainer/VBoxContainer" unique_id=460929488]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "paused"
+uppercase = true
+
+[node name="ResumeButton" type="Button" parent="Paused Menu/PanelContainer/CenterContainer/VBoxContainer" unique_id=875568631]
+layout_mode = 2
+text = "Resume"
+
+[connection signal="pressed" from="Game Over Screen/GameOverContainer/CenterContainer/VBoxContainer/ResumeButton" to="Paused Menu" method="resume_from_focus_pause"]
+[connection signal="pressed" from="Paused Menu/PanelContainer/CenterContainer/VBoxContainer/ResumeButton" to="Paused Menu" method="resume_from_focus_pause"]
