@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c7usov56xlpg7" path="res://scenes/units/hostage/hostage.tscn" id="5_oem7y"]
 [ext_resource type="PackedScene" uid="uid://b3xc7tmfgrbja" path="res://assets/models/environment/practiceTarget.glb" id="7_1nvli"]
 [ext_resource type="PackedScene" uid="uid://cqjwn7gq2golt" path="res://scenes/units/squadmates/squadmate.tscn" id="8_a76di"]
-[ext_resource type="PackedScene" uid="uid://bpvjjcx13hhmv" path="res://scenes/units/ai/terrorist.tscn" id="8_vals0"]
+[ext_resource type="PackedScene" uid="uid://bpvjjcx13hhmv" path="res://scenes/units/enemies/terrorist.tscn" id="8_vals0"]
 [ext_resource type="AudioStream" uid="uid://ijbilroxh1jk" path="res://assets/audio/music/bladerunner.wav" id="12_7s2gi"]
 
 [sub_resource type="Environment" id="Environment_h45xw"]
