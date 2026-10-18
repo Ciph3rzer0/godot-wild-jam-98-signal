@@ -12,12 +12,17 @@ static var current_level: Node
 @export var progress_bar: ProgressBar
 @export var status_label: Label
 
+@export var game_over_sequence: Node
+
 var _loading_path := ""
 var _instance: Node
 var _progress := []
 
 
 func _ready() -> void:
+	loading_screen.show()
+	game_over_sequence.hide()
+	
 	set_process(false)
 	if starting_scene_path:
 		load_level(starting_scene_path)
@@ -92,6 +97,12 @@ func _finish_loading() -> void:
 	current_level = _instance
 	_instance = null
 	_loading_path = ""
+
+	if current_level is Level:
+		print("connected")
+		current_level.scenario_lost.connect(game_over_sequence.show_game_over)
+	else:
+		print(current_level)
 
 	# Let the new level render a frame (shader compile) before revealing it.
 	await get_tree().process_frame
