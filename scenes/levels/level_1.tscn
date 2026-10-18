@@ -143,7 +143,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.598, -0.08, -1.564)
 [node name="== Scene Objects ==" type="Node" parent="." index="8" unique_id=1523589471]
 
 [node name="AITeammate" parent="." index="9" unique_id=933410074 instance=ExtResource("5_dywbp")]
-transform = Transform3D(0.99674755, 0, 0.0805867, 0, 1, 0, -0.0805867, 0, 0.99674755, -2.782526, 0.50000095, 16.689602)
+transform = Transform3D(0.99674755, 0, 0.0805867, 0, 1, 0, -0.0805867, 0, 0.99674755, -2.7823603, 0.37172455, 16.689287)
 
 [node name="Hostage" parent="." index="10" unique_id=1367416622 instance=ExtResource("12_np2pn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4097323, 0.38612854, -5.025645)
