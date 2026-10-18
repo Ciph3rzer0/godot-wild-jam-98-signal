@@ -140,6 +140,8 @@ func _handle_signals():
 	
 	if active_signal != _last_signal:
 		_last_signal = active_signal
+		if animator:
+			animator.set_signal(active_signal)
 		_send_command(active_signal)
 
 func _send_command(sig: HandSignalSprite.SIGNAL) -> void:
@@ -224,6 +226,9 @@ func _physics_process(delta: float) -> void:
 	var was_on_floor := is_on_floor()
 	move_and_slide()
 	_update_footsteps(global_position - previous_position, not raw_input.is_zero_approx(), was_on_floor)
+	if animator:
+		var travel := global_position - previous_position
+		animator.update_motion(Vector2(travel.x, travel.z).length() / delta, Input.is_key_pressed(KEY_CTRL), not is_on_floor() or cheat_float)
 	
 	
 func _update_footsteps(travel: Vector3, moving: bool, was_on_floor: bool) -> void:
