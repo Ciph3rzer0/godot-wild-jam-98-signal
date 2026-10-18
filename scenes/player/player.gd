@@ -112,13 +112,17 @@ func _handle_signals():
 	else:
 		active_signal = hand_signal_sprite.SIGNAL.NONE
 	
-	hand_signal_sprite._set_hand_signal(active_signal)
+	_send_gesture(active_signal)
+
+func _send_gesture(sig: HandSignalSprite.SIGNAL) -> void:
+	active_signal = sig
+	hand_signal_sprite._set_hand_signal(sig)
 	
-	if active_signal != _last_signal:
-		_last_signal = active_signal
+	if sig != _last_signal:
+		_last_signal = sig
 		if animator:
-			animator.set_signal(active_signal)
-		_send_command(active_signal)
+			animator.set_signal(sig)
+		_send_command(sig)
 
 func _send_command(sig: HandSignalSprite.SIGNAL) -> void:
 	match sig:
@@ -303,3 +307,6 @@ func _has_line_of_sight(from: Vector3, to: Vector3, target: Node) -> bool:
 	if DEBUG.draw_player_los:
 		DebugDraw.draw_line(draw_from, hit.position, Color.AZURE, 2)
 	return false
+
+func _on_radial_menu_player_gestured(gesture: HandSignalSprite.SIGNAL) -> void:
+	_send_gesture(gesture)

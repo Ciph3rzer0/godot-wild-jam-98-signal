@@ -1,5 +1,7 @@
 extends Control
 
+signal player_gestured(gesture: HandSignalSprite.SIGNAL)
+
 func _ready() -> void:
 	hide()
 	
@@ -8,7 +10,8 @@ func _ready() -> void:
 			c.selected.connect(selected_gesture)
 
 func selected_gesture(gesture: HandSignalSprite.SIGNAL):
-	print(str(HandSignalSprite.SIGNAL.find_key(gesture)))
+	# print(str(HandSignalSprite.SIGNAL.find_key(gesture)))
+	player_gestured.emit(gesture)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

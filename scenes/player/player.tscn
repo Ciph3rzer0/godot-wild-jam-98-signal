@@ -735,3 +735,5 @@ bus = &"SFX"
 stream = ExtResource("15_denied")
 volume_db = -12.0
 bus = &"SFX"
+
+[connection signal="player_gestured" from="Crosshairs/Radial Menu" to="." method="_on_radial_menu_player_gestured"]

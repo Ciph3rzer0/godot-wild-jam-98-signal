@@ -56,7 +56,7 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "1"
+text = "Unit 1"
 
 [node name="Two" type="PanelContainer" parent="Radial Menu" unique_id=662094146]
 layout_mode = 2
@@ -77,7 +77,7 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "2"
+text = "Unit 2"
 
 [node name="Three" type="PanelContainer" parent="Radial Menu" unique_id=1250961568]
 layout_mode = 2
@@ -98,7 +98,7 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "3"
+text = "Unit 3"
 
 [node name="Hold Fire" type="PanelContainer" parent="Radial Menu" unique_id=2112322344]
 layout_mode = 2
@@ -106,6 +106,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_yq78i")
 script = ExtResource("2_q46gd")
+gesture = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="Radial Menu/Hold Fire" unique_id=1091422226]
 layout_mode = 2
@@ -168,7 +169,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_yq78i")
 script = ExtResource("2_q46gd")
-gesture = 15
+gesture = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="Radial Menu/Patrol" unique_id=778528672]
 layout_mode = 2
@@ -181,27 +182,29 @@ theme_override_constants/margin_bottom = 4
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Patrol"
+text = "Stop"
 
-[node name="Panel9" type="PanelContainer" parent="Radial Menu" unique_id=1157819175]
+[node name="Follow" type="PanelContainer" parent="Radial Menu" unique_id=1157819175]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_yq78i")
 script = ExtResource("2_q46gd")
+gesture = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="Radial Menu/Panel9" unique_id=1309956369]
+[node name="MarginContainer" type="MarginContainer" parent="Radial Menu/Follow" unique_id=1309956369]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="Button" type="Button" parent="Radial Menu/Panel9/MarginContainer" unique_id=1860314577]
+[node name="Button" type="Button" parent="Radial Menu/Follow/MarginContainer" unique_id=1860314577]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "1"
+text = "Follow
+"
 
 [node name="Move To" type="PanelContainer" parent="Radial Menu" unique_id=2087252628]
 layout_mode = 2
