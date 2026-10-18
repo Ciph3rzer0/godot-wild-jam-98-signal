@@ -24,6 +24,15 @@
 [ext_resource type="Script" uid="uid://mytkvrlqyl4a" path="res://scenes/units/debug_fov.gd" id="16_x7jkp"]
 [ext_resource type="Texture2D" uid="uid://c1bc715nth0fb" path="res://addons/godot-prototype-texture/PNG/checker_512x512/checker_red_512x512.png" id="19_7h2jl"]
 [ext_resource type="PackedScene" uid="uid://bpvjjcx13hhmv" path="res://scenes/units/enemies/terrorist.tscn" id="19_mqh5v"]
+[ext_resource type="AudioStream" uid="uid://bj4jme2f74y2h" path="res://assets/audio/sfx/radioChatter-loop.wav" id="25_o7j4k"]
+[ext_resource type="AudioStream" uid="uid://jvacgyf6lox1" path="res://assets/audio/sfx/whir1-loop.wav" id="26_31oqk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0o143"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o7j4k"]
+material = SubResource("StandardMaterial3D_0o143")
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_dywbp"]
 vertices = PackedVector3Array(-13.905855, 0.60048056, -7.2136793, -9.805855, 0.60048056, -7.113679, -9.805855, 0.60048056, -7.7136793, 0.99414444, 0.60048056, -11.813679, 1.5941448, 0.60048056, -11.813679, 1.4941444, 0.60048056, -16.313679, -9.205855, 0.60048056, -8.413679, 0.49414444, 0.60048056, -11.313679, -13.905855, 0.60048056, -16.313679, 0.49414444, 0.60048056, -8.413679, 11.394144, 0.60048056, -11.813679, 11.494144, 0.60048056, -16.313679, 12.194145, 0.60048056, -11.713678, 12.494144, 0.60048056, -11.313679, 17.594147, 0.60048056, -10.813679, 17.594147, 0.60048056, -16.313679, 12.494144, 0.60048056, -10.713678, 12.494144, 0.60048056, -0.9136791, 16.294146, 0.60048056, -0.9136791, 16.294146, 0.60048056, -1.6136789, 16.594145, 0.60048056, -2.0136786, 17.594147, 0.60048056, -2.113679, 8.994144, 0.60048056, -9.413679, 9.494144, 0.60048056, -9.5136795, 9.494144, 0.60048056, -10.213678, 8.694145, 0.60048056, -9.0136795, 1.9941444, 0.60048056, -10.213678, 1.9941444, 0.60048056, -3.4136791, 8.694145, 0.60048056, -3.4136791, 9.994144, 0.60048056, -9.413679, 11.094145, 0.60048056, -10.213678, 10.294146, 0.60048056, -9.0136795, 10.294146, 0.60048056, -3.2136793, 11.094145, 0.60048056, -3.2136793, -13.905855, 0.60048056, 8.9863205, -9.805855, 0.60048056, 8.886322, -3.105855, 0.60048056, 3.5863209, -3.0058556, 0.60048056, 3.5863209, -2.9058552, 0.60048056, 3.0863209, -3.2058554, 0.60048056, 3.0863209, -0.70585537, 0.60048056, 0.886322, 0.49414444, 0.60048056, 0.78632164, 0.49414444, 0.60048056, -2.4136791, -0.30585575, 0.60048056, -3.113679, -3.605855, 0.60048056, 2.7863216, -2.5058556, 0.60048056, 2.7863216, -1.0058556, 0.60048056, 1.2863216, -7.6058555, 0.60048056, -1.4136791, -8.305855, 0.60048056, -1.4136791, -8.305855, 0.60048056, 2.7863216, -0.0058555603, 0.60048056, -5.5136786, 0.394145, 0.60048056, -5.613679, 0.394145, 0.60048056, -6.8136787, -0.30585575, 0.60048056, -5.113679, -8.305855, 0.60048056, -6.8136787, -7.6058555, 0.60048056, -4.0136786, -7.1058555, 0.60048056, -3.5136786, -1.0058556, 0.60048056, 2.7863216, -7.2058554, 0.60048056, -1.7136793, -8.305855, 0.60048056, -4.0136786, 10.294146, 0.60048056, -2.4136791, 11.094145, 0.60048056, -1.3136787, 9.794146, 0.60048056, -1.9136791, 1.894144, 0.60048056, -1.9136791, 1.894144, 0.60048056, -1.3136787, 12.494144, 0.60048056, -0.21367836, 16.394144, 0.60048056, 1.2863216, 11.994144, 0.60048056, 0.28632164, 17.594147, 0.60048056, 8.686321, 17.594147, 0.60048056, 1.2863216, 16.794146, 0.60048056, 1.5863209, 1.9941444, 0.60048056, 0.28632164, 1.9941444, 0.60048056, 8.686321, 0.19414425, 1.4004805, 1.9863205, 0.19414425, 1.4004805, 2.5863209, 0.394145, 1.4004805, 2.5863209, 0.394145, 1.4004805, 1.9863205, -2.9058552, 0.60048056, 4.086321, -3.2058554, 0.60048056, 4.086321, -4.405855, 0.60048056, 7.1863213, -4.3058558, 0.60048056, 8.386322, -2.4058552, 0.60048056, 8.386322, -1.9058552, 0.60048056, 9.186321, -1.7058554, 0.60048056, 9.286322, -1.605855, 0.60048056, 8.686321, -2.0058556, 0.60048056, 8.686321, -5.3058558, 0.60048056, 4.386322, -5.405855, 0.60048056, 6.886322, -4.8058558, 0.60048056, 6.886322, -3.605855, 0.60048056, 4.386322, -2.5058556, 0.60048056, 4.386322, -1.2058554, 0.60048056, 8.386322, 0.49414444, 0.60048056, 8.386322, 0.49414444, 0.60048056, 4.386322, -8.305855, 0.60048056, 8.386322, -6.9058557, 0.60048056, 8.386322, -6.8058553, 0.60048056, 7.1863213, -7.9058557, 0.60048056, 5.6863213, -8.305855, 0.60048056, 5.6863213, -6.405855, 0.60048056, 6.886322, -7.5058556, 0.60048056, 5.386322, -7.4058557, 0.60048056, 4.386322, -5.7058554, 1.4004805, 8.086321, -5.7058554, 1.4004805, 8.386322, -5.5058556, 1.4004805, 8.386322, -5.5058556, 1.4004805, 8.086321, 1.6941452, 0.60048056, 9.886322, -0.20585537, 0.60048056, 9.9863205, -0.30585575, 0.60048056, 11.086321, -0.9058552, 0.60048056, 22.686323, -0.9058552, 0.60048056, 11.386322, 1.9941444, 0.60048056, 9.4863205, 17.594147, 0.60048056, 22.686323, -2.0058556, 0.60048056, 9.686321, -1.7058554, 0.60048056, 10.686321, -1.3058558, 0.60048056, 11.286322, -9.305855, 0.60048056, 9.9863205, -13.905855, 0.60048056, 22.686323, -2.4058552, 0.60048056, 9.9863205, -9.805855, 0.60048056, 9.4863205)
@@ -64,7 +73,7 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_uhg71"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_mqh5v"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_x7jkp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r1tl"]
 transparency = 1
@@ -95,31 +104,57 @@ mouse_filter = 2
 [node name="RadarCameraRig" parent="UI/MarginContainer/CircleMask/SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(1747511697) index="0" unique_id=1503955098]
 transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, -1.2804317, 0.5, 16.18572)
 
-[node name="Player" parent="." index="3" unique_id=1865119778 node_paths=PackedStringArray("teammates")]
+[node name="ceilingLightMeshes" type="Node3D" parent="." index="3" unique_id=198673238]
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="ceilingLightMeshes" index="0" unique_id=630332764]
+transform = Transform3D(-1.7171745e-08, 6.557191e-08, -0.75005525, 0, -0.7500552, -6.55719e-08, -0.3928437, -2.866239e-15, 3.2785955e-08, -6.3597574, 3.710494, -4.169837)
+mesh = SubResource("PlaneMesh_o7j4k")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="ceilingLightMeshes" index="1" unique_id=950973698]
+transform = Transform3D(-1.7171745e-08, 6.557191e-08, -0.75005525, 0, -0.7500552, -6.55719e-08, -0.3928437, -2.866239e-15, 3.2785955e-08, -2.6383562, 3.710494, -4.169837)
+mesh = SubResource("PlaneMesh_o7j4k")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="ceilingLightMeshes" index="2" unique_id=1973988227]
+transform = Transform3D(-1.7171745e-08, 6.557191e-08, -0.75005525, 0, -0.7500552, -6.55719e-08, -0.3928437, -2.866239e-15, 3.2785955e-08, -6.3597574, 3.710494, 0.25165176)
+mesh = SubResource("PlaneMesh_o7j4k")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="ceilingLightMeshes" index="3" unique_id=895360301]
+transform = Transform3D(-1.7171745e-08, 6.557191e-08, -0.75005525, 0, -0.7500552, -6.55719e-08, -0.3928437, -2.866239e-15, 3.2785955e-08, -2.6383562, 3.710494, 0.25165176)
+mesh = SubResource("PlaneMesh_o7j4k")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="ceilingLightMeshes" index="4" unique_id=1331996863]
+transform = Transform3D(-1.7171745e-08, 6.557191e-08, -0.75005525, 0, -0.7500552, -6.55719e-08, -0.3928437, -2.866239e-15, 3.2785955e-08, -6.3597574, 3.710494, 6.074053)
+mesh = SubResource("PlaneMesh_o7j4k")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="ceilingLightMeshes" index="5" unique_id=562141780]
+transform = Transform3D(-1.7171745e-08, 6.557191e-08, -0.75005525, 0, -0.7500552, -6.55719e-08, -0.3928437, -2.866239e-15, 3.2785955e-08, -2.6383562, 3.710494, 6.074053)
+mesh = SubResource("PlaneMesh_o7j4k")
+
+[node name="Player" parent="." index="4" unique_id=1865119778 node_paths=PackedStringArray("teammates")]
 transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, -1.2804317, 0.5, 16.18572)
 teammates = [NodePath("../AITeammate")]
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="5" unique_id=1116788572]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." index="6" unique_id=1116788572]
 navigation_mesh = SubResource("NavigationMesh_dywbp")
 
-[node name="Level1" parent="." index="6" unique_id=746100761 groups=["navigation_mesh_source_group"] instance=ExtResource("2_mqh5v")]
+[node name="Level1" parent="." index="7" unique_id=746100761 groups=["navigation_mesh_source_group"] instance=ExtResource("2_mqh5v")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.598, -0.08, -1.564)
 
-[node name="== Scene Objects ==" type="Node" parent="." index="7" unique_id=1523589471]
+[node name="== Scene Objects ==" type="Node" parent="." index="8" unique_id=1523589471]
 
-[node name="AITeammate" parent="." index="8" unique_id=933410074 instance=ExtResource("5_dywbp")]
+[node name="AITeammate" parent="." index="9" unique_id=933410074 instance=ExtResource("5_dywbp")]
 transform = Transform3D(0.99674755, 0, 0.0805867, 0, 1, 0, -0.0805867, 0, 0.99674755, -2.782526, 0.50000095, 16.689602)
 
-[node name="Hostage" parent="." index="9" unique_id=1367416622 instance=ExtResource("12_np2pn")]
+[node name="Hostage" parent="." index="10" unique_id=1367416622 instance=ExtResource("12_np2pn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4097323, 0.38612854, -5.025645)
 
-[node name="Enemy" parent="." index="10" unique_id=361484658 instance=ExtResource("4_bfxgj")]
+[node name="Enemy" parent="." index="11" unique_id=361484658 instance=ExtResource("4_bfxgj")]
 transform = Transform3D(0.7501361, 0, -0.6612835, 0, 1, 0, 0.6612835, 0, 0.7501361, 3.9172142, 0.4, -6.9692426)
 
-[node name="Enemy2" parent="." index="11" unique_id=1553773145 instance=ExtResource("4_bfxgj")]
+[node name="Enemy2" parent="." index="12" unique_id=1553773145 instance=ExtResource("4_bfxgj")]
 transform = Transform3D(0.8179001, 0, -0.5753602, 0, 1, 0, 0.5753602, 0, 0.8179001, 5.746833, 0.4, -5.6889243)
 
-[node name="Enemy3 Defended Room" type="Area3D" parent="." index="12" unique_id=1870787842]
+[node name="Enemy3 Defended Room" type="Area3D" parent="." index="13" unique_id=1870787842]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.7683716e-07)
 collision_layer = 0
 collision_mask = 48
@@ -129,7 +164,7 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9240475, 2.0677857, -1.6595025)
 shape = SubResource("BoxShape3D_uhg71")
 
-[node name="Enemy3" type="CharacterBody3D" parent="." index="13" unique_id=774387382 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
+[node name="Enemy3" type="CharacterBody3D" parent="." index="14" unique_id=774387382 node_paths=PackedStringArray("nav_agent", "face", "aim_pivot", "eyes", "gun_tip")]
 transform = Transform3D(-0.81790006, 0, 0.57536024, 0, 1, 0, -0.57536024, 0, -0.81790006, -1.5004853, 0.4, -6.901283)
 collision_layer = 64
 collision_mask = 55
@@ -254,7 +289,7 @@ mesh = SubResource("BoxMesh_uhg71")
 [node name="Eyes" type="MeshInstance3D" parent="Enemy3/Face" index="2" unique_id=521000194]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 cast_shadow = 0
-mesh = SubResource("ImmediateMesh_mqh5v")
+mesh = SubResource("ImmediateMesh_x7jkp")
 script = ExtResource("16_x7jkp")
 arc_angle = 90.0
 radius = 3.0
@@ -264,7 +299,7 @@ segments = 10
 transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, 0, 1.3, -0.8)
 gizmo_extents = 0.1
 
-[node name="InteractableHostage" type="StaticBody3D" parent="." index="14" unique_id=707821752 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+[node name="InteractableHostage" type="StaticBody3D" parent="." index="15" unique_id=707821752 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.473503, 0.54540324, -5.618178)
 collision_layer = 8
 collision_mask = 0
@@ -284,7 +319,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 shape = SubResource("BoxShape3D_bahl2")
 disabled = true
 
-[node name="InteractableWindow" type="StaticBody3D" parent="." index="15" unique_id=939045752 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+[node name="InteractableWindow" type="StaticBody3D" parent="." index="16" unique_id=939045752 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.611212, 0.45392707, 9.8625765)
 collision_layer = 8
 collision_mask = 0
@@ -302,7 +337,7 @@ mesh = SubResource("BoxMesh_1seuy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5754633, 1.0868578, -0.014501095)
 shape = SubResource("BoxShape3D_1seuy")
 
-[node name="InteractableWindow2" type="StaticBody3D" parent="." index="16" unique_id=2039574482 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+[node name="InteractableWindow2" type="StaticBody3D" parent="." index="17" unique_id=2039574482 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.6418138, -4.7683716e-07, -8.200917)
 collision_layer = 8
 collision_mask = 0
@@ -320,7 +355,7 @@ mesh = SubResource("BoxMesh_1seuy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000002, 0)
 shape = SubResource("CylinderShape3D_nfihu")
 
-[node name="InteractableFloor" type="StaticBody3D" parent="." index="17" unique_id=1695278063 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+[node name="InteractableFloor" type="StaticBody3D" parent="." index="18" unique_id=1695278063 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.8069415, 0.45, 9.810274)
 collision_layer = 8
 collision_mask = 0
@@ -337,7 +372,7 @@ mesh = SubResource("BoxMesh_2r1tl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3434221, 0)
 shape = SubResource("CylinderShape3D_nfihu")
 
-[node name="InteractableFloor2" type="StaticBody3D" parent="." index="18" unique_id=65826097 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
+[node name="InteractableFloor2" type="StaticBody3D" parent="." index="19" unique_id=65826097 node_paths=PackedStringArray("aim_point", "highlight_meshes") groups=["signal_targets"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3935331, 0.45, -1.5690528)
 collision_layer = 8
 collision_mask = 0
@@ -353,6 +388,23 @@ mesh = SubResource("BoxMesh_2r1tl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableFloor2" index="1" unique_id=1744388757]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4478814, 0)
 shape = SubResource("CylinderShape3D_nfihu")
+
+[node name="RadioChatterLoop" type="AudioStreamPlayer3D" parent="." index="20" unique_id=956945361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6324635, 0.80048037, -5.124562)
+stream = ExtResource("25_o7j4k")
+volume_db = -15.0
+autoplay = true
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 6638.0
+
+[node name="Whir1Loop" type="AudioStreamPlayer3D" parent="." index="21" unique_id=1736847798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0083694, 0.8004805, -5.735733)
+stream = ExtResource("26_31oqk")
+autoplay = true
+max_distance = 25.0
+panning_strength = 0.5
+bus = &"SFX"
+attenuation_filter_cutoff_hz = 3000.0
 
 [connection signal="target_acquired" from="Enemy3/MovementState/ScanTrigger" to="Enemy3/MovementState/Move" method="transition_to"]
 [connection signal="target_acquired" from="Enemy3/MovementState/ScanTrigger" to="Enemy3/DialogBox" method="show_dialog" binds= ["Stop right there or I kill the hostage!"]]

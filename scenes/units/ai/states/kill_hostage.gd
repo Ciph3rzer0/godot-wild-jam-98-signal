@@ -58,6 +58,7 @@ func physics_update(_delta: float) -> void:
 func shoot_at(target: Vector3):
 	if DEBUG.print_weapons_discharge:
 		print(_ai.name, " SHOOT AT HOSTAGE ", _hostage.name)
+	_ai.get_node("ShotSFX").play()
 	var new_bullet := _ai.bullet.instantiate()
 	get_tree().root.add_child(new_bullet)
 	new_bullet.global_position = _ai.gun_tip.global_position

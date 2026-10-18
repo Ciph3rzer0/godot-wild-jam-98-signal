@@ -32,8 +32,16 @@ extends Unit
 var move_target: SignalTarget
 var combat_target: Unit
 
+@export_group("Audio")
+@export var shot_sound: AudioStream = preload("res://assets/audio/sfx/shot-1.wav")
+@export var command_sound: AudioStream = preload("res://assets/audio/sfx/button-1.wav")
+
 @onready var movement := $MovementState
 @onready var combat := $CombatState
+
+@onready var audio: AudioStreamPlayer3D = _get_or_create_sfx(&"ShotSFX", shot_sound, -4.0)
+@onready var anim: AnimationPlayer = get_node_or_null("Squadmate/AnimationPlayer")
+@onready var _command_sfx: AudioStreamPlayer3D = _get_or_create_sfx(&"CommandSFX", command_sound, -12.0)
 
 func _ready() -> void:
 	super()
@@ -43,23 +51,27 @@ func apply_gravity(_delta):
 		#velocity += get_gravity() * 2 * delta
 	pass
 
-func receive_command(command: HandSignalSprite.SIGNAL, sender: Node3D, target: Variant = null) -> void:
-	if is_dead(): return
+func receive_command(command: HandSignalSprite.SIGNAL, sender: Node3D, target: Variant = null) -> bool:
+	if is_dead(): return false
 	match command:
 		HandSignalSprite.SIGNAL.STOP:
 			movement.transition_to($MovementState/Wait)
 		HandSignalSprite.SIGNAL.PATROL:
 			movement.transition_to($MovementState/Patrol)
 		HandSignalSprite.SIGNAL.FOLLOW:
-			if !sender: return
+			if not is_instance_valid(sender): return false
 			follow_target = sender
 			movement.transition_to($MovementState/Follow)
 		HandSignalSprite.SIGNAL.MOVE:
-			if !target: return
+			if not is_instance_valid(target) or not target is SignalTarget: return false
 			move_target = target
 			movement.transition_to($MovementState/Move)
 		HandSignalSprite.SIGNAL.ENGAGE:
 			combat.transition_to($CombatState/Scanning)
+		_:
+			return false
+	_command_sfx.play()
+	return true
 
 
 ## Turns the body toward a flat direction. Model faces -Z.

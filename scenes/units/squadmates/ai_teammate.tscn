@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://b4k3rp16rtbcm" path="res://scenes/units/ai/states/engaging.gd" id="11_6tg35"]
 [ext_resource type="Texture2D" uid="uid://cr5ltnim68xsh" path="res://addons/godot-prototype-texture/PNG/checker_512x512/checker_lime_512x512.png" id="12_xl718"]
 [ext_resource type="PackedScene" uid="uid://cqjwn7gq2golt" path="res://scenes/units/squadmates/squadmate.tscn" id="16_1j2q2"]
+[ext_resource type="AudioStream" uid="uid://dxqn88qx2svdy" path="res://assets/audio/sfx/shot-1.wav" id="17_k4e8f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1j2q2"]
 albedo_texture = ExtResource("12_xl718")
@@ -96,7 +97,7 @@ script = ExtResource("11_6tg35")
 avg_act_chance_per_second = 2.0
 
 [node name="Squadmate" parent="." unique_id=1399255242 instance=ExtResource("16_1j2q2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.009720951, 0.4260366, -0.027185142)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.009720951, 0.044361234, -0.027185142)
 
 [node name="CapsuleBody" type="MeshInstance3D" parent="." unique_id=426961026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -162,3 +163,7 @@ segments = 10
 [node name="GunTip" type="Marker3D" parent="." unique_id=1754596449]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, -0.8)
 gizmo_extents = 0.1
+
+[node name="ShotSFX" type="AudioStreamPlayer3D" parent="." unique_id=2038118048]
+stream = ExtResource("17_k4e8f")
+bus = &"SFX"

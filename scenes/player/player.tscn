@@ -8,6 +8,21 @@
 [ext_resource type="PackedScene" uid="uid://b4g2ea2un0fg6" path="res://assets/models/equips/flashlight.glb" id="7_5gtgg"]
 [ext_resource type="PackedScene" uid="uid://be5wn1vteq3eo" path="res://assets/models/equips/riotShield.glb" id="8_h17s1"]
 [ext_resource type="AnimationLibrary" uid="uid://cgsl7ywecgmii" path="res://assets/models/characters/animations.glb" id="9_je7p5"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/footstep-1.wav" id="10_step1"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/footstep-2.wav" id="11_step2"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/footstep-3.wav" id="12_step3"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/footstep-4.wav" id="13_step4"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/click-1.wav" id="14_signal"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx/negative.wav" id="15_denied"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_footsteps"]
+resource_local_to_scene = true
+playback_mode = 2
+streams_count = 4
+stream_0/stream = ExtResource("10_step1")
+stream_1/stream = ExtResource("11_step2")
+stream_2/stream = ExtResource("12_step3")
+stream_3/stream = ExtResource("13_step4")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0o143"]
 radius = 0.25
@@ -664,3 +679,19 @@ root_node = NodePath("../CharacterModel")
 tree_root = SubResource("AnimationNodeBlendTree_fcs02")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Blend2/blend_amount = 0.59
+
+[node name="Footsteps" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_footsteps")
+volume_db = -12.0
+max_polyphony = 2
+bus = &"SFX"
+
+[node name="SignalSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_signal")
+volume_db = -12.0
+bus = &"SFX"
+
+[node name="DeniedSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_denied")
+volume_db = -12.0
+bus = &"SFX"

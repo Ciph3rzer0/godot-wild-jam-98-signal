@@ -49,6 +49,7 @@ func shoot_at(target: Vector3):
 		print(_ai.name, " SHOOT AT ", _ai.combat_target.name)
 	var new_bullet := _ai.bullet.instantiate()
 	get_tree().root.add_child(new_bullet)
+	_ai.get_node("ShotSFX").play()
 	new_bullet.global_position = _ai.gun_tip.global_position
 	new_bullet.set_target(target + Vector3.UP * 0.9)
 	#print(" [TRANS] ENGAGING -> SCAN")
