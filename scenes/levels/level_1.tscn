@@ -73,7 +73,7 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_uhg71"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_x7jkp"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_o7j4k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r1tl"]
 transparency = 1
@@ -290,7 +290,7 @@ mesh = SubResource("BoxMesh_uhg71")
 [node name="Eyes" type="MeshInstance3D" parent="Enemy3/Face" index="2" unique_id=521000194]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 cast_shadow = 0
-mesh = SubResource("ImmediateMesh_x7jkp")
+mesh = SubResource("ImmediateMesh_o7j4k")
 script = ExtResource("16_x7jkp")
 arc_angle = 90.0
 radius = 3.0
@@ -390,7 +390,7 @@ mesh = SubResource("BoxMesh_2r1tl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4478814, 0)
 shape = SubResource("CylinderShape3D_nfihu")
 
-[node name="RadioChatterLoop" type="AudioStreamPlayer3D" parent="." index="20" unique_id=956945361]
+[node name="RadioChatterLoop2" type="AudioStreamPlayer3D" parent="." index="20" unique_id=956945361]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6324635, 0.80048037, -5.124562)
 stream = ExtResource("25_o7j4k")
 volume_db = -15.0
@@ -398,7 +398,7 @@ autoplay = true
 bus = &"SFX"
 attenuation_filter_cutoff_hz = 6638.0
 
-[node name="Whir1Loop" type="AudioStreamPlayer3D" parent="." index="21" unique_id=1736847798]
+[node name="Whir1Loop2" type="AudioStreamPlayer3D" parent="." index="21" unique_id=1736847798]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0083694, 0.8004805, -5.735733)
 stream = ExtResource("26_31oqk")
 autoplay = true
@@ -407,7 +407,7 @@ panning_strength = 0.5
 bus = &"SFX"
 attenuation_filter_cutoff_hz = 3000.0
 
-[node name="RadioChatterLoop" type="AudioStreamPlayer3D" parent="." index="20" unique_id=956945361]
+[node name="RadioChatterLoop" type="AudioStreamPlayer3D" parent="." index="22" unique_id=790750352]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6324635, 0.80048037, -5.124562)
 stream = ExtResource("25_o7j4k")
 volume_db = -15.0
@@ -415,7 +415,7 @@ autoplay = true
 bus = &"SFX"
 attenuation_filter_cutoff_hz = 6638.0
 
-[node name="Whir1Loop" type="AudioStreamPlayer3D" parent="." index="21" unique_id=1736847798]
+[node name="Whir1Loop" type="AudioStreamPlayer3D" parent="." index="23" unique_id=443480395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0083694, 0.8004805, -5.735733)
 stream = ExtResource("26_31oqk")
 autoplay = true
