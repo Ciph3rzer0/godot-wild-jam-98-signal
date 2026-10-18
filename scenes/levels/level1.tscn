@@ -616,7 +616,7 @@ shape = SubResource("WorldBoundaryShape3D_0o143")
 [node name="l1-walls" parent="Building" unique_id=368027361 instance=ExtResource("4_bfxgj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.088354945, 0.49689507, 0.52051854)
 
-[node name="Cube_002" parent="Building/l1-walls" index="0" unique_id=1096225393]
+[node name="Cube_002" parent="Building/l1-walls" index="0" unique_id=549711616]
 transform = Transform3D(1.7360821, 0, 0, 0, 0.48898828, 0, 0, 0, 0.043931287, -1.5793028, 0.15188813, -2.527441)
 layers = 32769
 

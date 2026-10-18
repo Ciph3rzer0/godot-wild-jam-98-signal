@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://3nkjb36516nv" path="res://scenes/units/ai/states/defend_area.gd" id="16_gmpev"]
 [ext_resource type="Script" uid="uid://mytkvrlqyl4a" path="res://scenes/units/debug_fov.gd" id="16_x7jkp"]
 [ext_resource type="Texture2D" uid="uid://c1bc715nth0fb" path="res://addons/godot-prototype-texture/PNG/checker_512x512/checker_red_512x512.png" id="19_7h2jl"]
+[ext_resource type="PackedScene" uid="uid://bpvjjcx13hhmv" path="res://scenes/units/enemies/terrorist.tscn" id="19_mqh5v"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_dywbp"]
 vertices = PackedVector3Array(-13.905855, 0.60048056, -7.2136793, -9.805855, 0.60048056, -7.113679, -9.805855, 0.60048056, -7.7136793, 0.99414444, 0.60048056, -11.813679, 1.5941448, 0.60048056, -11.813679, 1.4941444, 0.60048056, -16.313679, -9.205855, 0.60048056, -8.413679, 0.49414444, 0.60048056, -11.313679, -13.905855, 0.60048056, -16.313679, 0.49414444, 0.60048056, -8.413679, 11.394144, 0.60048056, -11.813679, 11.494144, 0.60048056, -16.313679, 12.194145, 0.60048056, -11.713678, 12.494144, 0.60048056, -11.313679, 17.594147, 0.60048056, -10.813679, 17.594147, 0.60048056, -16.313679, 12.494144, 0.60048056, -10.713678, 12.494144, 0.60048056, -0.9136791, 16.294146, 0.60048056, -0.9136791, 16.294146, 0.60048056, -1.6136789, 16.594145, 0.60048056, -2.0136786, 17.594147, 0.60048056, -2.113679, 8.994144, 0.60048056, -9.413679, 9.494144, 0.60048056, -9.5136795, 9.494144, 0.60048056, -10.213678, 8.694145, 0.60048056, -9.0136795, 1.9941444, 0.60048056, -10.213678, 1.9941444, 0.60048056, -3.4136791, 8.694145, 0.60048056, -3.4136791, 9.994144, 0.60048056, -9.413679, 11.094145, 0.60048056, -10.213678, 10.294146, 0.60048056, -9.0136795, 10.294146, 0.60048056, -3.2136793, 11.094145, 0.60048056, -3.2136793, -13.905855, 0.60048056, 8.9863205, -9.805855, 0.60048056, 8.886322, -3.105855, 0.60048056, 3.5863209, -3.0058556, 0.60048056, 3.5863209, -2.9058552, 0.60048056, 3.0863209, -3.2058554, 0.60048056, 3.0863209, -0.70585537, 0.60048056, 0.886322, 0.49414444, 0.60048056, 0.78632164, 0.49414444, 0.60048056, -2.4136791, -0.30585575, 0.60048056, -3.113679, -3.605855, 0.60048056, 2.7863216, -2.5058556, 0.60048056, 2.7863216, -1.0058556, 0.60048056, 1.2863216, -7.6058555, 0.60048056, -1.4136791, -8.305855, 0.60048056, -1.4136791, -8.305855, 0.60048056, 2.7863216, -0.0058555603, 0.60048056, -5.5136786, 0.394145, 0.60048056, -5.613679, 0.394145, 0.60048056, -6.8136787, -0.30585575, 0.60048056, -5.113679, -8.305855, 0.60048056, -6.8136787, -7.6058555, 0.60048056, -4.0136786, -7.1058555, 0.60048056, -3.5136786, -1.0058556, 0.60048056, 2.7863216, -7.2058554, 0.60048056, -1.7136793, -8.305855, 0.60048056, -4.0136786, 10.294146, 0.60048056, -2.4136791, 11.094145, 0.60048056, -1.3136787, 9.794146, 0.60048056, -1.9136791, 1.894144, 0.60048056, -1.9136791, 1.894144, 0.60048056, -1.3136787, 12.494144, 0.60048056, -0.21367836, 16.394144, 0.60048056, 1.2863216, 11.994144, 0.60048056, 0.28632164, 17.594147, 0.60048056, 8.686321, 17.594147, 0.60048056, 1.2863216, 16.794146, 0.60048056, 1.5863209, 1.9941444, 0.60048056, 0.28632164, 1.9941444, 0.60048056, 8.686321, 0.19414425, 1.4004805, 1.9863205, 0.19414425, 1.4004805, 2.5863209, 0.394145, 1.4004805, 2.5863209, 0.394145, 1.4004805, 1.9863205, -2.9058552, 0.60048056, 4.086321, -3.2058554, 0.60048056, 4.086321, -4.405855, 0.60048056, 7.1863213, -4.3058558, 0.60048056, 8.386322, -2.4058552, 0.60048056, 8.386322, -1.9058552, 0.60048056, 9.186321, -1.7058554, 0.60048056, 9.286322, -1.605855, 0.60048056, 8.686321, -2.0058556, 0.60048056, 8.686321, -5.3058558, 0.60048056, 4.386322, -5.405855, 0.60048056, 6.886322, -4.8058558, 0.60048056, 6.886322, -3.605855, 0.60048056, 4.386322, -2.5058556, 0.60048056, 4.386322, -1.2058554, 0.60048056, 8.386322, 0.49414444, 0.60048056, 8.386322, 0.49414444, 0.60048056, 4.386322, -8.305855, 0.60048056, 8.386322, -6.9058557, 0.60048056, 8.386322, -6.8058553, 0.60048056, 7.1863213, -7.9058557, 0.60048056, 5.6863213, -8.305855, 0.60048056, 5.6863213, -6.405855, 0.60048056, 6.886322, -7.5058556, 0.60048056, 5.386322, -7.4058557, 0.60048056, 4.386322, -5.7058554, 1.4004805, 8.086321, -5.7058554, 1.4004805, 8.386322, -5.5058556, 1.4004805, 8.386322, -5.5058556, 1.4004805, 8.086321, 1.6941452, 0.60048056, 9.886322, -0.20585537, 0.60048056, 9.9863205, -0.30585575, 0.60048056, 11.086321, -0.9058552, 0.60048056, 22.686323, -0.9058552, 0.60048056, 11.386322, 1.9941444, 0.60048056, 9.4863205, 17.594147, 0.60048056, 22.686323, -2.0058556, 0.60048056, 9.686321, -1.7058554, 0.60048056, 10.686321, -1.3058558, 0.60048056, 11.286322, -9.305855, 0.60048056, 9.9863205, -13.905855, 0.60048056, 22.686323, -2.4058552, 0.60048056, 9.9863205, -9.805855, 0.60048056, 9.4863205)
@@ -63,7 +64,7 @@ height = 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_uhg71"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_7h2jl"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_7o3do"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r1tl"]
 transparency = 1
@@ -198,25 +199,27 @@ explicit_move_target = NodePath("../../../InteractableHostage")
 script = ExtResource("16_gmpev")
 defended_area = NodePath("../../../Enemy3 Defended Room")
 
-[node name="CapsuleBody" type="MeshInstance3D" parent="Enemy3" index="3" unique_id=426961026]
+[node name="Terrorist" parent="Enemy3" index="3" unique_id=1953779749 instance=ExtResource("19_mqh5v")]
+transform = Transform3D(-1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, -1, 0, 0, 0)
+
+[node name="CapsuleBody" type="MeshInstance3D" parent="Enemy3" index="4" unique_id=426961026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 material_override = SubResource("StandardMaterial3D_mqh5v")
 mesh = SubResource("CapsuleMesh_0o143")
 
-[node name="FacingIndicator" type="MeshInstance3D" parent="Enemy3" index="4" unique_id=1655915331]
+[node name="FacingIndicator" type="MeshInstance3D" parent="Enemy3" index="5" unique_id=1655915331]
 transform = Transform3D(0.3, 0, 0, 0, -1.3113416e-08, 0.05885305, 0, -0.29999998, -2.5725484e-09, 0, 2.2002637, -0.045395434)
-visible = false
 layers = 32768
 mesh = SubResource("PrismMesh_obbxu")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy3" index="5" unique_id=830640399]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy3" index="6" unique_id=830640399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 shape = SubResource("CapsuleShape3D_h45xw")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemy3" index="6" unique_id=1009275116]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemy3" index="7" unique_id=1009275116]
 
-[node name="MoveTargetIndicator" type="Node3D" parent="Enemy3" index="7" unique_id=330278994]
+[node name="MoveTargetIndicator" type="Node3D" parent="Enemy3" index="8" unique_id=330278994]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 top_level = true
 visible = false
@@ -225,13 +228,13 @@ visible = false
 transform = Transform3D(0.3, 0, 0, 0, -0.3, 4.5298744e-08, 0, -4.5298744e-08, -0.3, 0, 1, 0)
 mesh = SubResource("PrismMesh_uhg71")
 
-[node name="RadarDot" type="MeshInstance3D" parent="Enemy3" index="8" unique_id=1186292314]
+[node name="RadarDot" type="MeshInstance3D" parent="Enemy3" index="9" unique_id=1186292314]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
 layers = 262144
 material_override = ExtResource("14_o7j4k")
 mesh = SubResource("SphereMesh_sl17d")
 
-[node name="Face" type="CSGMesh3D" parent="Enemy3" index="9" unique_id=933804409]
+[node name="Face" type="CSGMesh3D" parent="Enemy3" index="10" unique_id=933804409]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 1.6, 0)
 material_override = ExtResource("15_31oqk")
 mesh = SubResource("CylinderMesh_uhg71")
@@ -249,13 +252,13 @@ mesh = SubResource("BoxMesh_uhg71")
 [node name="Eyes" type="MeshInstance3D" parent="Enemy3/Face" index="2" unique_id=521000194]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
 cast_shadow = 0
-mesh = SubResource("ImmediateMesh_7h2jl")
+mesh = SubResource("ImmediateMesh_7o3do")
 script = ExtResource("16_x7jkp")
 arc_angle = 90.0
 radius = 3.0
 segments = 10
 
-[node name="GunTip" type="Marker3D" parent="Enemy3" index="10" unique_id=695593966]
+[node name="GunTip" type="Marker3D" parent="Enemy3" index="11" unique_id=695593966]
 transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, 0, 1.3, -0.8)
 gizmo_extents = 0.1
 

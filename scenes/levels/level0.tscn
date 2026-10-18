@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://c7usov56xlpg7" path="res://scenes/units/hostage/hostage.tscn" id="5_oem7y"]
 [ext_resource type="PackedScene" uid="uid://b3xc7tmfgrbja" path="res://assets/models/environment/practiceTarget.glb" id="7_1nvli"]
 [ext_resource type="PackedScene" uid="uid://cqjwn7gq2golt" path="res://scenes/units/squadmates/squadmate.tscn" id="8_a76di"]
-[ext_resource type="PackedScene" uid="uid://bpvjjcx13hhmv" path="res://scenes/units/ai/terrorist.tscn" id="8_vals0"]
+[ext_resource type="PackedScene" uid="uid://bpvjjcx13hhmv" path="res://scenes/units/enemies/terrorist.tscn" id="8_vals0"]
+[ext_resource type="AudioStream" uid="uid://ijbilroxh1jk" path="res://assets/audio/music/bladerunner.wav" id="12_7s2gi"]
 
 [sub_resource type="Environment" id="Environment_h45xw"]
 background_energy_multiplier = 0.56
@@ -24,12 +25,12 @@ fog_density = 0.079
 [sub_resource type="BoxMesh" id="BoxMesh_h45xw"]
 size = Vector3(1, 0.19250488, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0o143"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d3ub6"]
 emission_enabled = true
 emission = Color(0.91269803, 0.8816077, 0.86342293, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h45xw"]
-material = SubResource("StandardMaterial3D_0o143")
+material = SubResource("StandardMaterial3D_d3ub6")
 
 [node name="Level0" type="Node3D" unique_id=877142389]
 
@@ -224,3 +225,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.735842, -0.12973166, -0.44
 
 [node name="practiceTarget" parent="." unique_id=943911273 instance=ExtResource("7_1nvli")]
 transform = Transform3D(0.327414, 0, 0, 0, 0.327414, 0, 0, 0, 0.327414, 0.72159827, 0.076911226, -2.9837298)
+
+[node name="Bladerunner" type="AudioStreamPlayer3D" parent="." unique_id=1602751062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11618742, 0.96283484, 0.25005746)
+stream = ExtResource("12_7s2gi")
+attenuation_model = 3
+autoplay = true
+panning_strength = 0.1
+bus = &"Music"
+attenuation_filter_cutoff_hz = 20500.0
+attenuation_filter_db = 0.0
