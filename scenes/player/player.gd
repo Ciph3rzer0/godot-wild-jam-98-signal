@@ -51,16 +51,16 @@ func set_mouse_free(val: bool):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		set_mouse_free(!is_mouse_free)
-		get_viewport().set_input_as_handled()
-		return
-	elif event.is_action_pressed("cheat_restart_level"):
-		var error = get_tree().reload_current_scene()
-		if error != OK:
-			print("An error occurred while reloading the scene.")
+#
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("ui_cancel"):
+		#set_mouse_free(!is_mouse_free)
+		#get_viewport().set_input_as_handled()
+		#return
+	#elif event.is_action_pressed("cheat_restart_level"):
+		#var error = get_tree().reload_current_scene()
+		#if error != OK:
+			#print("An error occurred while reloading the scene.")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if is_dead() or is_mouse_free: return

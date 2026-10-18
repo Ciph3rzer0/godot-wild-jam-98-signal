@@ -99,10 +99,10 @@ func _finish_loading() -> void:
 	_loading_path = ""
 
 	if current_level is Level:
-		print("connected")
 		current_level.scenario_lost.connect(game_over_sequence.show_game_over)
 	else:
-		print(current_level)
+		print(current_level, " is not a level")
+		assert(false)
 
 	# Let the new level render a frame (shader compile) before revealing it.
 	await get_tree().process_frame
